@@ -1,14 +1,392 @@
 {
   "schema_version": 1,
-  "generated_at": null,
+  "generated_at": "2026-09-04T17:45:29.614682+00:00",
   "approved_investors": 29,
   "sec_investors_succeeded": 0,
-  "sec_investors_failed": 0,
+  "sec_investors_failed": 29,
   "word_sources_configured": 0,
   "word_sources_succeeded": 0,
   "new_items": 0,
-  "errors": [],
-  "investors": [],
-  "status": "not_run",
-  "accuracy_note": "Monitoring has not run in the separate repository yet. Missing data is not treated as a clean result."
+  "errors": [
+    {
+      "cik": "1067983",
+      "investor": "Warren Buffett",
+      "error": "SEC CIK 1067983 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1061768",
+      "investor": "Seth Klarman",
+      "error": "SEC CIK 1061768 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1358706",
+      "investor": "David Abrams",
+      "error": "SEC CIK 1358706 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1649339",
+      "investor": "Michael Burry",
+      "error": "SEC CIK 1649339 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1079114",
+      "investor": "David Einhorn",
+      "error": "SEC CIK 1079114 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1647251",
+      "investor": "Chris Hohn",
+      "error": "SEC CIK 1647251 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1112520",
+      "investor": "Chuck Akre",
+      "error": "SEC CIK 1112520 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1096343",
+      "investor": "Tom Gayner",
+      "error": "SEC CIK 1096343 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1553733",
+      "investor": "Glenn Greenberg",
+      "error": "SEC CIK 1553733 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1446114",
+      "investor": "Joel Greenblatt",
+      "error": "SEC CIK 1446114 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1697591",
+      "investor": "Clifford Sosin",
+      "error": "SEC CIK 1697591 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1631664",
+      "investor": "Norbert Lou",
+      "error": "SEC CIK 1631664 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1549575",
+      "investor": "Mohnish Pabrai",
+      "error": "SEC CIK 1549575 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1709323",
+      "investor": "Li Lu",
+      "error": "SEC CIK 1709323 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1115373",
+      "investor": "Christopher Bloomstran",
+      "error": "SEC CIK 1115373 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1697868",
+      "investor": "Dev Kantesaria",
+      "error": "SEC CIK 1697868 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1540866",
+      "investor": "Tom Bancroft",
+      "error": "SEC CIK 1540866 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1777813",
+      "investor": "Gavin Baker",
+      "error": "SEC CIK 1777813 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "2045724",
+      "investor": "Leopold Aschenbrenner",
+      "error": "SEC CIK 2045724 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1541617",
+      "investor": "Brad Gerstner",
+      "error": "SEC CIK 1541617 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1135730",
+      "investor": "Philippe Laffont",
+      "error": "SEC CIK 1135730 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1697748",
+      "investor": "Cathie Wood",
+      "error": "SEC CIK 1697748 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1167483",
+      "investor": "Chase Coleman",
+      "error": "SEC CIK 1167483 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "2016708",
+      "investor": "Dan Niles",
+      "error": "SEC CIK 2016708 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1103804",
+      "investor": "Ole Andreas Halvorsen",
+      "error": "SEC CIK 1103804 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1387322",
+      "investor": "Whale Rock",
+      "error": "SEC CIK 1387322 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1569205",
+      "investor": "Terry Smith",
+      "error": "SEC CIK 1569205 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "1040273",
+      "investor": "Daniel Loeb",
+      "error": "SEC CIK 1040273 unavailable: HTTP Error 403: Forbidden"
+    },
+    {
+      "cik": "2026053",
+      "investor": "Bill Ackman",
+      "error": "SEC CIK 2026053 unavailable: HTTP Error 403: Forbidden"
+    }
+  ],
+  "investors": [
+    {
+      "cik": "1067983",
+      "investor": "Warren Buffett",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1061768",
+      "investor": "Seth Klarman",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1358706",
+      "investor": "David Abrams",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1649339",
+      "investor": "Michael Burry",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1079114",
+      "investor": "David Einhorn",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1647251",
+      "investor": "Chris Hohn",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1112520",
+      "investor": "Chuck Akre",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1096343",
+      "investor": "Tom Gayner",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1553733",
+      "investor": "Glenn Greenberg",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1446114",
+      "investor": "Joel Greenblatt",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1697591",
+      "investor": "Clifford Sosin",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1631664",
+      "investor": "Norbert Lou",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1549575",
+      "investor": "Mohnish Pabrai",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1709323",
+      "investor": "Li Lu",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1115373",
+      "investor": "Christopher Bloomstran",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1697868",
+      "investor": "Dev Kantesaria",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1540866",
+      "investor": "Tom Bancroft",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1777813",
+      "investor": "Gavin Baker",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "2045724",
+      "investor": "Leopold Aschenbrenner",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1541617",
+      "investor": "Brad Gerstner",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1135730",
+      "investor": "Philippe Laffont",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1697748",
+      "investor": "Cathie Wood",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1167483",
+      "investor": "Chase Coleman",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "2016708",
+      "investor": "Dan Niles",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1103804",
+      "investor": "Ole Andreas Halvorsen",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1387322",
+      "investor": "Whale Rock",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1569205",
+      "investor": "Terry Smith",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "1040273",
+      "investor": "Daniel Loeb",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    },
+    {
+      "cik": "2026053",
+      "investor": "Bill Ackman",
+      "sec_ok": false,
+      "configured_sec_entities": 1,
+      "new_filings": 0,
+      "configured_word_sources": 0
+    }
+  ],
+  "accuracy_note": "Missing ticker or direction fields were left unresolved; no value was inferred from headlines."
 }
