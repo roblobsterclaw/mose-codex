@@ -123,8 +123,13 @@ def parse_form4(document: bytes) -> dict[str, Any]:
     acquired = 0.0
     disposed = 0.0
     transaction_count = 0
+    derivative_count = 0
     for transaction in root.iter():
-        if transaction.tag.split("}")[-1] not in {"nonDerivativeTransaction", "derivativeTransaction"}:
+        transaction_type = transaction.tag.split("}")[-1]
+        if transaction_type == "derivativeTransaction":
+            derivative_count += 1
+            continue
+        if transaction_type != "nonDerivativeTransaction":
             continue
         shares = 0.0
         code = ""
@@ -147,6 +152,8 @@ def parse_form4(document: bytes) -> dict[str, Any]:
     if transaction_count:
         action = "net acquisition" if net > 0 else "net disposition" if net < 0 else "offsetting transactions"
         summary = f"Filed Form 4 reporting {action} of {abs(net):,.0f} shares."
+    elif derivative_count:
+        summary = "Filed Form 4 containing derivative transactions; common-share direction was not classified."
     return {
         "ticker": ticker,
         "company": issuer,
@@ -155,6 +162,7 @@ def parse_form4(document: bytes) -> dict[str, Any]:
         "transaction_count": transaction_count,
         "shares_acquired": acquired,
         "shares_disposed": disposed,
+        "derivative_transaction_count": derivative_count,
     }
 
 

@@ -15,6 +15,7 @@ concurrency:
 
 jobs:
   update:
+    if: github.event_name == 'workflow_dispatch' || vars.SEC_TRANSPORT_READY == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 120
     env:

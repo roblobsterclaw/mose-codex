@@ -42,6 +42,11 @@ Every active approved CIK is checked four times daily for SC 13D/G, Form 4,
 sources for letters, interviews, podcasts, and posts are configured in
 `reference-data/investor-sources.json`.
 
+Scheduled SEC jobs remain gated by the `SEC_TRANSPORT_READY` repository
+variable until an SEC-capable collector is connected. Manual workflow runs stay
+available for verification. This prevents repeated failed runs from being
+mistaken for successful monitoring.
+
 Structured filings may affect conviction. Words and news can create a watch
 item, but do not change a score. Unknown tickers and directions remain null or
 neutral; the system does not infer them from a headline.

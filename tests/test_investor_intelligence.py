@@ -221,6 +221,19 @@ class SignalTests(unittest.TestCase):
         self.assertEqual(parsed["shares_acquired"], 100)
         self.assertEqual(parsed["shares_disposed"], 20)
 
+    def test_derivative_only_form4_stays_neutral(self) -> None:
+        xml = b"""<ownershipDocument>
+          <issuer><issuerName>Example Corp</issuerName><issuerTradingSymbol>EXM</issuerTradingSymbol></issuer>
+          <derivativeTable><derivativeTransaction><transactionAmounts>
+            <transactionShares><value>100</value></transactionShares>
+            <transactionAcquiredDisposedCode><value>A</value></transactionAcquiredDisposedCode>
+          </transactionAmounts></derivativeTransaction></derivativeTable>
+        </ownershipDocument>"""
+        parsed = parse_form4(xml)
+        self.assertEqual(parsed["direction"], "neutral")
+        self.assertEqual(parsed["derivative_transaction_count"], 1)
+        self.assertIn("not classified", parsed["summary"])
+
     def test_13d_without_document_keeps_ticker_unresolved(self) -> None:
         submissions = {
             "filings": {

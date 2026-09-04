@@ -119,13 +119,13 @@ def decision_rows() -> list[dict[str, Any]]:
             "workspace_key": WORKSPACE_KEY,
             "cik": str(item.get("cik") or ""),
             "decision": item.get("decision"),
-            "reason": item.get("reason") or "No reason recorded",
+            "reason": item.get("reason"),
             "decided_at": item.get("decided_at"),
             "decided_by": item.get("decided_by") or "Joe Lynch",
             "source_payload": item,
         }
         for item in payload.get("decisions", [])
-        if item.get("cik") and item.get("decision") in {"approve", "reject"} and item.get("decided_at")
+        if item.get("cik") and item.get("decision") in {"approve", "reject"} and item.get("decided_at") and item.get("reason")
     ]
 
 
@@ -193,14 +193,14 @@ def signal_rows() -> list[dict[str, Any]]:
             "direction": item.get("direction") or "neutral",
             "confidence": item.get("confidence"),
             "summary": item.get("quote"),
-            "source_url": item.get("source_url") or "not-loaded",
+            "source_url": item.get("source_url"),
             "source_title": item.get("source_title"),
             "source_class": item.get("source_class") or "unknown",
             "affects_conviction": bool(item.get("affects_conviction")),
             "source_payload": item,
         }
         for item in feed.get("items", [])
-        if item.get("id") and item.get("ts")
+        if item.get("id") and item.get("ts") and item.get("source_url")
     ]
 
 
