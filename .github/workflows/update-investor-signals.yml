@@ -16,7 +16,7 @@ concurrency:
 jobs:
   update:
     if: github.event_name == 'workflow_dispatch' || vars.SEC_TRANSPORT_READY == 'true'
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     env:
       SEC_USER_AGENT: MOSE Codex Lab/1.0 roblobsterclaw@users.noreply.github.com
       SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
