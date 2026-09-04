@@ -15,6 +15,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: mose-codex-pages-writer
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T17:48:01.250268+00:00",
+  "generated_at": "2026-09-04T18:02:36.416082+00:00",
   "source": {
     "name": "Committed SEC EDGAR history for already tracked filers",
     "url": "data/sec-13f-filings.json",
@@ -19,7 +19,7 @@
       "2023-Q4"
     ],
     "scope": "tracked_only",
-    "disclaimer": "This bootstrap does not represent the full SEC filer universe and nominates no new candidates. The tracked-history value scale is normalized by 1,000 to correct its documented legacy overstatement."
+    "disclaimer": "This bootstrap does not represent the full SEC filer universe and nominates no new candidates. Market values use the canonical U.S.-dollar unit stored in the tracked filing history."
   },
   "policy_version": "2026-09-04",
   "qualification_policy": {

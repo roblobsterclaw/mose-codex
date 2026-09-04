@@ -32,7 +32,6 @@ DECISIONS_PATH = ROOT / "reference-data" / "investor-decisions.json"
 CIK_MAP_PATH = ROOT / "reference-data" / "cik-map.json"
 OUTPUT_PATH = ROOT / "reference-data" / "investor-universe.json"
 TRACKED_HISTORY_PATH = ROOT / "data" / "sec-13f-filings.json"
-TRACKED_HISTORY_VALUE_SCALE = 1000.0
 DATASET_PAGE = "https://www.sec.gov/data-research/sec-markets-data/form-13f-data-sets"
 DEFAULT_CACHE = ROOT / ".cache" / "sec-13f"
 
@@ -511,7 +510,7 @@ def build_tracked_bootstrap(output_path: Path = OUTPUT_PATH) -> dict[str, Any]:
             for holding in filing.get("holdings", []):
                 cusip = str(holding.get("cusip") or "").upper().replace(" ", "")
                 if cusip:
-                    holdings[cusip] += float(holding.get("market_value") or 0) / TRACKED_HISTORY_VALUE_SCALE
+                    holdings[cusip] += float(holding.get("market_value") or 0)
             snapshots_by_cik[cik].append(
                 (
                     quarter,
@@ -540,7 +539,7 @@ def build_tracked_bootstrap(output_path: Path = OUTPUT_PATH) -> dict[str, Any]:
             "latest_report_quarter": quarters[0] if quarters else None,
             "quarters_loaded": quarters,
             "scope": "tracked_only",
-            "disclaimer": "This bootstrap does not represent the full SEC filer universe and nominates no new candidates. The tracked-history value scale is normalized by 1,000 to correct its documented legacy overstatement.",
+            "disclaimer": "This bootstrap does not represent the full SEC filer universe and nominates no new candidates. Market values use the canonical U.S.-dollar unit stored in the tracked filing history.",
         },
         "policy_version": policy["policy_version"],
         "qualification_policy": {

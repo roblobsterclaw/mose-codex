@@ -9,8 +9,7 @@ every tracked manager's CURRENT (latest-quarter) holdings flow into those views.
 
 13F gives shares + market value per holding but not cost basis, so "entry" is
 approximated from the first quarter each manager reported the position:
-price ~= market_value / shares (the pull stores value as real dollars x1000, so
-we divide by 1000). current_price prefers the live quote when available.
+price ~= market_value / shares. current_price prefers the live quote when available.
 """
 
 from __future__ import annotations
@@ -26,8 +25,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SEC_HISTORY = ROOT / "data" / "sec-13f-filings.json"
 LIVE_QUOTES = ROOT / "live-quotes.json"
 OUTPUT = ROOT / "holdings-latest.json"
+CUSIP_MAP = ROOT / "reference-data" / "cusip-map.json"
 
-VALUE_SCALE = 1000.0  # pulled market_value is real USD x1000 (value/shares/1000 = price)
 TICKER_RE = re.compile(r"^[A-Z][A-Z.\-]{0,6}$")  # resolved tickers only (skip raw CUSIPs)
 
 
@@ -54,11 +53,21 @@ def live_prices() -> dict[str, float]:
     return prices
 
 
-def aggregate(holdings: list[dict]) -> dict[str, dict]:
+def load_cusip_tickers() -> dict[str, str]:
+    payload = load_json(CUSIP_MAP, {})
+    return {
+        str(cusip).upper().replace(" ", ""): str(item.get("ticker") or "").upper()
+        for cusip, item in (payload.get("map") or {}).items()
+        if item.get("ticker")
+    }
+
+
+def aggregate(holdings: list[dict], cusip_tickers: dict[str, str]) -> dict[str, dict]:
     """Sum shares/value per resolved ticker within one filing."""
     agg: dict[str, dict] = {}
     for h in holdings:
-        ticker = str(h.get("ticker") or "").upper().strip()
+        cusip = str(h.get("cusip") or "").upper().replace(" ", "")
+        ticker = str(h.get("ticker") or cusip_tickers.get(cusip) or "").upper().strip()
         if not TICKER_RE.match(ticker):
             continue
         row = agg.setdefault(ticker, {
@@ -74,7 +83,7 @@ def aggregate(holdings: list[dict]) -> dict[str, dict]:
 def price_of(row: dict) -> float | None:
     sh, mv = row.get("shares"), row.get("market_value")
     if sh and mv:
-        return mv / sh / VALUE_SCALE
+        return mv / sh
     return None
 
 
@@ -86,6 +95,7 @@ def main() -> int:
         return 1
 
     quotes = live_prices()
+    cusip_tickers = load_cusip_tickers()
     all_quarters = sorted(
         {f.get("quarter") for inv in investors for f in inv.get("filings", []) if f.get("quarter")},
         key=quarter_key,
@@ -100,7 +110,10 @@ def main() -> int:
     for inv in investors:
         name = inv.get("name")
         fund = inv.get("fund") or ""
-        by_quarter = {f.get("quarter"): aggregate(f.get("holdings", [])) for f in inv.get("filings", [])}
+        by_quarter = {
+            f.get("quarter"): aggregate(f.get("holdings", []), cusip_tickers)
+            for f in inv.get("filings", [])
+        }
         current = by_quarter.get(latest_q)
         if not current:
             continue  # no latest-quarter filing (e.g. a manager who stopped filing)
@@ -131,7 +144,7 @@ def main() -> int:
                 "investor": name,
                 "fund": fund,
                 "shares": round(row["shares"]) or None,
-                "value_usd": round(row["market_value"] / VALUE_SCALE) or None,
+                "value_usd": round(row["market_value"]) or None,
                 "pct_portfolio": round(row["pct_portfolio"], 2) or None,
                 "current_price": round(cur_px, 2) if cur_px else None,
                 "entry_quarter": entry_q,

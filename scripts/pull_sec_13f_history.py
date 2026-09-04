@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import time
 import urllib.error
@@ -29,7 +30,10 @@ OUTPUT_PATH = ROOT / "data" / "sec-13f-filings.json"
 SEC_SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik10}.json"
 SEC_ARCHIVES_URL = "https://www.sec.gov/Archives/edgar/data"
 SEC_FULL_INDEX_URL = "https://www.sec.gov/Archives/edgar/full-index/{year}/QTR{quarter}/form.idx"
-USER_AGENT = "MOSE Dashboard joe@example.com"
+USER_AGENT = os.environ.get(
+    "SEC_USER_AGENT",
+    "MOSE Codex Lab/1.0 roblobsterclaw@users.noreply.github.com",
+)
 
 
 @dataclass(frozen=True)
@@ -240,7 +244,7 @@ def parse_information_table(xml_text: str, ticker_map: dict[str, str]) -> list[d
         issuer = text_of(info, "nameOfIssuer")
         cusip = text_of(info, "cusip").upper()
         ticker = ticker_map.get(cusip) or ticker_map.get(issuer.upper())
-        value_thousands = float(text_of(info, "value") or 0)
+        value_usd = float(text_of(info, "value") or 0)
         shares = float(text_of(info, "sshPrnamt") or 0)
         put_call = text_of(info, "putCall")
         if put_call:
@@ -251,7 +255,7 @@ def parse_information_table(xml_text: str, ticker_map: dict[str, str]) -> list[d
                 "identifier": ticker or f"CUSIP:{cusip}",
                 "cusip": cusip,
                 "company": issuer,
-                "market_value": value_thousands * 1000,
+                "market_value": value_usd,
                 "shares": shares,
             }
         )
@@ -408,8 +412,10 @@ def main() -> int:
         raise SystemExit("No SEC 13F filings were pulled; leaving existing output untouched.")
 
     payload = {
+        "schema_version": 2,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source": "SEC EDGAR submissions and Archives information tables",
+        "market_value_unit": "usd",
         "quarters_requested": args.quarters,
         "investor_count": len(investors),
         "filings_pulled": sum(len(i["filings"]) for i in investors),

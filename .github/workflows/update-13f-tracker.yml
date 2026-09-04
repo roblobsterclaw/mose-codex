@@ -10,10 +10,16 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: mose-codex-pages-writer
+  cancel-in-progress: false
+
 jobs:
   update:
+    if: github.event_name == 'workflow_dispatch' || vars.SEC_TRANSPORT_READY == 'true'
     runs-on: ubuntu-latest
     env:
+      SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT || 'MOSE Codex Lab/1.0 roblobsterclaw@users.noreply.github.com' }}
       SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
       SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
     steps:
@@ -25,23 +31,27 @@ jobs:
           python-version: "3.12"
       - name: Pull SEC EDGAR 13F history
         run: python scripts/pull_sec_13f_history.py --quarters 8
-      - name: Build 13F tracker export
-        run: python scripts/build_13f_tracker.py
       - name: Refresh ticker directory (watchlist search)
         run: python scripts/build_ticker_directory.py || echo "ticker directory refresh skipped"
+      - name: Refresh CUSIP resolution and eligible universe
+        run: python scripts/build_cusip_map.py
+      - name: Build 13F tracker export
+        run: python scripts/build_13f_tracker.py
       - name: Rebuild holdings from live 13F (convergence/overlap)
-        run: python scripts/build_holdings_from_13f.py || echo "holdings rebuild skipped"
+        run: python scripts/build_holdings_from_13f.py
+      - name: Validate investor data before publishing
+        run: python scripts/validate_investor_data.py
       - name: Sync 13F tracker to Supabase
         if: env.SUPABASE_URL != '' && env.SUPABASE_SERVICE_ROLE_KEY != ''
         run: python scripts/sync_13f_tracker_to_supabase.py
       - name: Commit 13F tracker data
         run: |
-          if git diff --quiet filing-changes-latest.json data/sec-13f-filings.json reference-data/ticker-directory.json holdings-latest.json; then
+          if git diff --quiet filing-changes-latest.json data/sec-13f-filings.json reference-data/ticker-directory.json reference-data/cusip-map.json holdings-latest.json eligible-universe.json reports/investor-data-audit.json; then
             echo "No 13F tracker changes"
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add filing-changes-latest.json data/sec-13f-filings.json reference-data/ticker-directory.json holdings-latest.json
+            git add filing-changes-latest.json data/sec-13f-filings.json reference-data/ticker-directory.json reference-data/cusip-map.json holdings-latest.json eligible-universe.json reports/investor-data-audit.json
             git commit -m "Update 13F tracker data"
             git push origin main
             git push origin HEAD:gh-pages --force

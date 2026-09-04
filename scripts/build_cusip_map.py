@@ -156,7 +156,7 @@ def main() -> None:
                     t, m = resolve(c, nm)
                     cmap[c] = {"ticker": t, "name": nm, "method": m}
                 if f["quarter"] == latest:
-                    v = float(h.get("market_value") or 0) / 1000.0  # raw file is x1000
+                    v = float(h.get("market_value") or 0)
                     total_val += v; by_method[cmap[c]["method"]] += 1; by_val[cmap[c]["method"]] += v
                     t = cmap[c]["ticker"]
                     if t:

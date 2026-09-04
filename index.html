@@ -2139,7 +2139,7 @@ async function checkPw(){
 // compare the build stamp, and offer a genuine reload when they differ.
 // Bump APP_BUILD whenever index.html changes.
 // ============================================================
-const APP_BUILD = 'codex-2026-09-04a';
+const APP_BUILD = 'codex-2026-09-04b';
 
 async function checkForAppUpdate(announce) {
   try {
@@ -3726,10 +3726,11 @@ function renderFilingTracker() {
   if (filingChangeFilter !== 'all') rows = rows.filter(r => r.change_type === filingChangeFilter);
   body.innerHTML = rows.length ? rows.map(row => {
     const ticker = canonicalTicker(row.ticker || '');
+    const securityLabel = ticker || row.identifier || (row.cusip ? `CUSIP:${row.cusip}` : 'Unresolved');
     const report = reportTickers.has(ticker) ? `<a href="${getReportUrl(ticker)}" target="_blank" class="dd-report-link" style="margin-left:4px">Report</a>` : '';
     return `<tr>
-      <td><span class="ticker">${escapeHtml(ticker)}</span>${report}</td>
-      <td>${escapeHtml(row.company || ticker)}</td>
+      <td><span class="ticker">${escapeHtml(securityLabel)}</span>${report}</td>
+      <td>${escapeHtml(row.company || securityLabel)}</td>
       <td>${filingPill(row.change_type)}</td>
       <td class="mono">${row.pct_portfolio !== null && row.pct_portfolio !== undefined ? Number(row.pct_portfolio).toFixed(2) + '%' : '—'}</td>
       <td class="mono">${fmtFilingNumber(row.shares)}</td>
@@ -3747,7 +3748,7 @@ function renderFilingHotlist() {
   if (!el || !filingTrackerData) return;
   const tickers = filingTrackerData.tickers || [];
   const hot = tickers
-    .filter(t => t.buyers > 0 || t.investor_count >= 3 || getWatchlistStocks().some(p => canonicalTicker(p.ticker) === canonicalTicker(t.ticker)))
+    .filter(t => t.ticker && (t.buyers > 0 || t.investor_count >= 3 || getWatchlistStocks().some(p => canonicalTicker(p.ticker) === canonicalTicker(t.ticker))))
     .slice(0, 12);
   el.innerHTML = hot.length ? hot.map(t => {
     const ticker = canonicalTicker(t.ticker);

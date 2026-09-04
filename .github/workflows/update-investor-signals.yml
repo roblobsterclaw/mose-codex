@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: mose-codex-investor-signals
+  group: mose-codex-pages-writer
   cancel-in-progress: false
 
 jobs:

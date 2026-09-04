@@ -51,6 +51,23 @@ Structured filings may affect conviction. Words and news can create a watch
 item, but do not change a score. Unknown tickers and directions remain null or
 neutral; the system does not infer them from a headline.
 
+## 13F accuracy controls
+
+- Holdings are matched quarter to quarter by CUSIP. A ticker resolved in one
+  quarter and unresolved in another still represents the same security.
+- Form 13F XML values filed since January 3, 2023 are treated as nearest-dollar
+  values. Derived files and Supabase rows use U.S. dollars throughout.
+- Duplicate information-table rows for one CUSIP are aggregated before a
+  change is classified or stored.
+- Additive amendments are merged into the original filing; restatements replace
+  it for the affected quarter.
+- Each generated database payload is checked for duplicate primary keys,
+  unresolved pseudo-tickers, and broken investor/security/filing references.
+
+The current copied history resolves 1,980 of 3,647 CUSIPs, representing about
+99.5% of latest-quarter reported value. The remaining identifiers stay visible
+as unresolved and are not guessed.
+
 ## Approval operation
 
 After Joe selects a candidate, record the decision with:

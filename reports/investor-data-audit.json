@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-04T18:12:11.996786+00:00",
+  "workspace_key": "mose-codex",
+  "status": "passed",
+  "latest_quarter": "2026-Q2",
+  "metrics": {
+    "approved_investors": 29,
+    "filings": 216,
+    "change_rows": 2501,
+    "published_holdings": 1950,
+    "cusip_value_coverage": 0.994617,
+    "eligible_tickers": 1307
+  },
+  "checks": [
+    {
+      "name": "canonical_market_value_unit",
+      "passed": true,
+      "detail": "market_value_unit='usd'"
+    },
+    {
+      "name": "filing_totals_match_holdings",
+      "passed": true,
+      "detail": "216 filings checked; 0 mismatches"
+    },
+    {
+      "name": "approved_roster_matches_history",
+      "passed": true,
+      "detail": "active=29, history=29, approved=29"
+    },
+    {
+      "name": "unique_change_rows",
+      "passed": true,
+      "detail": "2501 rows; 0 duplicate investor-quarter-CUSIP keys"
+    },
+    {
+      "name": "share_change_classifications",
+      "passed": true,
+      "detail": "2501 rows checked; 0 inconsistent labels"
+    },
+    {
+      "name": "no_pseudo_tickers_in_changes",
+      "passed": true,
+      "detail": "0 CUSIP placeholders found in ticker fields"
+    },
+    {
+      "name": "cusip_value_coverage",
+      "passed": true,
+      "detail": "99.46% of 2026-Q2 reported value resolves to a ticker"
+    },
+    {
+      "name": "published_holdings_are_unique_and_resolved",
+      "passed": true,
+      "detail": "1950 rows; 0 duplicate keys; 0 invalid tickers"
+    },
+    {
+      "name": "eligible_universe_is_current",
+      "passed": true,
+      "detail": "quarter=2026-Q2; tickers=1307"
+    }
+  ],
+  "failure_count": 0
+}

@@ -1,4 +1,9 @@
 # 🦞 MOSE Dashboard — BUILD LOG
+
+> Historical entries describe production MOSE. In this independent Codex copy,
+> generic Supabase migrations are archived under
+> `docs/legacy-supabase-migrations/` and cannot run from the active migration
+> path.
 **Project:** MOSE — Margin of Safety Engine  
 **Owner:** Joe Lynch  
 **Kicked off by:** Hermes (via Telegram), May 7, 2026  
@@ -22,10 +27,31 @@
 - A source-backed feed contract that leaves unknown ticker and direction values unresolved.
 - A new Top 50 app tab for approved investors, ranked candidates, failed gates, and exportable pending review choices.
 - Separate GitHub Actions for quarterly universe scans and investor signals, plus a Supabase sync adapter and migration.
+- A CUSIP-first quarter comparison that prevents one security from appearing as
+  both new and exited when only one quarter has a resolved ticker.
+- Canonical nearest-dollar values for modern Form 13F XML, correcting the
+  inherited 1,000-times market-value overstatement.
+- A full isolated 13F Supabase model for managers, securities, filings,
+  holdings, and quarter changes, with stale-row reconciliation limited to the
+  `mose-codex` workspace.
+- An active migration path containing only `mose_codex_*` tables; inherited
+  generic migrations are archived as documentation.
 
 **Verification:**
-- Seven unit tests cover amendment merging, CUSIP-weight turnover, eight-quarter candidate scoring, exclusion gates, common-share and derivative-only Form 4 transactions, and unresolved 13D fields.
+- Thirteen unit tests cover amendment merging, CUSIP-weight turnover,
+  eight-quarter candidate scoring, exclusion gates, common-share and
+  derivative-only Form 4 transactions, unresolved 13D fields, CUSIP/ticker
+  identity, duplicate-row aggregation, and isolated Supabase exports.
+- The permanent generated-data audit passes all nine checks and is required
+  before the quarterly workflow can publish or sync.
 - All Python files compile, embedded dashboard JavaScript parses, workflow YAML parses, and `git diff --check` passes.
+- The generated database payload contains 29 managers, 216 filings, 24,310
+  holdings, 2,501 latest-quarter changes, and no duplicate primary keys.
+- CUSIP resolution now covers 1,980 of 3,647 identifiers and about 99.5% of
+  latest-quarter reported value; rebuilt dashboard holdings increased from 178
+  to 1,950 manager positions.
+- Berkshire validation: Alphabet Class A and Class C are both classified as
+  additions for 2026 Q2 versus Q1; Apple is unchanged.
 
 **Deployment status:**
 - Independent repository created. Production `roblobsterclaw/mose` remains untouched.

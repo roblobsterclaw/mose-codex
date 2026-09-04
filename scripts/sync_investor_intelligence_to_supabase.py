@@ -58,6 +58,20 @@ class SupabaseClient:
                 raise RuntimeError(f"Supabase upsert failed for {table}: HTTP {exc.code}: {body}") from exc
         return written
 
+    def delete(self, table: str, filters: dict[str, str]) -> None:
+        query = urllib.parse.urlencode(filters)
+        request = urllib.request.Request(
+            f"{self.base}/{table}?{query}",
+            headers=self.headers,
+            method="DELETE",
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=90):
+                return
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode("utf-8", errors="replace")
+            raise RuntimeError(f"Supabase delete failed for {table}: HTTP {exc.code}: {body}") from exc
+
 
 def candidate_rows() -> list[dict[str, Any]]:
     universe = load_json(UNIVERSE_PATH, {})
@@ -89,26 +103,6 @@ def candidate_rows() -> list[dict[str, Any]]:
                 "generated_at": generated_at,
             }
         )
-        for entity in overrides.get(cik, {}).get("sec_entities", []):
-            entity_cik = str(entity.get("cik") or "").lstrip("0")
-            if not entity_cik or entity_cik == cik:
-                continue
-            entity_url = f"https://data.sec.gov/submissions/CIK{entity_cik.zfill(10)}.json"
-            rows.append(
-                {
-                    "workspace_key": WORKSPACE_KEY,
-                    "source_key": f"sec-submissions:{cik}:{entity_cik}",
-                    "cik": cik,
-                    "investor_name": name,
-                    "source_type": "sec_submissions_related_entity",
-                    "source_url": entity_url,
-                    "source_kind": "FILING",
-                    "first_party": True,
-                    "enabled": entity.get("enabled", True),
-                    "verified_at": entity.get("verified_at"),
-                    "source_payload": entity,
-                }
-            )
     return rows
 
 
@@ -154,6 +148,26 @@ def source_rows() -> list[dict[str, Any]]:
                 "source_payload": sources.get("defaults", {}).get("sec_submissions", {}),
             }
         )
+        for entity in overrides.get(cik, {}).get("sec_entities", []):
+            entity_cik = str(entity.get("cik") or "").lstrip("0")
+            if not entity_cik or entity_cik == cik:
+                continue
+            entity_url = f"https://data.sec.gov/submissions/CIK{entity_cik.zfill(10)}.json"
+            rows.append(
+                {
+                    "workspace_key": WORKSPACE_KEY,
+                    "source_key": f"sec-submissions:{cik}:{entity_cik}",
+                    "cik": cik,
+                    "investor_name": name,
+                    "source_type": "sec_submissions_related_entity",
+                    "source_url": entity_url,
+                    "source_kind": "FILING",
+                    "first_party": True,
+                    "enabled": entity.get("enabled", True),
+                    "verified_at": entity.get("verified_at"),
+                    "source_payload": entity,
+                }
+            )
         for source in overrides.get(cik, {}).get("sources", []):
             url = source.get("url")
             if not url:
@@ -220,6 +234,17 @@ def main() -> int:
     client = SupabaseClient(url, key)
     counts: dict[str, int] = {}
     if not args.signals_only:
+        source_quarter = str(
+            load_json(UNIVERSE_PATH, {}).get("source", {}).get("latest_report_quarter") or ""
+        )
+        if source_quarter:
+            client.delete(
+                "mose_codex_investor_candidates",
+                {
+                    "workspace_key": f"eq.{WORKSPACE_KEY}",
+                    "source_quarter": f"eq.{source_quarter}",
+                },
+            )
         counts["candidates"] = client.upsert(
             "mose_codex_investor_candidates",
             candidate_rows(),
@@ -229,6 +254,10 @@ def main() -> int:
             "mose_codex_investor_decisions",
             decision_rows(),
             "workspace_key,cik",
+        )
+        client.delete(
+            "mose_codex_investor_sources",
+            {"workspace_key": f"eq.{WORKSPACE_KEY}"},
         )
         counts["sources"] = client.upsert(
             "mose_codex_investor_sources",

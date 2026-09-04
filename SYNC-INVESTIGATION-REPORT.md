@@ -1,5 +1,10 @@
 # MOSE Dashboard — Cross-Device Sync Investigation
 
+> Historical production-MOSE report. In this independent Codex copy, the three
+> generic migrations described below are archived under
+> `docs/legacy-supabase-migrations/` and cannot run through the active migration
+> path. Only `mose_codex_*` tables are active in this copy's migration.
+
 **Date:** 2026-06-12
 **Investigator:** Claude (for Joe Lynch)
 **Repo:** `roblobsterclaw/mose` → https://roblobsterclaw.github.io/mose/

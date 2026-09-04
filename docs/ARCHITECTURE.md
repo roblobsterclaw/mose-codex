@@ -52,9 +52,13 @@ The dashboard now treats watchlist and research as one shared ticker universe.
   and period-over-period comparison — see `docs/DEEP-DIVES.md`.
 - `research_items` and `research_reports` are in the database schema so this local workflow can be promoted into SQLite/Supabase storage later.
 
-## Phase 3: Supabase Later
+## Phase 3: Independent Supabase Store
 
-`supabase/migrations/001_initial_truth_store.sql` mirrors the SQLite schema in Postgres form. We should migrate to Supabase when we need always-on jobs, multi-device state, auth, or a hosted API.
+`supabase/migrations/001_codex_investor_intelligence.sql` creates only tables
+prefixed with `mose_codex_`. The inherited generic migrations are retained under
+`docs/legacy-supabase-migrations/` for reference and cannot run through the
+Supabase migration command. The Codex store is ready to apply after this
+repository receives its own Supabase secrets.
 
 ## Phase 4: IBKR Later
 

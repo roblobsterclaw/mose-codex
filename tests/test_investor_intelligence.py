@@ -21,7 +21,15 @@ from build_investor_universe import (  # noqa: E402
     scan_archive,
     score_manager,
 )
+from build_13f_tracker import aggregate_holdings, classify_change  # noqa: E402
 from collect_investor_signals import parse_form4, signals_from_submissions  # noqa: E402
+from sync_13f_tracker_to_supabase import (  # noqa: E402
+    aggregate_filing_holdings,
+    clean_ticker,
+    merge_security,
+)
+from sync_investor_intelligence_to_supabase import candidate_rows, source_rows  # noqa: E402
+from validate_investor_data import build_audit  # noqa: E402
 
 
 def tsv_bytes(fieldnames: list[str], rows: list[dict[str, object]]) -> bytes:
@@ -260,6 +268,59 @@ class SignalTests(unittest.TestCase):
         self.assertIsNone(items[0]["ticker"])
         self.assertEqual(items[0]["direction"], "new")
         self.assertTrue(items[0]["affects_conviction"])
+
+
+class SupabaseSyncTests(unittest.TestCase):
+    def test_investor_intelligence_exports_use_isolated_workspace(self) -> None:
+        candidates = candidate_rows()
+        sources = source_rows()
+        self.assertGreaterEqual(len(candidates), 29)
+        self.assertGreaterEqual(len(sources), 29)
+        self.assertTrue(all(row["workspace_key"] == "mose-codex" for row in candidates + sources))
+
+    def test_committed_investor_data_passes_audit(self) -> None:
+        audit = build_audit()
+        self.assertEqual(audit["status"], "passed", audit["checks"])
+
+    def test_duplicate_cusip_rows_are_aggregated(self) -> None:
+        rows = aggregate_filing_holdings(
+            {
+                "holdings": [
+                    {"cusip": "111 111 111", "ticker": None, "shares": 10, "market_value": 1_000_000},
+                    {"cusip": "111111111", "ticker": "EXM", "shares": 5, "market_value": 500_000},
+                ]
+            }
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["shares"], 15)
+        self.assertEqual(rows[0]["market_value"], 1_500_000)
+        self.assertEqual(rows[0]["ticker"], "EXM")
+
+    def test_resolved_ticker_is_not_replaced_by_unresolved_history(self) -> None:
+        securities: dict[str, dict[str, object]] = {}
+        merge_security(securities, "111111111", "EXM", "Example Corp", {"source": "new"})
+        merge_security(securities, "111111111", "CUSIP:111111111", "Example Corp", {"source": "old"})
+        self.assertEqual(securities["111111111"]["ticker"], "EXM")
+        self.assertEqual(securities["111111111"]["resolution_status"], "resolved")
+        self.assertEqual(clean_ticker("CUSIP:111111111"), None)
+
+    def test_quarters_match_by_cusip_when_only_one_has_a_ticker(self) -> None:
+        current = aggregate_holdings(
+            [{"cusip": "037833100", "ticker": "AAPL", "shares": 110, "market_value": 22_000}]
+        )
+        previous = aggregate_holdings(
+            [{"cusip": "037833100", "ticker": None, "shares": 100, "market_value": 20_000}]
+        )
+        self.assertEqual(set(current), set(previous))
+        key = next(iter(current))
+        self.assertEqual(classify_change(current[key], previous[key]), "add")
+
+    def test_cusip_map_resolves_unmapped_tracker_row(self) -> None:
+        rows = aggregate_holdings(
+            [{"cusip": "037833100", "ticker": None, "shares": 100, "market_value": 20_000}],
+            {"037833100": "AAPL"},
+        )
+        self.assertEqual(next(iter(rows.values()))["ticker"], "AAPL")
 
 
 if __name__ == "__main__":

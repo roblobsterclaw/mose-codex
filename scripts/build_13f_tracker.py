@@ -15,6 +15,7 @@ HOLDINGS_PATH = ROOT / "holdings-latest.json"
 SEC_HISTORY_PATH = ROOT / "data" / "sec-13f-filings.json"
 OUTPUT_PATH = ROOT / "filing-changes-latest.json"
 CIK_MAP_PATH = ROOT / "reference-data" / "cik-map.json"
+CUSIP_MAP_PATH = ROOT / "reference-data" / "cusip-map.json"
 
 
 def load_json(path: Path, default: Any) -> Any:
@@ -73,14 +74,35 @@ def pct_float(value: Any) -> float:
 
 
 def row_key(row: dict[str, Any]) -> str:
-    return str(row.get("ticker") or row.get("identifier") or f"CUSIP:{row.get('cusip', '')}").upper()
+    cusip = str(row.get("cusip") or "").upper().replace(" ", "")
+    if cusip:
+        return f"CUSIP:{cusip}"
+    return str(row.get("ticker") or row.get("identifier") or "").upper()
 
 
 
 
-def aggregate_holdings(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+def load_cusip_tickers() -> dict[str, str]:
+    payload = load_json(CUSIP_MAP_PATH, {})
+    return {
+        str(cusip).upper().replace(" ", ""): str(item.get("ticker") or "").upper()
+        for cusip, item in (payload.get("map") or {}).items()
+        if item.get("ticker")
+    }
+
+
+def aggregate_holdings(
+    rows: list[dict[str, Any]],
+    cusip_tickers: dict[str, str] | None = None,
+) -> dict[str, dict[str, Any]]:
     aggregated: dict[str, dict[str, Any]] = {}
     for row in rows or []:
+        row = {**row}
+        cusip = str(row.get("cusip") or "").upper().replace(" ", "")
+        if not row.get("ticker") and cusip and cusip_tickers:
+            row["ticker"] = cusip_tickers.get(cusip)
+            if row.get("ticker"):
+                row["identifier"] = row["ticker"]
         key = row_key(row)
         if not key:
             continue
@@ -94,6 +116,9 @@ def aggregate_holdings(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
         current["market_value"] = pct_float(current.get("market_value")) + pct_float(row.get("market_value"))
         current["shares"] = pct_float(current.get("shares")) + pct_float(row.get("shares"))
         current["pct_portfolio"] = pct_float(current.get("pct_portfolio")) + pct_float(row.get("pct_portfolio"))
+        if not current.get("ticker") and row.get("ticker"):
+            current["ticker"] = row["ticker"]
+            current["identifier"] = row.get("identifier") or row["ticker"]
         current["rank"] = min(
             [rank for rank in [current.get("rank"), row.get("rank")] if isinstance(rank, int)],
             default=current.get("rank"),
@@ -133,6 +158,7 @@ def build_from_sec_history(history: dict[str, Any]) -> dict[str, Any] | None:
     by_ticker: dict[str, list[dict[str, Any]]] = defaultdict(list)
     changes: list[dict[str, Any]] = []
     investor_summaries = []
+    cusip_tickers = load_cusip_tickers()
 
     for investor in investors_raw:
         filings = {f.get("quarter"): f for f in investor.get("filings", [])}
@@ -140,8 +166,8 @@ def build_from_sec_history(history: dict[str, Any]) -> dict[str, Any] | None:
         previous_filing = filings.get(previous_quarter)
         if not current_filing and not previous_filing:
             continue
-        current_map = aggregate_holdings((current_filing or {}).get("holdings", []))
-        previous_map = aggregate_holdings((previous_filing or {}).get("holdings", []))
+        current_map = aggregate_holdings((current_filing or {}).get("holdings", []), cusip_tickers)
+        previous_map = aggregate_holdings((previous_filing or {}).get("holdings", []), cusip_tickers)
         keys = sorted(set(current_map) | set(previous_map))
         rows = []
         for key in keys:
@@ -154,7 +180,7 @@ def build_from_sec_history(history: dict[str, Any]) -> dict[str, Any] | None:
             current_shares = pct_float((current or {}).get("shares"))
             previous_shares = pct_float((previous or {}).get("shares"))
             row = {
-                "ticker": source.get("ticker") or source.get("identifier") or key,
+                "ticker": source.get("ticker"),
                 "identifier": source.get("identifier") or key,
                 "cusip": source.get("cusip"),
                 "company": source.get("company") or key,
@@ -164,11 +190,11 @@ def build_from_sec_history(history: dict[str, Any]) -> dict[str, Any] | None:
                 "previous_quarter": previous_quarter,
                 "change_type": ctype,
                 "trend": {"new": "NEW", "add": "ADDING", "trim": "TRIMMING", "exit": "EXITED"}.get(ctype, "HOLDING"),
-                "shares": current_shares or None,
-                "previous_shares": previous_shares or None,
+                "shares": current_shares if current is not None else None,
+                "previous_shares": previous_shares if previous is not None else None,
                 "shares_delta": (current_shares - previous_shares) if current or previous else None,
-                "market_value": current_value or None,
-                "previous_market_value": previous_value or None,
+                "market_value": current_value if current is not None else None,
+                "previous_market_value": previous_value if previous is not None else None,
                 "market_value_delta": current_value - previous_value,
                 "pct_portfolio": (current or {}).get("pct_portfolio"),
                 "previous_pct_portfolio": (previous or {}).get("pct_portfolio"),
@@ -178,7 +204,7 @@ def build_from_sec_history(history: dict[str, Any]) -> dict[str, Any] | None:
                 "convergence": 1,
             }
             rows.append(row)
-            by_ticker[row["ticker"]].append(row)
+            by_ticker[row.get("ticker") or row["identifier"]].append(row)
             if ctype != "hold":
                 changes.append(row)
 
@@ -214,7 +240,8 @@ def build_from_sec_history(history: dict[str, Any]) -> dict[str, Any] | None:
         trim_like = [r for r in rows if r["change_type"] in {"trim", "exit"}]
         ticker_summaries.append(
             {
-                "ticker": ticker,
+                "ticker": rows[0].get("ticker"),
+                "identifier": rows[0].get("identifier") or ticker,
                 "company": rows[0].get("company") or ticker,
                 "investor_count": len({r["investor"] for r in rows if r["change_type"] != "exit"}),
                 "buyers": len({r["investor"] for r in add_like}),
