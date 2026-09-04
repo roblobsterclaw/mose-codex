@@ -1,11 +1,14 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T18:12:11.996786+00:00",
+  "generated_at": "2026-09-04T19:00:02.275570+00:00",
   "workspace_key": "mose-codex",
   "status": "passed",
   "latest_quarter": "2026-Q2",
   "metrics": {
     "approved_investors": 29,
+    "investor_candidates": 62,
+    "core_value_candidates": 45,
+    "adventurous_value_candidates": 17,
     "filings": 216,
     "change_rows": 2501,
     "published_holdings": 1950,
@@ -27,6 +30,16 @@
       "name": "approved_roster_matches_history",
       "passed": true,
       "detail": "active=29, history=29, approved=29"
+    },
+    {
+      "name": "investor_universe_counts_match",
+      "passed": true,
+      "detail": "approved=29; candidates=62; unique_candidate_ciks=62"
+    },
+    {
+      "name": "investor_candidates_are_auditable",
+      "passed": true,
+      "detail": "62 candidates; 0 malformed; core=45; adventurous=17"
     },
     {
       "name": "unique_change_rows",

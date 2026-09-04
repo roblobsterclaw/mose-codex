@@ -9,8 +9,11 @@ Supabase table names. Work here must never deploy to or write state into
 
 ## Current build focus
 
-- Quarterly SEC bulk 13F universe screening.
+- Quarterly full-filer 13F discovery, with official SEC bulk data preferred and
+  a separately gated indexed-filing fallback.
 - A selective, Joe-approved Top 50 super-investor roster.
+- Core patient-value and adventurous-value lanes modeled on the concentrated,
+  long-holding members of the current roster.
 - CUSIP-keyed history, concentration, patience, and turnover checks.
 - Four-times-daily monitoring of approved investors' structured filings once
   an SEC-capable collector passes the transport check.
@@ -28,7 +31,9 @@ Supabase table names. Work here must never deploy to or write state into
 
 The Supabase migration is not applied until this repository receives its own
 `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` secrets. Scheduled SEC jobs are
-paused while `SEC_TRANSPORT_READY=false`; manual runs remain available. This
-state is intentional and must not be presented as successful live monitoring.
+paused while `SEC_TRANSPORT_READY=false`; the indexed filing fallback also stays
+paused unless `FORMS13F_FALLBACK_READY=true`. Manual runs remain available.
+This state is intentional and must not be presented as successful live
+monitoring.
 
 See `docs/SUPER-INVESTOR-SELECTION.md` for the qualification and approval rules.

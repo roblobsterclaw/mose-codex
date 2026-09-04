@@ -598,7 +598,13 @@
   .universe-status.candidate { border-color: var(--blue); color: var(--blue); }
   .universe-status.rejected { border-color: var(--red); color: var(--red); }
   .universe-status.pending { border-color: var(--yellow); color: var(--yellow); }
+  .universe-lane { display: inline-block; padding: 2px 7px; border: 1px solid var(--border); border-radius: 4px; font-size: 10px; font-weight: 800; white-space: nowrap; }
+  .universe-lane.core_patient_value { border-color: var(--green); color: var(--green); }
+  .universe-lane.adventurous_value { border-color: var(--accent); color: var(--accent); }
+  .universe-lane.approved_outlier { border-color: var(--yellow); color: var(--yellow); }
   .universe-failures { color: var(--yellow); font-size: 11px; line-height: 1.5; max-width: 280px; }
+  .universe-evidence { color: var(--soft-text); font-size: 11px; line-height: 1.45; max-width: 190px; }
+  .universe-sec-link { color: var(--blue); font-size: 11px; font-weight: 800; white-space: nowrap; }
   .universe-actions { display: flex; gap: 5px; white-space: nowrap; }
   .universe-action { width: 28px; height: 28px; border-radius: 4px; border: 1px solid var(--border); background: var(--surface); color: var(--soft-text); cursor: pointer; font-weight: 900; }
   .universe-action.approve:hover { border-color: var(--green); color: var(--green); }
@@ -1588,8 +1594,14 @@ async function checkPw(){
         <option value="candidate">Candidates</option>
         <option value="review">Needs review</option>
       </select>
+      <select class="watchlist-control" id="universe-lane-filter" onchange="setUniverseFilter('lane',this.value)">
+        <option value="all">All styles</option>
+        <option value="core_patient_value">Core patient value</option>
+        <option value="adventurous_value">Adventurous value</option>
+        <option value="approved_outlier">Approved outliers</option>
+      </select>
       <select class="watchlist-control" id="universe-sort" onchange="setUniverseFilter('sort',this.value)">
-        <option value="score">Sort: Score</option>
+        <option value="score">Sort: Joe fit</option>
         <option value="name">Sort: Name</option>
         <option value="positions">Sort: Positions</option>
         <option value="turnover">Sort: Turnover</option>
@@ -1604,12 +1616,12 @@ async function checkPw(){
     <div class="table-wrap">
       <table>
         <thead><tr>
-          <th>Status</th><th>Score</th><th>Investor / Fund</th><th style="text-align:right">Book</th>
+          <th>Status</th><th>Joe Fit</th><th>Style</th><th>Investor / Fund</th><th style="text-align:right">Book</th>
           <th style="text-align:right">Positions</th><th style="text-align:right">Turnover</th>
           <th style="text-align:right">Median Hold</th><th style="text-align:right">Top 10</th>
-          <th>Screen</th><th>Review</th>
+          <th>Evidence</th><th>SEC Filing</th><th>My Pick</th>
         </tr></thead>
-        <tbody id="universe-body"><tr><td colspan="10" class="no-data">Loading investor universe...</td></tr></tbody>
+        <tbody id="universe-body"><tr><td colspan="12" class="no-data">Loading investor universe...</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -2139,7 +2151,7 @@ async function checkPw(){
 // compare the build stamp, and offer a genuine reload when they differ.
 // Bump APP_BUILD whenever index.html changes.
 // ============================================================
-const APP_BUILD = 'codex-2026-09-04b';
+const APP_BUILD = 'codex-2026-09-04c';
 
 async function checkForAppUpdate(announce) {
   try {
@@ -3272,7 +3284,7 @@ function holdingsQuarterNoticeHtml() {
 // JOE'S TOP 50 - SEC universe nominations plus explicit review marks
 // ============================================================
 let investorUniverseData = null;
-const universeFilters = { status: 'all', sort: 'score', query: '' };
+const universeFilters = { status: 'all', lane: 'all', sort: 'score', query: '' };
 
 async function loadInvestorUniverse() {
   try {
@@ -3303,6 +3315,30 @@ function universeStatusHtml(row) {
   return `<span class="universe-status ${escapeAttr(row.status || 'candidate')}">${escapeHtml(row.status || 'candidate')}</span>`;
 }
 
+function universeLaneLabel(lane) {
+  return ({
+    core_patient_value: 'Core patient',
+    adventurous_value: 'Adventurous',
+    approved_outlier: 'Approved outlier',
+    outside_profile: 'Outside profile'
+  })[lane] || 'Not classified';
+}
+
+function universeLaneHtml(row) {
+  const lane = row.style_lane || 'outside_profile';
+  return `<span class="universe-lane ${escapeAttr(lane)}">${escapeHtml(universeLaneLabel(lane))}</span>`;
+}
+
+function universeEvidenceHtml(row) {
+  if (row.philosophy_evidence_status === 'required_before_approval') {
+    return '<div class="universe-evidence"><span class="down">Required</span><br>Letters, interviews and mandate must support a value-oriented, patient process.</div>';
+  }
+  if (row.philosophy_evidence_status === 'grandfathered_refresh_due') {
+    return '<div class="universe-evidence"><span class="neutral">Refresh due</span><br>Existing roster member; philosophy review remains visible.</div>';
+  }
+  return '<div class="universe-evidence">Not recorded</div>';
+}
+
 function markInvestorReview(cik, decision) {
   const row = ((investorUniverseData && investorUniverseData.candidates) || []).find(x => String(x.cik) === String(cik));
   if (!row) return;
@@ -3313,7 +3349,10 @@ function markInvestorReview(cik, decision) {
     reason,
     name: row.name,
     fund: row.fund,
-    score: row.score,
+    score: row.profile_fit_score ?? row.score,
+    style_lane: row.style_lane,
+    philosophy_evidence_status: row.philosophy_evidence_status,
+    filing_urls: row.filing_urls || [],
     source_quarter: row.latest_quarter,
     decided_at: new Date().toISOString()
   };
@@ -3354,31 +3393,35 @@ function renderInvestorUniverse() {
   const stats = document.getElementById('universe-stats');
   if (stats) stats.innerHTML = `
     <div class="stat-card"><div class="stat-val green">${data.approved_count ?? 0}</div><div class="stat-label">Approved of ${data.target_approved_count || 50}</div></div>
-    <div class="stat-card"><div class="stat-val blue">${data.candidate_count ?? 0}</div><div class="stat-label">Qualified candidates</div></div>
-    <div class="stat-card"><div class="stat-val yellow">${data.approved_needing_review_count ?? 0}</div><div class="stat-label">Incumbents to review</div></div>
+    <div class="stat-card"><div class="stat-val blue">${data.candidate_count ?? 0}</div><div class="stat-label">Screened nominations</div></div>
+    <div class="stat-card"><div class="stat-val green">${data.core_candidate_count ?? 0}</div><div class="stat-label">Core patient value</div></div>
+    <div class="stat-card"><div class="stat-val orange">${data.adventurous_candidate_count ?? 0}</div><div class="stat-label">Adventurous value</div></div>
     <div class="stat-card"><div class="stat-val orange">${pending}</div><div class="stat-label">Pending choices</div></div>`;
   const asof = document.getElementById('universe-asof');
   if (asof) asof.textContent = data.source && data.source.latest_report_quarter
-    ? `${data.source.latest_report_quarter} bulk screen · ${data.screened_manager_count || 0} managers scored`
+    ? `${data.source.latest_report_quarter} screen · ${data.screened_manager_count || 0} filers discovered`
     : 'Universe scan not loaded';
   const policyEl = document.getElementById('universe-policy');
   if (policyEl) {
     const g = data.qualification_policy && data.qualification_policy.hard_gates;
+    const profile = data.style_profile;
+    const sourceName = data.source && data.source.name;
     policyEl.innerHTML = g
-      ? `<strong>Qualification:</strong> ${g.maximum_positions} positions or fewer · ${universeMoney(g.minimum_total_value_usd)}-${universeMoney(g.maximum_total_value_usd)} book · turnover ${(g.maximum_average_turnover * 100).toFixed(0)}% or less · median hold ${g.minimum_median_hold_quarters}+ quarters · ${g.minimum_history_quarters}+ quarters reported. Pending review choices do not become active until committed.`
+      ? `<strong>${escapeHtml(profile?.label || 'Joe-style value screen')}:</strong> ${g.maximum_positions} positions or fewer · ${universeMoney(g.minimum_total_value_usd)}-${universeMoney(g.maximum_total_value_usd)} book · up to ${(g.maximum_average_turnover * 100).toFixed(0)}% turnover in the adventurous lane · ${g.minimum_history_quarters}+ reported quarters. Filing behavior nominates a manager; philosophy evidence and Joe's written approval qualify one.${sourceName ? `<br><span class="muted">Source: ${escapeHtml(sourceName)}. Use Open original before final approval.</span>` : ''}`
       : 'Awaiting the first independent SEC universe scan.';
   }
   if (data.error) {
-    body.innerHTML = `<tr><td colspan="10" class="no-data">Investor universe not loaded: ${escapeHtml(data.error)}</td></tr>`;
+    body.innerHTML = `<tr><td colspan="12" class="no-data">Investor universe not loaded: ${escapeHtml(data.error)}</td></tr>`;
     return;
   }
   let rows = rowsAll;
   if (universeFilters.status === 'approved') rows = rows.filter(row => row.status === 'approved');
   if (universeFilters.status === 'candidate') rows = rows.filter(row => row.status === 'candidate');
   if (universeFilters.status === 'review') rows = rows.filter(row => !row.meets_quantitative_screen || investorReviewMarks[String(row.cik)]);
+  if (universeFilters.lane !== 'all') rows = rows.filter(row => row.style_lane === universeFilters.lane);
   if (universeFilters.query) rows = rows.filter(row => `${row.name || ''} ${row.fund || ''} ${row.cik || ''}`.toUpperCase().includes(universeFilters.query));
   const sorters = {
-    score: (a, b) => Number(b.score || 0) - Number(a.score || 0),
+    score: (a, b) => Number(b.profile_fit_score ?? b.score ?? 0) - Number(a.profile_fit_score ?? a.score ?? 0),
     name: (a, b) => String(a.name || '').localeCompare(String(b.name || '')),
     positions: (a, b) => Number(a.positions || 0) - Number(b.positions || 0),
     turnover: (a, b) => Number(a.turnover_8q ?? 99) - Number(b.turnover_8q ?? 99),
@@ -3386,25 +3429,28 @@ function renderInvestorUniverse() {
   };
   rows.sort(sorters[universeFilters.sort] || sorters.score);
   if (!rows.length) {
-    body.innerHTML = '<tr><td colspan="10" class="no-data">No investors match this view.</td></tr>';
+    body.innerHTML = '<tr><td colspan="12" class="no-data">No investors match this view.</td></tr>';
     return;
   }
   body.innerHTML = rows.map(row => {
     const failures = (row.screen_failures || []);
     const review = investorReviewMarks[String(row.cik)];
+    const filingUrl = (row.filing_urls || [])[0];
     return `<tr>
       <td>${universeStatusHtml(row)}</td>
-      <td><span class="universe-score">${Number(row.score || 0).toFixed(1)}</span></td>
+      <td><span class="universe-score">${Number(row.profile_fit_score ?? row.score ?? 0).toFixed(1)}</span></td>
+      <td>${universeLaneHtml(row)}</td>
       <td><strong>${escapeHtml(row.name || row.cik)}</strong><div class="muted" style="font-size:11px">${escapeHtml(row.fund || '')} · CIK ${escapeHtml(String(row.cik || ''))}</div></td>
       <td style="text-align:right">${universeMoney(row.total_value_usd)}</td>
       <td style="text-align:right">${row.positions ?? 'not loaded'}</td>
       <td style="text-align:right">${row.turnover_8q == null ? 'not loaded' : (row.turnover_8q * 100).toFixed(1) + '%'}</td>
       <td style="text-align:right">${row.median_hold_q == null ? 'not loaded' : row.median_hold_q + 'q'}</td>
       <td style="text-align:right">${row.top10_weight == null ? 'not loaded' : (row.top10_weight * 100).toFixed(1) + '%'}</td>
-      <td>${row.meets_quantitative_screen ? '<span class="up">Pass</span>' : `<div class="universe-failures">${escapeHtml(failures.join(' · ') || 'Needs review')}</div>`}</td>
+      <td>${row.meets_quantitative_screen ? universeEvidenceHtml(row) : `<div class="universe-failures">${escapeHtml(failures.join(' · ') || 'Needs review')}</div>`}</td>
+      <td>${filingUrl ? `<a class="universe-sec-link" href="${escapeAttr(filingUrl)}" target="_blank" rel="noopener">Open original</a>` : '<span class="muted">Not loaded</span>'}</td>
       <td><div class="universe-actions">
-        <button class="universe-action approve" onclick="markInvestorReview('${escapeAttr(String(row.cik))}','approve')" title="Mark for approval">✓</button>
-        <button class="universe-action reject" onclick="markInvestorReview('${escapeAttr(String(row.cik))}','reject')" title="Mark for rejection">×</button>
+        <button class="universe-action approve" onclick="markInvestorReview('${escapeAttr(String(row.cik))}','approve')" title="Keep for final approval review">✓</button>
+        <button class="universe-action reject" onclick="markInvestorReview('${escapeAttr(String(row.cik))}','reject')" title="Remove from consideration">×</button>
         ${review ? `<button class="universe-action" onclick="clearInvestorReview('${escapeAttr(String(row.cik))}')" title="Clear pending review">↺</button>` : ''}
       </div></td>
     </tr>`;

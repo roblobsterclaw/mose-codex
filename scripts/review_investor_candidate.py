@@ -66,6 +66,9 @@ def apply_decision(cik: str, decision: str, reason: str, tier: int = 2) -> dict[
         "decided_at": decided_at,
         "decided_by": "Joe Lynch",
         "score_at_decision": candidate.get("score"),
+        "style_lane": candidate.get("style_lane"),
+        "philosophy_evidence_status": candidate.get("philosophy_evidence_status"),
+        "filing_urls": candidate.get("filing_urls") or [],
         "source_quarter": candidate.get("latest_quarter"),
     }
     decisions["decisions"].append(decision_row)
@@ -97,6 +100,12 @@ def apply_decision(cik: str, decision: str, reason: str, tier: int = 2) -> dict[
     candidate["review_note"] = reason
     universe["approved_count"] = sum(1 for row in rows if row.get("status") == "approved")
     universe["candidate_count"] = sum(1 for row in rows if row.get("status") == "candidate")
+    universe["core_candidate_count"] = sum(
+        1 for row in rows if row.get("status") == "candidate" and row.get("style_lane") == "core_patient_value"
+    )
+    universe["adventurous_candidate_count"] = sum(
+        1 for row in rows if row.get("status") == "candidate" and row.get("style_lane") == "adventurous_value"
+    )
     universe["last_decision_at"] = decided_at
 
     write_json_atomic(DECISIONS_PATH, decisions)

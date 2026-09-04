@@ -25,6 +25,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
+from investor_profile import derive_archetype_baseline, discovery_failures, excluded_name, profile_fit
+
 
 ROOT = Path(__file__).resolve().parents[1]
 POLICY_PATH = ROOT / "reference-data" / "investor-qualification-policy.json"
@@ -34,6 +36,19 @@ OUTPUT_PATH = ROOT / "reference-data" / "investor-universe.json"
 TRACKED_HISTORY_PATH = ROOT / "data" / "sec-13f-filings.json"
 DATASET_PAGE = "https://www.sec.gov/data-research/sec-markets-data/form-13f-data-sets"
 DEFAULT_CACHE = ROOT / ".cache" / "sec-13f"
+MODERN_VALUE_EFFECTIVE_DATE = datetime(2023, 1, 3)
+FUND_NAME_PATTERNS = (
+    " ETF",
+    "ETF ",
+    " INDEX FUND",
+    " INDEX FD",
+    "ISHARES ",
+    "SPDR ",
+    "VANGUARD ",
+    "PROSHARES ",
+    "DIREXION ",
+    " SELECT SECTOR ",
+)
 
 
 @dataclass(frozen=True)
@@ -47,6 +62,8 @@ class DatasetMetadata:
     quarter: str
     accession_to_cik: dict[str, str]
     manager_names: dict[str, str]
+    value_multiplier_by_accession: dict[str, int]
+    accessions_by_cik: dict[str, list[str]]
 
 
 def load_json(path: Path, default: Any) -> Any:
@@ -203,6 +220,8 @@ def choose_accessions(archive: zipfile.ZipFile) -> DatasetMetadata:
             manager_names[cik] = name
 
     accession_to_cik: dict[str, str] = {}
+    value_multiplier_by_accession: dict[str, int] = {}
+    accessions_by_cik: dict[str, list[str]] = defaultdict(list)
     for cik, rows in grouped.items():
         rows.sort(key=lambda row: (sortable_date(row.get("FILING_DATE", "")), row.get("ACCESSION_NUMBER", "")))
         selected: list[str] = []
@@ -220,11 +239,23 @@ def choose_accessions(archive: zipfile.ZipFile) -> DatasetMetadata:
         for accession in selected:
             if accession:
                 accession_to_cik[accession] = cik
+                submission = next(row for row in rows if row.get("ACCESSION_NUMBER") == accession)
+                filing_date = sortable_date(submission.get("FILING_DATE", ""))
+                if filing_date == datetime.min:
+                    filing_date = datetime(
+                        int(primary_quarter[:4]),
+                        (int(primary_quarter[-1]) - 1) * 3 + 1,
+                        1,
+                    )
+                value_multiplier_by_accession[accession] = 1 if filing_date >= MODERN_VALUE_EFFECTIVE_DATE else 1000
+                accessions_by_cik[cik].append(accession)
 
     return DatasetMetadata(
         quarter=primary_quarter,
         accession_to_cik=accession_to_cik,
         manager_names=manager_names,
+        value_multiplier_by_accession=value_multiplier_by_accession,
+        accessions_by_cik=dict(accessions_by_cik),
     )
 
 
@@ -239,11 +270,13 @@ def scan_archive(
         position_cusips: dict[str, set[str]] = defaultdict(set)
         option_value: dict[str, float] = defaultdict(float)
         long_value: dict[str, float] = defaultdict(float)
+        fund_value: dict[str, float] = defaultdict(float)
         for row in table_rows(archive, "INFOTABLE"):
-            cik = metadata.accession_to_cik.get(row.get("ACCESSION_NUMBER", ""))
+            accession = row.get("ACCESSION_NUMBER", "")
+            cik = metadata.accession_to_cik.get(accession)
             if not cik or (target_ciks is not None and cik not in target_ciks):
                 continue
-            value_usd = parse_number(row.get("VALUE", "")) * 1000
+            value_usd = parse_number(row.get("VALUE", "")) * metadata.value_multiplier_by_accession.get(accession, 1)
             if row.get("PUTCALL", "").strip():
                 option_value[cik] += value_usd
                 continue
@@ -251,6 +284,10 @@ def scan_archive(
             if not cusip:
                 continue
             long_value[cik] += value_usd
+            issuer = f" {row.get('NAMEOFISSUER', '').upper()} "
+            title = f" {row.get('TITLEOFCLASS', '').upper()} "
+            if any(pattern in issuer or pattern in title for pattern in FUND_NAME_PATTERNS):
+                fund_value[cik] += value_usd
             position_cusips[cik].add(cusip)
             if include_holdings:
                 holdings[cik][cusip] += value_usd
@@ -268,6 +305,11 @@ def scan_archive(
                 "total_value_usd": total_long,
                 "option_value_usd": total_options,
                 "long_only_value_ratio": total_long / (total_long + total_options) if total_long + total_options else 0.0,
+                "fund_value_ratio": fund_value.get(cik, 0.0) / total_long if total_long else 0.0,
+                "filing_urls": [
+                    f"https://www.sec.gov/Archives/edgar/data/{cik}/{accession.replace('-', '')}/{accession}.txt"
+                    for accession in metadata.accessions_by_cik.get(cik, [])
+                ],
             }
         return metadata, portfolios
 
@@ -324,6 +366,8 @@ def score_manager(
     total_value = float(latest.get("total_value_usd") or 0)
     long_ratio_raw = latest.get("long_only_value_ratio")
     long_ratio = float(long_ratio_raw) if long_ratio_raw is not None else None
+    fund_ratio_raw = latest.get("fund_value_ratio")
+    fund_ratio = float(fund_ratio_raw) if fund_ratio_raw is not None else None
     history_count = len(snapshots)
 
     score_weights = policy["score_weights"]
@@ -385,6 +429,7 @@ def score_manager(
         "median_hold_q": round(float(median_hold), 1),
         "history_quarters": history_count,
         "long_only_value_ratio": round(long_ratio, 4) if long_ratio is not None else None,
+        "fund_value_ratio": round(fund_ratio, 4) if fund_ratio is not None else None,
         "score": score,
         "score_components": {key: round(value, 1) for key, value in components.items()},
         "status": status,
@@ -394,6 +439,7 @@ def score_manager(
         "approval_basis": decision.get("decision") or ("existing_cik_map" if is_grandfathered else None),
         "approved_at": decision.get("decided_at"),
         "review_note": decision.get("reason") or approved_row.get("note"),
+        "filing_urls": latest.get("filing_urls") or [],
         "source": "SEC Form 13F bulk data sets",
     }
 
@@ -402,6 +448,8 @@ def build_universe(dataset_paths: list[Path], output_path: Path = OUTPUT_PATH) -
     policy = load_json(POLICY_PATH, {})
     if not policy:
         raise RuntimeError(f"Missing policy: {POLICY_PATH}")
+    profile_seed = policy["joe_style_profile"]
+    profile_gates = profile_seed["discovery_gates"]
     approved_rows = load_json(CIK_MAP_PATH, [])
     approved = {
         clean_cik(row.get("cik", "")): row
@@ -415,14 +463,17 @@ def build_universe(dataset_paths: list[Path], output_path: Path = OUTPUT_PATH) -
         raise RuntimeError("At least one SEC bulk ZIP is required")
     latest_path = dataset_paths[0]
     latest_metadata, latest_summary = scan_archive(latest_path, include_holdings=False)
-    gates = policy["hard_gates"]
     target_ciks = set(approved) | set(decisions)
+    prefilter_ciks: set[str] = set()
     for cik, portfolio in latest_summary.items():
         if (
-            portfolio["positions"] <= gates["maximum_positions"]
-            and gates["minimum_total_value_usd"] <= portfolio["total_value_usd"] <= gates["maximum_total_value_usd"]
+            profile_gates["minimum_positions"] <= portfolio["positions"] <= profile_gates["maximum_cover_entries"]
+            and profile_gates["minimum_total_value_usd"]
+            <= portfolio["total_value_usd"]
+            <= profile_gates["maximum_total_value_usd"]
         ):
             target_ciks.add(cik)
+            prefilter_ciks.add(cik)
 
     latest_metadata, latest_portfolios = scan_archive(latest_path, target_ciks=target_ciks)
     snapshots_by_cik: dict[str, list[tuple[str, dict[str, Any]]]] = defaultdict(list)
@@ -435,44 +486,106 @@ def build_universe(dataset_paths: list[Path], output_path: Path = OUTPUT_PATH) -
         for cik, portfolio in portfolios.items():
             snapshots_by_cik[cik].append((metadata.quarter, portfolio))
 
-    rows = [
+    base_rows = [
         score_manager(cik, snapshots, policy, approved, decisions)
         for cik, snapshots in snapshots_by_cik.items()
         if snapshots
     ]
-    rows.sort(key=lambda row: (row["status"] != "approved", -row["score"], row["name"]))
-    approved_rows_out = [row for row in rows if row["status"] == "approved"]
-    candidate_rows = [row for row in rows if row["status"] == "candidate"][: int(policy["candidate_limit"])]
+    profile = derive_archetype_baseline(
+        profile_seed,
+        [row for row in base_rows if row["status"] == "approved"],
+    )
+    exclusion_patterns = list(policy.get("excluded_manager_name_patterns", [])) + list(
+        profile.get("excluded_manager_name_patterns", [])
+    )
+    required_markers = profile.get("required_manager_name_markers", [])
+    rows: list[dict[str, Any]] = []
+    for row in base_rows:
+        structure_score = row["score"]
+        fit_score, fit_components, lane = profile_fit(row, profile)
+        failures = discovery_failures(row, profile)
+        manager_patterns = excluded_name(str(row.get("fund") or row.get("name") or ""), exclusion_patterns)
+        manager_name = f" {str(row.get('fund') or row.get('name') or '').upper()} "
+        if manager_patterns:
+            failures.append("institutional or non-cloneable manager name pattern")
+        if row["status"] != "approved" and required_markers and not any(marker in manager_name for marker in required_markers):
+            failures.append("manager identity is not clearly an investment organization")
+        if fit_score < profile_gates["minimum_profile_fit_score"]:
+            failures.append("profile fit score below minimum")
+
+        if row["status"] == "approved":
+            status = "approved"
+            evidence_status = "grandfathered_refresh_due"
+        elif decisions.get(row["cik"], {}).get("decision") == "reject":
+            status = "rejected"
+            evidence_status = "rejected"
+        else:
+            status = "candidate" if not failures else "rejected"
+            evidence_status = "required_before_approval"
+        row.update(
+            {
+                "structure_score": structure_score,
+                "score": fit_score,
+                "profile_fit_score": fit_score,
+                "profile_fit_components": fit_components,
+                "style_lane": lane if lane != "outside_profile" or status != "approved" else "approved_outlier",
+                "status": status,
+                "meets_quantitative_screen": not failures,
+                "screen_failures": failures,
+                "matched_exclusion_patterns": manager_patterns,
+                "philosophy_evidence_status": evidence_status,
+            }
+        )
+        rows.append(row)
+
+    approved_rows_out = sorted(
+        [row for row in rows if row["status"] == "approved"],
+        key=lambda row: (-row["profile_fit_score"], row["name"]),
+    )
+    candidate_rows = sorted(
+        [row for row in rows if row["status"] == "candidate"],
+        key=lambda row: (-row["profile_fit_score"], row["name"]),
+    )[: int(policy["candidate_limit"])]
     rejected_approved = [row for row in approved_rows_out if not row["meets_quantitative_screen"]]
     output_rows = approved_rows_out + candidate_rows
-    for rank, row in enumerate(sorted(candidate_rows, key=lambda item: -item["score"]), start=1):
+    for rank, row in enumerate(candidate_rows, start=1):
         row["candidate_rank"] = rank
 
     payload = {
-        "schema_version": 1,
+        "schema_version": 2,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source": {
             "name": "SEC Form 13F Data Sets",
             "url": DATASET_PAGE,
             "latest_report_quarter": latest_metadata.quarter,
             "quarters_loaded": sorted({quarter for snapshots in snapshots_by_cik.values() for quarter, _ in snapshots}, reverse=True),
+            "scope": "official_full_filer_bulk",
+            "filers_discovered": len(latest_summary),
+            "original_filing_urls_retained": True,
             "disclaimer": "SEC bulk data is as filed and is not a substitute for reviewing the original filing.",
         },
         "policy_version": policy["policy_version"],
+        "style_profile": profile,
         "qualification_policy": {
-            "hard_gates": policy["hard_gates"],
-            "score_weights": policy["score_weights"],
+            "hard_gates": profile_gates,
+            "score_weights": profile["profile_score_weights"],
         },
         "target_approved_count": policy["target_approved_count"],
         "approved_count": len(approved_rows_out),
         "candidate_count": len(candidate_rows),
+        "core_candidate_count": sum(1 for row in candidate_rows if row["style_lane"] == "core_patient_value"),
+        "adventurous_candidate_count": sum(1 for row in candidate_rows if row["style_lane"] == "adventurous_value"),
         "approved_needing_review_count": len(rejected_approved),
-        "screened_manager_count": len(snapshots_by_cik),
+        "screened_manager_count": len(latest_summary),
+        "cover_prefilter_count": len(prefilter_ciks),
+        "history_screened_count": len(snapshots_by_cik),
+        "holdings_screened_count": len(snapshots_by_cik),
         "screened_out_count": max(0, len(rows) - len(output_rows)),
         "rules": {
             "approval": "Joe must explicitly approve every new addition.",
-            "continuity": "Existing CIK map entries remain approved but failed gates are disclosed.",
-            "score_scope": "13F portfolio structure only; no performance or drawdown claims.",
+            "style": "Candidates are split into core patient value and adventurous value lanes.",
+            "evidence": "13F behavior nominates; primary-source philosophy review qualifies.",
+            "source_verification": "Original SEC filing URLs must be checked before an approval is committed.",
         },
         "candidates": output_rows,
     }

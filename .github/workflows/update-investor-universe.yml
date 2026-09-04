@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   update:
-    if: github.event_name == 'workflow_dispatch' || vars.SEC_TRANSPORT_READY == 'true'
+    if: github.event_name == 'workflow_dispatch' || vars.SEC_TRANSPORT_READY == 'true' || vars.FORMS13F_FALLBACK_READY == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 120
     env:
@@ -31,12 +31,24 @@ jobs:
           python-version: "3.12"
       - uses: actions/cache@v4
         with:
-          path: .cache/sec-13f
-          key: sec-13f-bulk-${{ runner.os }}-${{ github.run_number }}
+          path: |
+            .cache/sec-13f
+            .cache/forms13f
+          key: investor-universe-${{ runner.os }}-${{ github.run_number }}
           restore-keys: |
-            sec-13f-bulk-${{ runner.os }}-
-      - name: Score the full SEC filer universe
-        run: python scripts/build_investor_universe.py --quarters 8 --minimum-candidates 100
+            investor-universe-${{ runner.os }}-
+      - name: Score the official SEC bulk universe
+        id: official
+        continue-on-error: true
+        run: python scripts/build_investor_universe.py --quarters 8 --minimum-candidates 20
+      - name: Use indexed filing fallback when SEC blocks the runner
+        if: steps.official.outcome == 'failure' && (github.event_name == 'workflow_dispatch' || vars.FORMS13F_FALLBACK_READY == 'true')
+        run: python scripts/build_investor_universe_from_api.py --history-pool-limit 180 --holdings-pool-limit 90 --output-limit 75 --minimum-candidates 20
+      - name: Require one successful universe transport
+        if: steps.official.outcome == 'failure' && github.event_name != 'workflow_dispatch' && vars.FORMS13F_FALLBACK_READY != 'true'
+        run: exit 1
+      - name: Validate the universe and filing artifacts
+        run: python scripts/validate_investor_data.py --output /tmp/investor-data-audit.json
       - name: Sync universe to isolated Supabase tables
         if: env.SUPABASE_URL != '' && env.SUPABASE_SERVICE_ROLE_KEY != ''
         run: python scripts/sync_investor_intelligence_to_supabase.py --universe-only

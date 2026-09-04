@@ -18,7 +18,9 @@ This repository is the independent Codex implementation of MOSE.
   by 1,000.
 - Quarter comparisons match securities by CUSIP before using ticker symbols.
 - Unresolved CUSIPs remain unresolved and cannot be emitted as fake tickers.
-- The committed tracked history currently covers 29 approved managers. A full
-  SEC-universe scan must complete before this build can nominate managers 30-50.
+- The committed tracked history currently covers 29 approved managers. The
+  independent full-filer scan now publishes a two-lane candidate pool for
+  managers 30-50; every addition still requires philosophy evidence and Joe's
+  written approval.
 - The isolated Supabase migration is ready but not connected until this
   repository receives its own secrets.

@@ -60,6 +60,27 @@
 - Automatic SEC schedules are gated by `SEC_TRANSPORT_READY` until that collector exists; manual test runs remain available.
 - Supabase migration is ready; the independent repository does not yet have Supabase secrets.
 
+### Top 50 discovery continuation
+
+- Defined Joe's profile as patient value with an adventurous sleeve, anchored
+  to the concentrated, long-holding members of the current approved roster.
+- Added a full-filer fallback scan for runners blocked from SEC bulk downloads.
+  The scan discovered 8,859 Q2 2026 filers, retained original SEC filing URLs,
+  and narrowed the universe through book, history, concentration, turnover,
+  long-only representation, passive-fund exposure, and manager-type gates.
+- Split candidates into Core Patient Value and Adventurous Value lanes. A 13F
+  can nominate a manager but cannot prove philosophy, so all candidates remain
+  evidence-pending until letters, interviews, mandate, and original filings are
+  reviewed.
+- Expanded the Top 50 interface with style filtering, Joe Fit sorting, filing
+  provenance, evidence status, and autosaved check/X review marks.
+- Extended the isolated Supabase candidate schema and generated-data audit for
+  lane, fit score, evidence status, fund exposure, and filing URLs.
+- Corrected the official bulk-universe parser to respect the SEC's January 3,
+  2023 switch from values reported in thousands to values rounded to the
+  nearest dollar. Synthetic tests cover both modern and legacy units so a
+  restored SEC connection cannot inflate a manager's book by 1,000 times.
+
 ## Session 10 — September 2, 2026 (Claude)
 **Goal:** Start the "guard rails + feed" build Joe asked for (see `docs/CODEX-HANDOFF-2026-09.md`): only stocks a tracked 13F filer owns may be routed into a bucket, and a landing zone for between-quarter signals.
 

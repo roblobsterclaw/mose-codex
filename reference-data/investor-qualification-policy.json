@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "policy_version": "2026-09-04",
+  "policy_version": "2026-09-04c",
   "target_approved_count": 50,
   "history_quarters": 8,
   "candidate_limit": 250,
@@ -19,6 +19,102 @@
     "low_turnover": 25,
     "reporting_consistency": 10,
     "cloneability": 5
+  },
+  "joe_style_profile": {
+    "label": "Patient value with an adventurous sleeve",
+    "description": "Concentrated, valuation-aware managers who let durable businesses compound, with room for higher-risk situations when the process remains disciplined and the holding period is measured in quarters rather than weeks.",
+    "archetype_ciks": [
+      "1697868",
+      "1358706",
+      "1647251",
+      "1709323",
+      "1697591",
+      "1631664",
+      "1112520",
+      "1549575",
+      "1115373",
+      "1553733"
+    ],
+    "archetype_baseline": {
+      "positions": 10,
+      "total_value_usd": 3400000000,
+      "top10_weight": 0.91,
+      "average_turnover": 0.09,
+      "median_hold_quarters": 8
+    },
+    "discovery_gates": {
+      "minimum_total_value_usd": 150000000,
+      "maximum_total_value_usd": 75000000000,
+      "minimum_positions": 3,
+      "maximum_cover_entries": 75,
+      "maximum_positions": 50,
+      "minimum_history_quarters": 6,
+      "minimum_top10_weight": 0.55,
+      "minimum_long_only_value_ratio": 0.85,
+      "maximum_fund_value_ratio": 0.25,
+      "maximum_average_turnover": 0.42,
+      "minimum_median_hold_quarters": 4,
+      "minimum_profile_fit_score": 50
+    },
+    "core_patient_value": {
+      "maximum_average_turnover": 0.25,
+      "minimum_median_hold_quarters": 6,
+      "minimum_top10_weight": 0.65
+    },
+    "adventurous_value": {
+      "maximum_average_turnover": 0.42,
+      "minimum_median_hold_quarters": 4,
+      "minimum_top10_weight": 0.55
+    },
+    "profile_score_weights": {
+      "concentration": 25,
+      "patience": 25,
+      "disciplined_turnover": 20,
+      "current_roster_similarity": 20,
+      "cloneability": 10
+    },
+    "excluded_manager_name_patterns": [
+      " BANK ",
+      " UNIVERSITY ",
+      " COLLEGE ",
+      " PENSION ",
+      " RETIREMENT ",
+      " ENDOWMENT ",
+      " TREASURER ",
+      " PUBLIC EMPLOYEES ",
+      " TEACHERS RETIREMENT ",
+      " LIFE INSURANCE ",
+      " REINSURANCE ",
+      " VENTURE ",
+      " PIONEERING ",
+      " PRIVATE EQUITY ",
+      " BUYOUT ",
+      " GENERAL ATLANTIC ",
+      " SILVER LAKE ",
+      " BAIN CAPITAL ",
+      " INDEX MANAGEMENT ",
+      " ROBO ADVISOR ",
+      " SB INVESTMENT ADVISERS "
+    ],
+    "required_manager_name_markers": [
+      " CAPITAL",
+      " MANAGEMENT",
+      " PARTNER",
+      " ADVISER",
+      " ADVISOR",
+      " INVESTMENT",
+      " ASSET",
+      " ASSOCIATES",
+      " FUND",
+      " & CO"
+    ],
+    "human_evidence_required": [
+      "Primary-source evidence of a valuation-aware investment process.",
+      "Evidence that the manager is willing to hold through ordinary volatility.",
+      "A representative 13F without a dominant hidden short, derivative, private, or foreign book.",
+      "No material mandate, succession, legal, or governance concern.",
+      "Joe's written approval reason."
+    ]
   },
   "excluded_manager_name_patterns": [
     "BANK OF",

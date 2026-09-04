@@ -80,6 +80,9 @@ def build_audit() -> dict[str, Any]:
         for row in universe.get("candidates", [])
         if row.get("status") == "approved"
     }
+    universe_rows = universe.get("candidates") or []
+    candidate_rows = [row for row in universe_rows if row.get("status") == "candidate"]
+    candidate_ciks = [clean_cik(row.get("cik")) for row in candidate_rows]
 
     check(
         "canonical_market_value_unit",
@@ -103,6 +106,34 @@ def build_audit() -> dict[str, Any]:
         "approved_roster_matches_history",
         active_ciks == raw_ciks == approved_ciks,
         f"active={len(active_ciks)}, history={len(raw_ciks)}, approved={len(approved_ciks)}",
+    )
+
+    check(
+        "investor_universe_counts_match",
+        universe.get("approved_count") == len(approved_ciks)
+        and universe.get("candidate_count") == len(candidate_rows)
+        and len(candidate_ciks) == len(set(candidate_ciks)),
+        f"approved={len(approved_ciks)}; candidates={len(candidate_rows)}; unique_candidate_ciks={len(set(candidate_ciks))}",
+    )
+
+    valid_lanes = {"core_patient_value", "adventurous_value", "approved_outlier"}
+    malformed_candidates = [
+        row
+        for row in candidate_rows
+        if not row.get("meets_quantitative_screen")
+        or row.get("screen_failures")
+        or row.get("style_lane") not in valid_lanes
+        or not row.get("filing_urls")
+        or row.get("philosophy_evidence_status") != "required_before_approval"
+    ]
+    core_count = sum(1 for row in candidate_rows if row.get("style_lane") == "core_patient_value")
+    adventurous_count = sum(1 for row in candidate_rows if row.get("style_lane") == "adventurous_value")
+    check(
+        "investor_candidates_are_auditable",
+        not malformed_candidates
+        and universe.get("core_candidate_count") == core_count
+        and universe.get("adventurous_candidate_count") == adventurous_count,
+        f"{len(candidate_rows)} candidates; {len(malformed_candidates)} malformed; core={core_count}; adventurous={adventurous_count}",
     )
 
     changes = tracker.get("changes") or []
@@ -198,6 +229,9 @@ def build_audit() -> dict[str, Any]:
         "latest_quarter": latest_quarter,
         "metrics": {
             "approved_investors": len(approved_ciks),
+            "investor_candidates": len(candidate_rows),
+            "core_value_candidates": core_count,
+            "adventurous_value_candidates": adventurous_count,
             "filings": len(filings),
             "change_rows": len(changes),
             "published_holdings": len(holding_rows),
