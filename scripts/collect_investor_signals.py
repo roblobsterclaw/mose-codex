@@ -336,6 +336,7 @@ def collect(days: int, output_path: Path = FEED_PATH, status_path: Path = STATUS
     overrides = config.get("investors", {})
     cusip_map = load_cusip_map()
     existing = load_json(output_path, {"items": []})
+    previous_status = load_json(status_path, {})
     existing_items = existing.get("items", [])
     existing_ids = {str(item.get("id")) for item in existing_items if item.get("id")}
 
@@ -420,9 +421,13 @@ def collect(days: int, output_path: Path = FEED_PATH, status_path: Path = STATUS
         "investors": per_investor,
         "accuracy_note": "Missing ticker or direction fields were left unresolved; no value was inferred from headlines.",
     }
-    write_json_atomic(status_path, status)
     if investors and sec_success == 0:
+        comparable_status = {key: value for key, value in status.items() if key != "generated_at"}
+        comparable_previous = {key: value for key, value in previous_status.items() if key != "generated_at"}
+        if comparable_status != comparable_previous:
+            write_json_atomic(status_path, status)
         return existing, 2
+    write_json_atomic(status_path, status)
 
     merged = {str(item.get("id")): item for item in existing_items if item.get("id")}
     for item in collected:

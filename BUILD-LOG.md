@@ -29,7 +29,8 @@
 
 **Deployment status:**
 - Independent repository created. Production `roblobsterclaw/mose` remains untouched.
-- First SEC universe and monitoring runs pending from the independent GitHub Actions runner because the local SEC IP is rate-blocked.
+- First SEC universe and monitoring runs were attempted from GitHub. SEC returned HTTP 403 to both the bulk-data and submissions endpoints; the jobs surfaced the outage and did not fabricate results.
+- Published a clearly labeled tracked-only bootstrap from the committed 29-investor, eight-quarter history. It nominates zero new candidates and will be replaced by the full universe export when an SEC-capable collector is connected.
 - Supabase migration is ready; the independent repository does not yet have Supabase secrets.
 
 ## Session 10 — September 2, 2026 (Claude)

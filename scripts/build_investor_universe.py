@@ -31,6 +31,8 @@ POLICY_PATH = ROOT / "reference-data" / "investor-qualification-policy.json"
 DECISIONS_PATH = ROOT / "reference-data" / "investor-decisions.json"
 CIK_MAP_PATH = ROOT / "reference-data" / "cik-map.json"
 OUTPUT_PATH = ROOT / "reference-data" / "investor-universe.json"
+TRACKED_HISTORY_PATH = ROOT / "data" / "sec-13f-filings.json"
+TRACKED_HISTORY_VALUE_SCALE = 1000.0
 DATASET_PAGE = "https://www.sec.gov/data-research/sec-markets-data/form-13f-data-sets"
 DEFAULT_CACHE = ROOT / ".cache" / "sec-13f"
 
@@ -321,7 +323,8 @@ def score_manager(
     top10 = sum(weights[:10])
     positions = int(latest.get("positions") or len(latest.get("holdings", {})))
     total_value = float(latest.get("total_value_usd") or 0)
-    long_ratio = float(latest.get("long_only_value_ratio") or 0)
+    long_ratio_raw = latest.get("long_only_value_ratio")
+    long_ratio = float(long_ratio_raw) if long_ratio_raw is not None else None
     history_count = len(snapshots)
 
     score_weights = policy["score_weights"]
@@ -348,7 +351,9 @@ def score_manager(
         failures.append("median holding age below minimum")
     if history_count < gates["minimum_history_quarters"]:
         failures.append("insufficient quarter history")
-    if long_ratio < gates["minimum_long_only_value_ratio"]:
+    if long_ratio is None:
+        failures.append("long-only representation not loaded")
+    elif long_ratio < gates["minimum_long_only_value_ratio"]:
         failures.append("options are too material to the reported book")
     upper_name = str(latest.get("name") or "").upper()
     matched_patterns = [pattern for pattern in policy["excluded_manager_name_patterns"] if pattern in upper_name]
@@ -380,7 +385,7 @@ def score_manager(
         "turnover_8q": round(average_turnover, 4) if average_turnover is not None else None,
         "median_hold_q": round(float(median_hold), 1),
         "history_quarters": history_count,
-        "long_only_value_ratio": round(long_ratio, 4),
+        "long_only_value_ratio": round(long_ratio, 4) if long_ratio is not None else None,
         "score": score,
         "score_components": {key: round(value, 1) for key, value in components.items()},
         "status": status,
@@ -476,6 +481,90 @@ def build_universe(dataset_paths: list[Path], output_path: Path = OUTPUT_PATH) -
     return payload
 
 
+def build_tracked_bootstrap(output_path: Path = OUTPUT_PATH) -> dict[str, Any]:
+    """Score only the already tracked CIKs from the committed SEC history.
+
+    This is a labeled fallback for environments where SEC blocks bulk downloads.
+    It never emits a new candidate and therefore cannot be mistaken for the full
+    universe screen.
+    """
+    policy = load_json(POLICY_PATH, {})
+    raw = load_json(TRACKED_HISTORY_PATH, {})
+    cik_rows = load_json(CIK_MAP_PATH, [])
+    approved = {
+        clean_cik(row.get("cik", "")): row
+        for row in cik_rows
+        if row.get("cik") and row.get("active", True)
+    }
+    decisions_payload = load_json(DECISIONS_PATH, {"decisions": []})
+    decisions = {clean_cik(row.get("cik", "")): row for row in decisions_payload.get("decisions", []) if row.get("cik")}
+    snapshots_by_cik: dict[str, list[tuple[str, dict[str, Any]]]] = defaultdict(list)
+    for investor in raw.get("investors", []):
+        cik = clean_cik(investor.get("cik", ""))
+        if cik not in approved and cik not in decisions:
+            continue
+        for filing in investor.get("filings", []):
+            quarter = filing.get("quarter")
+            if not quarter:
+                continue
+            holdings: dict[str, float] = defaultdict(float)
+            for holding in filing.get("holdings", []):
+                cusip = str(holding.get("cusip") or "").upper().replace(" ", "")
+                if cusip:
+                    holdings[cusip] += float(holding.get("market_value") or 0) / TRACKED_HISTORY_VALUE_SCALE
+            snapshots_by_cik[cik].append(
+                (
+                    quarter,
+                    {
+                        "name": investor.get("name") or investor.get("fund") or cik,
+                        "holdings": dict(holdings),
+                        "positions": len(holdings),
+                        "total_value_usd": sum(holdings.values()),
+                        "long_only_value_ratio": None,
+                    },
+                )
+            )
+    rows = [
+        score_manager(cik, snapshots, policy, approved, decisions)
+        for cik, snapshots in snapshots_by_cik.items()
+        if snapshots
+    ]
+    rows.sort(key=lambda row: (-row["score"], row["name"]))
+    quarters = sorted({quarter for snapshots in snapshots_by_cik.values() for quarter, _ in snapshots}, reverse=True)
+    payload = {
+        "schema_version": 1,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source": {
+            "name": "Committed SEC EDGAR history for already tracked filers",
+            "url": "data/sec-13f-filings.json",
+            "latest_report_quarter": quarters[0] if quarters else None,
+            "quarters_loaded": quarters,
+            "scope": "tracked_only",
+            "disclaimer": "This bootstrap does not represent the full SEC filer universe and nominates no new candidates. The tracked-history value scale is normalized by 1,000 to correct its documented legacy overstatement.",
+        },
+        "policy_version": policy["policy_version"],
+        "qualification_policy": {
+            "hard_gates": policy["hard_gates"],
+            "score_weights": policy["score_weights"],
+        },
+        "target_approved_count": policy["target_approved_count"],
+        "approved_count": sum(1 for row in rows if row["status"] == "approved"),
+        "candidate_count": 0,
+        "approved_needing_review_count": sum(1 for row in rows if row["status"] == "approved" and not row["meets_quantitative_screen"]),
+        "screened_manager_count": len(rows),
+        "screened_out_count": 0,
+        "rules": {
+            "approval": "Joe must explicitly approve every new addition.",
+            "continuity": "Existing active CIK map entries remain approved but failed gates are disclosed.",
+            "score_scope": "Tracked 13F portfolio structure only; no performance or drawdown claims.",
+            "bootstrap_limit": "No manager outside the existing tracked list was evaluated.",
+        },
+        "candidates": rows,
+    }
+    write_json_atomic(output_path, payload)
+    return payload
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--quarters", type=int, default=8, help="Number of latest SEC bulk data sets to load")
@@ -483,11 +572,19 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--input", type=Path, action="append", help="Use local ZIPs in newest-to-oldest order")
     parser.add_argument("--output", type=Path, default=OUTPUT_PATH)
     parser.add_argument("--minimum-candidates", type=int, default=0, help="Fail without publishing if fewer candidates pass")
+    parser.add_argument("--tracked-bootstrap", action="store_true", help="Score only committed tracked-filer history")
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
+    if args.tracked_bootstrap:
+        payload = build_tracked_bootstrap(args.output)
+        print(
+            f"Tracked bootstrap: {payload['approved_count']} approved, "
+            f"0 new candidates, latest {payload['source']['latest_report_quarter']}"
+        )
+        return 0
     if args.input:
         paths = args.input
     else:
