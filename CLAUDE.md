@@ -1,4 +1,8 @@
-# MOSE — context & handoff for Claude Code sessions
+# MOSE product context (copied into the independent Codex Lab)
+
+> Repository boundary: this copy belongs to `roblobsterclaw/mose-codex` and
+> uses the `/mose-codex` Firebase namespace. Never deploy it to, push it into,
+> or write state for `roblobsterclaw/mose`. See `CODEX-BUILD.md`.
 
 MOSE ("Margin of Safety Engine") is a static single-file stock dashboard
 (`index.html`, vanilla JS/CSS, GitHub Pages). Owner: Joe (Joe Lynch / "J
@@ -6,12 +10,12 @@ lobster"). Wife: **Keli**. This file is auto-context for new sessions — read
 it first.
 
 ## Deploy / workflow rules (standing)
-- Develop on **`main`**. Deploy by triggering the **`update-live-market-data.yml`**
+- Develop on **`main` in `roblobsterclaw/mose-codex` only**. Deploy by triggering the **`update-live-market-data.yml`**
   GitHub Action (force-pushes `main` → `gh-pages`).
 - **Never open a PR** unless Joe explicitly asks.
 - Never push to other branches without permission. Don't expose the model ID in
   commits/code.
-- The app syncs cross-device via Firebase (`https://jfl-ttd-default-rtdb.firebaseio.com/mose`),
+- The app syncs cross-device via its isolated Firebase namespace (`https://jfl-ttd-default-rtdb.firebaseio.com/mose-codex`),
   which is **unreachable from the sandbox** (only the GitHub Action runner can
   reach Firebase/SEC/Stooq/Nasdaq). So the app can't be driven from here — it's a
   static site; research is hand-authored and committed.

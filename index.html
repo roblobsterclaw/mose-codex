@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🦞 MOSE — Margin of Safety Engine</title>
+<title>MOSE Codex Lab - Margin of Safety Engine</title>
 <style>
   :root {
     --bg: #0d1117;
@@ -590,6 +590,19 @@
   .feed-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12px; }
   .feed-quote { margin-top: 6px; font-size: 13px; color: var(--text); }
   .feed-src { display: inline-block; margin-top: 6px; font-size: 11px; color: var(--blue); }
+  /* Joe's approved super-investor roster and quarterly candidate screen */
+  .universe-policy { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; margin-bottom: 12px; color: var(--soft-text); font-size: 12px; line-height: 1.6; }
+  .universe-score { font-size: 18px; font-weight: 900; color: var(--heading); }
+  .universe-status { display: inline-block; padding: 2px 7px; border: 1px solid var(--border); border-radius: 4px; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+  .universe-status.approved { border-color: var(--green); color: var(--green); }
+  .universe-status.candidate { border-color: var(--blue); color: var(--blue); }
+  .universe-status.rejected { border-color: var(--red); color: var(--red); }
+  .universe-status.pending { border-color: var(--yellow); color: var(--yellow); }
+  .universe-failures { color: var(--yellow); font-size: 11px; line-height: 1.5; max-width: 280px; }
+  .universe-actions { display: flex; gap: 5px; white-space: nowrap; }
+  .universe-action { width: 28px; height: 28px; border-radius: 4px; border: 1px solid var(--border); background: var(--surface); color: var(--soft-text); cursor: pointer; font-weight: 900; }
+  .universe-action.approve:hover { border-color: var(--green); color: var(--green); }
+  .universe-action.reject:hover { border-color: var(--red); color: var(--red); }
 
   #update-banner {
     background: var(--green-bg); border: 1px solid var(--green); border-left-width: 4px;
@@ -1273,7 +1286,7 @@ async function checkPw(){
 
 <!-- TOP BAR: Brand + Indices -->
 <div id="topbar">
-  <div class="brand">🦞 MOSE <span>Margin of Safety Engine</span></div>
+  <div class="brand">MOSE <span>Codex Lab - separate build</span></div>
   <div class="index-grid" id="index-grid">
     <div class="idx-card" id="idx-spx" data-symbol="^GSPC" onclick="openSymbolSnapshot('^GSPC')">
       <div class="idx-name">S&amp;P 500</div>
@@ -1565,6 +1578,42 @@ async function checkPw(){
     </div>
   </div>
 
+  <div id="tab-top50" class="tab-panel">
+    <div class="toolbar">
+      <h2>Joe's Top 50</h2>
+      <span style="font-size:12px;color:var(--muted)" id="universe-asof">Not loaded</span>
+      <select class="watchlist-control" id="universe-status-filter" onchange="setUniverseFilter('status',this.value)">
+        <option value="all">All</option>
+        <option value="approved">Approved</option>
+        <option value="candidate">Candidates</option>
+        <option value="review">Needs review</option>
+      </select>
+      <select class="watchlist-control" id="universe-sort" onchange="setUniverseFilter('sort',this.value)">
+        <option value="score">Sort: Score</option>
+        <option value="name">Sort: Name</option>
+        <option value="positions">Sort: Positions</option>
+        <option value="turnover">Sort: Turnover</option>
+        <option value="hold">Sort: Holding age</option>
+      </select>
+      <input type="text" class="targ-input" style="width:190px" placeholder="Investor or fund" oninput="setUniverseFilter('query',this.value)">
+      <button class="filter-btn" onclick="loadInvestorUniverse()">Refresh</button>
+      <button class="filter-btn" onclick="downloadInvestorReviews()">Export Reviews</button>
+    </div>
+    <div class="stats-bar" id="universe-stats"></div>
+    <div class="universe-policy" id="universe-policy">Awaiting the first independent SEC universe scan.</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Status</th><th>Score</th><th>Investor / Fund</th><th style="text-align:right">Book</th>
+          <th style="text-align:right">Positions</th><th style="text-align:right">Turnover</th>
+          <th style="text-align:right">Median Hold</th><th style="text-align:right">Top 10</th>
+          <th>Screen</th><th>Review</th>
+        </tr></thead>
+        <tbody id="universe-body"><tr><td colspan="10" class="no-data">Loading investor universe...</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
   <div id="tab-feed" class="tab-panel">
     <div class="toolbar">
       <h2>📡 Investor Feed</h2>
@@ -1574,6 +1623,7 @@ async function checkPw(){
         <option value="13D">13D</option>
         <option value="13G">13G</option>
         <option value="FORM4">Form 4</option>
+        <option value="13F_AMENDMENT">13F amendment</option>
         <option value="NPORT">N-PORT</option>
         <option value="LETTER">Letters</option>
         <option value="INTERVIEW">Interviews</option>
@@ -2089,7 +2139,7 @@ async function checkPw(){
 // compare the build stamp, and offer a genuine reload when they differ.
 // Bump APP_BUILD whenever index.html changes.
 // ============================================================
-const APP_BUILD = '2026-09-02a';
+const APP_BUILD = 'codex-2026-09-04a';
 
 async function checkForAppUpdate(announce) {
   try {
@@ -2651,12 +2701,13 @@ localStorage.setItem('mose_watchlist_buckets_local', JSON.stringify(watchlistBuc
 // DEEP DIVE REQUEST SYSTEM (GitHub-synced)
 // ============================================================
 let ddRequestsData = JSON.parse(localStorage.getItem('mose_dd_requests_local') || '{"requests":[],"lastChecked":null}');
+let investorReviewMarks = JSON.parse(localStorage.getItem('mose_codex_investor_reviews') || '{}');
 
 // ============================================================
 // FIREBASE REALTIME SYNC (REST API — same pattern as TTD dashboard)
-// iPhone <-> Mac live sync via https://jfl-ttd-default-rtdb.firebaseio.com/mose
+// This independent build uses its own Firebase namespace.
 // ============================================================
-const MOSE_FB_URL = 'https://jfl-ttd-default-rtdb.firebaseio.com/mose';
+const MOSE_FB_URL = 'https://jfl-ttd-default-rtdb.firebaseio.com/mose-codex';
 let moseSyncing = false, moseSyncPending = false, moseFbListening = false;
 
 function getMoseState() {
@@ -2670,6 +2721,7 @@ function getMoseState() {
     researchItems: researchItems,
     researchCadence: researchCadence,
     ddRequests: ddRequestsData,
+    investorReviews: investorReviewMarks,
     reentry: reentryData,
     targets: targetsData,
     viewPrefs: { view: watchlistView, sort: watchlistSort, group: watchlistGroup },
@@ -2696,6 +2748,7 @@ function hydrateMoseState(state) {
   if (state.researchItems && JSON.stringify(state.researchItems) !== JSON.stringify(researchItems)) { researchItems = state.researchItems; changed = true; }
   if (state.researchCadence && JSON.stringify(state.researchCadence) !== JSON.stringify(researchCadence)) { researchCadence = state.researchCadence; changed = true; }
   if (state.ddRequests && JSON.stringify(state.ddRequests) !== JSON.stringify(ddRequestsData)) { ddRequestsData = state.ddRequests; changed = true; }
+  if (state.investorReviews && JSON.stringify(state.investorReviews) !== JSON.stringify(investorReviewMarks)) { investorReviewMarks = state.investorReviews; changed = true; }
   if (state.reentry && state.reentry.plans && JSON.stringify(state.reentry) !== JSON.stringify(reentryData)) { reentryData = migrateReentry(state.reentry); changed = true; }
   if (state.targets && state.targets.ira && JSON.stringify(state.targets) !== JSON.stringify(targetsData)) { targetsData = migrateTargets(state.targets); changed = true; }
   if (state.viewPrefs) {
@@ -2722,6 +2775,7 @@ function saveLocalOnly() {
   localStorage.setItem('mose_research_items', JSON.stringify(researchItems));
   localStorage.setItem('mose_research_cadence', JSON.stringify(researchCadence));
   localStorage.setItem('mose_dd_requests_local', JSON.stringify(ddRequestsData));
+  localStorage.setItem('mose_codex_investor_reviews', JSON.stringify(investorReviewMarks));
   localStorage.setItem('mose_reentry_local', JSON.stringify(reentryData));
   localStorage.setItem('mose_targets_local', JSON.stringify(targetsData));
   localStorage.setItem('mose_watchlist_view', watchlistView);
@@ -2960,6 +3014,7 @@ const TAB_GROUPS = [
   { id: 'mine',     label: '💼 My Holdings',     tabs: [
       { id: 'joeholdings', label: "Joe's Holdings" } ] },
   { id: 'gurus',    label: '🧠 Super Investors', tabs: [
+      { id: 'top50',     label: 'Top 50' },
       { id: 'consensus', label: '🤝 Consensus' },
       { id: 'feed',      label: '📡 Feed' },
       { id: 'investors', label: 'Investors' },
@@ -3214,6 +3269,149 @@ function holdingsQuarterNoticeHtml() {
 }
 
 // ============================================================
+// JOE'S TOP 50 - SEC universe nominations plus explicit review marks
+// ============================================================
+let investorUniverseData = null;
+const universeFilters = { status: 'all', sort: 'score', query: '' };
+
+async function loadInvestorUniverse() {
+  try {
+    const r = await fetch('reference-data/investor-universe.json?' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    investorUniverseData = await r.json();
+  } catch (e) {
+    investorUniverseData = { candidates: [], error: e.message };
+  }
+  renderInvestorUniverse();
+}
+
+function setUniverseFilter(key, value) {
+  universeFilters[key] = key === 'query' ? String(value || '').trim().toUpperCase() : value;
+  renderInvestorUniverse();
+}
+
+function universeMoney(value) {
+  const n = Number(value);
+  if (!Number.isFinite(n)) return 'not loaded';
+  if (n >= 1e9) return '$' + (n / 1e9).toFixed(n >= 10e9 ? 0 : 1) + 'B';
+  return '$' + (n / 1e6).toFixed(0) + 'M';
+}
+
+function universeStatusHtml(row) {
+  const review = investorReviewMarks[String(row.cik)];
+  if (review) return `<span class="universe-status pending" title="Pending ${escapeAttr(review.decision)}: ${escapeAttr(review.reason)}">pending ${escapeHtml(review.decision)}</span>`;
+  return `<span class="universe-status ${escapeAttr(row.status || 'candidate')}">${escapeHtml(row.status || 'candidate')}</span>`;
+}
+
+function markInvestorReview(cik, decision) {
+  const row = ((investorUniverseData && investorUniverseData.candidates) || []).find(x => String(x.cik) === String(cik));
+  if (!row) return;
+  const reason = (prompt(`${decision === 'approve' ? 'Why should' : 'Why should not'} ${row.name} be on Joe's Top 50?`) || '').trim();
+  if (!reason) return;
+  investorReviewMarks[String(cik)] = {
+    decision,
+    reason,
+    name: row.name,
+    fund: row.fund,
+    score: row.score,
+    source_quarter: row.latest_quarter,
+    decided_at: new Date().toISOString()
+  };
+  saveLocalOnly();
+  moseFbPutDebounced();
+  renderInvestorUniverse();
+}
+
+function clearInvestorReview(cik) {
+  delete investorReviewMarks[String(cik)];
+  saveLocalOnly();
+  moseFbPutDebounced();
+  renderInvestorUniverse();
+}
+
+function downloadInvestorReviews() {
+  const payload = {
+    schema_version: 1,
+    exported_at: new Date().toISOString(),
+    source_quarter: investorUniverseData && investorUniverseData.source && investorUniverseData.source.latest_report_quarter,
+    note: 'Pending Joe review marks. They do not change the approved CIK roster until committed.',
+    decisions: Object.entries(investorReviewMarks).map(([cik, row]) => ({ cik, ...row }))
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'mose-codex-investor-reviews.json';
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(link.href), 500);
+}
+
+function renderInvestorUniverse() {
+  const body = document.getElementById('universe-body');
+  if (!body) return;
+  const data = investorUniverseData || { candidates: [] };
+  const rowsAll = (data.candidates || []).slice();
+  const pending = Object.keys(investorReviewMarks).length;
+  const stats = document.getElementById('universe-stats');
+  if (stats) stats.innerHTML = `
+    <div class="stat-card"><div class="stat-val green">${data.approved_count ?? 0}</div><div class="stat-label">Approved of ${data.target_approved_count || 50}</div></div>
+    <div class="stat-card"><div class="stat-val blue">${data.candidate_count ?? 0}</div><div class="stat-label">Qualified candidates</div></div>
+    <div class="stat-card"><div class="stat-val yellow">${data.approved_needing_review_count ?? 0}</div><div class="stat-label">Incumbents to review</div></div>
+    <div class="stat-card"><div class="stat-val orange">${pending}</div><div class="stat-label">Pending choices</div></div>`;
+  const asof = document.getElementById('universe-asof');
+  if (asof) asof.textContent = data.source && data.source.latest_report_quarter
+    ? `${data.source.latest_report_quarter} bulk screen · ${data.screened_manager_count || 0} managers scored`
+    : 'Universe scan not loaded';
+  const policyEl = document.getElementById('universe-policy');
+  if (policyEl) {
+    const g = data.qualification_policy && data.qualification_policy.hard_gates;
+    policyEl.innerHTML = g
+      ? `<strong>Qualification:</strong> ${g.maximum_positions} positions or fewer · ${universeMoney(g.minimum_total_value_usd)}-${universeMoney(g.maximum_total_value_usd)} book · turnover ${(g.maximum_average_turnover * 100).toFixed(0)}% or less · median hold ${g.minimum_median_hold_quarters}+ quarters · ${g.minimum_history_quarters}+ quarters reported. Pending review choices do not become active until committed.`
+      : 'Awaiting the first independent SEC universe scan.';
+  }
+  if (data.error) {
+    body.innerHTML = `<tr><td colspan="10" class="no-data">Investor universe not loaded: ${escapeHtml(data.error)}</td></tr>`;
+    return;
+  }
+  let rows = rowsAll;
+  if (universeFilters.status === 'approved') rows = rows.filter(row => row.status === 'approved');
+  if (universeFilters.status === 'candidate') rows = rows.filter(row => row.status === 'candidate');
+  if (universeFilters.status === 'review') rows = rows.filter(row => !row.meets_quantitative_screen || investorReviewMarks[String(row.cik)]);
+  if (universeFilters.query) rows = rows.filter(row => `${row.name || ''} ${row.fund || ''} ${row.cik || ''}`.toUpperCase().includes(universeFilters.query));
+  const sorters = {
+    score: (a, b) => Number(b.score || 0) - Number(a.score || 0),
+    name: (a, b) => String(a.name || '').localeCompare(String(b.name || '')),
+    positions: (a, b) => Number(a.positions || 0) - Number(b.positions || 0),
+    turnover: (a, b) => Number(a.turnover_8q ?? 99) - Number(b.turnover_8q ?? 99),
+    hold: (a, b) => Number(b.median_hold_q || 0) - Number(a.median_hold_q || 0)
+  };
+  rows.sort(sorters[universeFilters.sort] || sorters.score);
+  if (!rows.length) {
+    body.innerHTML = '<tr><td colspan="10" class="no-data">No investors match this view.</td></tr>';
+    return;
+  }
+  body.innerHTML = rows.map(row => {
+    const failures = (row.screen_failures || []);
+    const review = investorReviewMarks[String(row.cik)];
+    return `<tr>
+      <td>${universeStatusHtml(row)}</td>
+      <td><span class="universe-score">${Number(row.score || 0).toFixed(1)}</span></td>
+      <td><strong>${escapeHtml(row.name || row.cik)}</strong><div class="muted" style="font-size:11px">${escapeHtml(row.fund || '')} · CIK ${escapeHtml(String(row.cik || ''))}</div></td>
+      <td style="text-align:right">${universeMoney(row.total_value_usd)}</td>
+      <td style="text-align:right">${row.positions ?? 'not loaded'}</td>
+      <td style="text-align:right">${row.turnover_8q == null ? 'not loaded' : (row.turnover_8q * 100).toFixed(1) + '%'}</td>
+      <td style="text-align:right">${row.median_hold_q == null ? 'not loaded' : row.median_hold_q + 'q'}</td>
+      <td style="text-align:right">${row.top10_weight == null ? 'not loaded' : (row.top10_weight * 100).toFixed(1) + '%'}</td>
+      <td>${row.meets_quantitative_screen ? '<span class="up">Pass</span>' : `<div class="universe-failures">${escapeHtml(failures.join(' · ') || 'Needs review')}</div>`}</td>
+      <td><div class="universe-actions">
+        <button class="universe-action approve" onclick="markInvestorReview('${escapeAttr(String(row.cik))}','approve')" title="Mark for approval">✓</button>
+        <button class="universe-action reject" onclick="markInvestorReview('${escapeAttr(String(row.cik))}','reject')" title="Mark for rejection">×</button>
+        ${review ? `<button class="universe-action" onclick="clearInvestorReview('${escapeAttr(String(row.cik))}')" title="Clear pending review">↺</button>` : ''}
+      </div></td>
+    </tr>`;
+  }).join('');
+}
+
+// ============================================================
 // GUARD RAIL — the eligible universe
 // Joe's rule (2 Sep 2026): the only stocks that may go into a bucket are ones a
 // tracked 13F filer actually owns. eligible-universe.json is built by
@@ -3300,7 +3498,7 @@ function targGuardrailHtml() {
 // ============================================================
 let feedData = null;
 const feedFilters = { kind: 'all', q: '' };
-const FEED_KIND_LABEL = { '13D': '13D', '13G': '13G', FORM4: 'Form 4', NPORT: 'N-PORT', LETTER: 'Letter', INTERVIEW: 'Interview', POST: 'Post', NEWS: 'News', AGENT: 'Agent' };
+const FEED_KIND_LABEL = { '13D': '13D', '13G': '13G', FORM4: 'Form 4', '13F_AMENDMENT': '13F amendment', NPORT: 'N-PORT', LETTER: 'Letter', INTERVIEW: 'Interview', POST: 'Post', NEWS: 'News', AGENT: 'Agent' };
 
 async function loadFeed() {
   try {
@@ -3328,7 +3526,7 @@ function renderFeed() {
   if (sb) sb.innerHTML = `
     <div class="stat-card"><div class="stat-val blue">${items.length}</div><div class="stat-label">Signals</div></div>
     <div class="stat-card"><div class="stat-val orange">${touching.length}</div><div class="stat-label">Touch my buckets</div></div>
-    <div class="stat-card"><div class="stat-val green">${items.filter(i => ['13D', '13G', 'FORM4', 'NPORT'].includes(i.kind)).length}</div><div class="stat-label">From filings</div></div>
+    <div class="stat-card"><div class="stat-val green">${items.filter(i => ['13D', '13G', 'FORM4', '13F_AMENDMENT', 'NPORT'].includes(i.kind)).length}</div><div class="stat-label">From filings</div></div>
     <div class="stat-card"><div class="stat-val yellow">${items.filter(i => i.severity === 'act').length}</div><div class="stat-label">Act now</div></div>`;
   let rows = items;
   if (feedFilters.kind !== 'all') rows = rows.filter(i => (i.kind || '') === feedFilters.kind);
@@ -7861,6 +8059,7 @@ window.addEventListener('DOMContentLoaded', () => {
   loadSymbolData();
   loadTickerDirectory();
   loadEligibleUniverse();
+  loadInvestorUniverse();
   loadFeed();
   renderReentry();
   renderTargets();

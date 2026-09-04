@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "policy_version": "2026-09-04",
+  "target_approved_count": 50,
+  "history_quarters": 8,
+  "candidate_limit": 250,
+  "hard_gates": {
+    "minimum_total_value_usd": 300000000,
+    "maximum_total_value_usd": 50000000000,
+    "maximum_positions": 50,
+    "maximum_average_turnover": 0.25,
+    "minimum_median_hold_quarters": 6,
+    "minimum_history_quarters": 6,
+    "minimum_long_only_value_ratio": 0.9
+  },
+  "score_weights": {
+    "concentration": 30,
+    "patience": 30,
+    "low_turnover": 25,
+    "reporting_consistency": 10,
+    "cloneability": 5
+  },
+  "excluded_manager_name_patterns": [
+    "BANK OF",
+    "CENTRAL BANK",
+    "PENSION",
+    "RETIREMENT",
+    "EMPLOYEES RETIREMENT",
+    "STATE TREASURER",
+    "TRUST DEPARTMENT",
+    "INDEX MANAGEMENT",
+    "QUANTITATIVE MANAGEMENT",
+    "ROBO ADVISOR"
+  ],
+  "human_review_requirements": [
+    "Document a durable, understandable investment process.",
+    "Confirm that the reported 13F is representative enough to clone; flag major shorts, derivatives, private assets, or non-US holdings that the filing omits.",
+    "Review letters, interviews, fund structure, succession, and known mandate changes.",
+    "Prefer repeatable long-term records over one strong recent period.",
+    "Joe must approve every addition. A high score is a nomination, not an automatic approval."
+  ],
+  "accuracy_notes": [
+    "The quantitative score uses SEC 13F structure only. It does not claim investment performance or drawdown skill.",
+    "Turnover is estimated from quarter-to-quarter CUSIP portfolio weights and includes some market-price movement.",
+    "Existing tracked filers remain approved for continuity, but failed gates are shown for review."
+  ]
+}

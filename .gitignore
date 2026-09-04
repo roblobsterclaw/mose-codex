@@ -2,6 +2,7 @@ __pycache__/
 *.pyc
 data/*.db
 data/*.db-*
+.cache/
 
 # Personal Claude Code settings (permissions etc.)
 .claude/settings.local.json

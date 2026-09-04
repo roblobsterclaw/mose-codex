@@ -1,6 +1,11 @@
 {
- "schema_version": 1,
- "generated_at": "2026-09-04T17:07:45.435625+00:00",
- "source": "empty placeholder \u2014 populated by the Layer 3 pipeline (docs/CODEX-HANDOFF-2026-09.md \u00a76)",
+ "schema_version": 2,
+ "generated_at": null,
+ "source": "Approved-investor SEC filings and verified source registry",
+ "rules": {
+  "filings_affect_conviction": true,
+  "words_affect_conviction": false,
+  "unresolved_values": "left null rather than inferred"
+ },
  "items": []
 }

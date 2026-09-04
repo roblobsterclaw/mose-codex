@@ -20,7 +20,7 @@ from email import encoders
 
 # --- Config ---
 REPO_PATH = "/Users/joemac/Documents/mose"
-REPO_URL = "https://github.com/roblobsterclaw/mose.git"
+REPO_URL = "https://github.com/roblobsterclaw/mose-codex.git"
 DATA_FILE = "live-quotes.json"
 RECIPIENT = "rob.lobster.claw@gmail.com"
 GMAIL_TOKEN = "/Users/joemac/.openclaw/workspace/config/gmail/token.json"

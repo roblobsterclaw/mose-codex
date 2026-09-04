@@ -72,6 +72,8 @@ def request_text(url: str) -> str:
 def load_cik_map() -> list[InvestorConfig]:
     configs = []
     for item in load_json(CIK_MAP_PATH, []):
+        if item.get("active", True) is False:
+            continue
         cik = str(item.get("cik") or "").strip().lstrip("0")
         if not cik:
             continue

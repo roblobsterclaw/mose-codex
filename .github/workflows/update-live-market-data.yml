@@ -18,6 +18,8 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      MOSE_FB_URL: https://jfl-ttd-default-rtdb.firebaseio.com/mose-codex
     steps:
       - uses: actions/checkout@v5
         with:

@@ -1,0 +1,52 @@
+name: Update Codex investor signals
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Four checks per day keeps structured filings inside the 24-hour target.
+    - cron: "37 */6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mose-codex-investor-signals
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      SEC_USER_AGENT: MOSE Codex Lab/1.0 roblobsterclaw@users.noreply.github.com
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Collect approved-investor filings and verified sources
+        id: collect
+        continue-on-error: true
+        run: python scripts/collect_investor_signals.py --days 14
+      - name: Sync signals to isolated Supabase tables
+        if: steps.collect.outcome == 'success' && env.SUPABASE_URL != '' && env.SUPABASE_SERVICE_ROLE_KEY != ''
+        run: python scripts/sync_investor_intelligence_to_supabase.py --signals-only
+      - name: Commit feed and monitoring health
+        if: always()
+        run: |
+          if git diff --quiet signals/feed-latest.json signals/monitoring-status.json; then
+            echo "No investor signal changes"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add signals/feed-latest.json signals/monitoring-status.json
+            git commit -m "Update Codex investor signal feed"
+            git push origin main
+            git push origin HEAD:gh-pages --force
+          fi
+      - name: Fail when every SEC source was unavailable
+        if: steps.collect.outcome == 'failure'
+        run: exit 1

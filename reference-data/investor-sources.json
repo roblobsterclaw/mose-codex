@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-09-04",
+  "defaults": {
+    "sec_submissions": {
+      "enabled": true,
+      "forms": [
+        "SC 13D",
+        "SC 13D/A",
+        "SC 13G",
+        "SC 13G/A",
+        "4",
+        "4/A",
+        "13F-HR/A",
+        "NPORT-P",
+        "NPORT-P/A"
+      ]
+    }
+  },
+  "investors": {},
+  "notes": [
+    "SEC submissions monitoring is enabled automatically for every approved CIK.",
+    "First-party letter, interview, podcast, and post sources belong under investors.<CIK>.sources after their URLs are verified.",
+    "Related registered-fund CIKs for N-PORT belong under investors.<CIK>.sec_entities after verification.",
+    "A source can create a watch item, but only a structured filing can affect conviction."
+  ]
+}

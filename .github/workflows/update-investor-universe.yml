@@ -1,0 +1,53 @@
+name: Update Codex investor universe
+
+on:
+  workflow_dispatch:
+  schedule:
+    # SEC bulk 13F data normally follows the filing deadlines in Feb/May/Aug/Nov.
+    - cron: "22 12 2 3,6,9,12 *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mose-codex-investor-universe
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      SEC_USER_AGENT: MOSE Codex Lab/1.0 roblobsterclaw@users.noreply.github.com
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: .cache/sec-13f
+          key: sec-13f-bulk-${{ runner.os }}-${{ github.run_number }}
+          restore-keys: |
+            sec-13f-bulk-${{ runner.os }}-
+      - name: Score the full SEC filer universe
+        run: python scripts/build_investor_universe.py --quarters 8 --minimum-candidates 100
+      - name: Sync universe to isolated Supabase tables
+        if: env.SUPABASE_URL != '' && env.SUPABASE_SERVICE_ROLE_KEY != ''
+        run: python scripts/sync_investor_intelligence_to_supabase.py --universe-only
+      - name: Commit reviewed universe export
+        run: |
+          if git diff --quiet reference-data/investor-universe.json; then
+            echo "No investor universe changes"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add reference-data/investor-universe.json
+            git commit -m "Update Codex investor candidate universe"
+            git push origin main
+            git push origin HEAD:gh-pages --force
+          fi

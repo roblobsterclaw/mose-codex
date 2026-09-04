@@ -262,7 +262,7 @@ Two sources, kept separate in the data:
   IPs), transcribed, then passed through an LLM extractor into structured signals.
 **Output:** `signals/feed-latest.json`
 ```
-{ generated_at, items:[{ id, ts, kind:"13D"|"13G"|"FORM4"|"NPORT"|"LETTER"|"INTERVIEW"|"POST"|"NEWS",
+{ generated_at, items:[{ id, ts, kind:"13D"|"13G"|"FORM4"|"13F_AMENDMENT"|"NPORT"|"LETTER"|"INTERVIEW"|"POST"|"NEWS",
   investor, ticker, direction:"bullish"|"bearish"|"add"|"trim"|"exit"|"new"|"neutral",
   confidence:0..1, quote, source_url, source_title, extracted_by }] }
 ```

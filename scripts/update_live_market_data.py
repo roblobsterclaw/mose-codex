@@ -51,7 +51,7 @@ QUOTE_OVERRIDES: dict[str, str] = {}
 
 # Firebase Realtime DB holding the dashboard's synced state (custom watchlist
 # tickers added from the UI live there, not in index.html).
-MOSE_FB_URL = os.environ.get("MOSE_FB_URL", "https://jfl-ttd-default-rtdb.firebaseio.com/mose")
+MOSE_FB_URL = os.environ.get("MOSE_FB_URL", "https://jfl-ttd-default-rtdb.firebaseio.com/mose-codex")
 
 INDICES = [
     {"name": "S&P 500", "symbol": "^GSPC"},

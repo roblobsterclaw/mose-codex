@@ -6,6 +6,32 @@
 
 ---
 
+## Session 11 - September 4, 2026 (Independent build)
+**Goal:** Create a separate MOSE implementation and begin the selective Top 50 super-investor system without changing production MOSE.
+
+**Repository boundary:**
+- Created the standalone `roblobsterclaw/mose-codex` repository from the current production snapshot.
+- Changed the app and quote collector to the separate `/mose-codex` Firebase namespace.
+- Added isolated `mose_codex_*` Supabase tables. No production table or live URL is targeted.
+
+**What was built:**
+- An explicit qualification policy with hard gates for portfolio size, position count, turnover, holding age, filing history, and long-only representation.
+- A quarterly SEC bulk 13F universe scorer that handles restatements and additive amendments, keys history by CUSIP, preserves incumbents, and refuses to publish below the configured candidate minimum.
+- A Joe-only decision ledger and safe approval command. Rejections deactivate a CIK without deleting history.
+- A four-times-daily approved-investor monitor for SC 13D/G, Form 4, 13F amendments, N-PORT entities, and verified first-party RSS/Atom sources.
+- A source-backed feed contract that leaves unknown ticker and direction values unresolved.
+- A new Top 50 app tab for approved investors, ranked candidates, failed gates, and exportable pending review choices.
+- Separate GitHub Actions for quarterly universe scans and investor signals, plus a Supabase sync adapter and migration.
+
+**Verification:**
+- Six unit tests cover amendment merging, CUSIP-weight turnover, eight-quarter candidate scoring, exclusion gates, Form 4 net transactions, and unresolved 13D fields.
+- All Python files compile, embedded dashboard JavaScript parses, workflow YAML parses, and `git diff --check` passes.
+
+**Deployment status:**
+- Independent repository created. Production `roblobsterclaw/mose` remains untouched.
+- First SEC universe and monitoring runs pending from the independent GitHub Actions runner because the local SEC IP is rate-blocked.
+- Supabase migration is ready; the independent repository does not yet have Supabase secrets.
+
 ## Session 10 — September 2, 2026 (Claude)
 **Goal:** Start the "guard rails + feed" build Joe asked for (see `docs/CODEX-HANDOFF-2026-09.md`): only stocks a tracked 13F filer owns may be routed into a bucket, and a landing zone for between-quarter signals.
 
