@@ -80,6 +80,10 @@
   2023 switch from values reported in thousands to values rounded to the
   nearest dollar. Synthetic tests cover both modern and legacy units so a
   restored SEC connection cannot inflate a manager's book by 1,000 times.
+- Added an in-app Top 50 screening key and a clickable investor scorecard. Each
+  scorecard shows the five Joe Fit point components, the underlying 13F
+  measurements, the comparison baseline, evidence checklist, original filing,
+  and autosaved keep/remove controls.
 
 ## Session 10 — September 2, 2026 (Claude)
 **Goal:** Start the "guard rails + feed" build Joe asked for (see `docs/CODEX-HANDOFF-2026-09.md`): only stocks a tracked 13F filer owns may be routed into a bucket, and a landing zone for between-quarter signals.

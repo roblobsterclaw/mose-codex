@@ -593,6 +593,9 @@
   /* Joe's approved super-investor roster and quarterly candidate screen */
   .universe-policy { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 10px 0; margin-bottom: 12px; color: var(--soft-text); font-size: 12px; line-height: 1.6; }
   .universe-score { font-size: 18px; font-weight: 900; color: var(--heading); }
+  .universe-score-button { border: 0; background: transparent; color: inherit; padding: 2px; cursor: pointer; text-align: left; }
+  .universe-score-button:hover .universe-score { color: var(--accent); }
+  .universe-score-hint { display: block; color: var(--blue); font-size: 9px; font-weight: 800; text-transform: uppercase; }
   .universe-status { display: inline-block; padding: 2px 7px; border: 1px solid var(--border); border-radius: 4px; font-size: 10px; font-weight: 800; text-transform: uppercase; }
   .universe-status.approved { border-color: var(--green); color: var(--green); }
   .universe-status.candidate { border-color: var(--blue); color: var(--blue); }
@@ -609,6 +612,20 @@
   .universe-action { width: 28px; height: 28px; border-radius: 4px; border: 1px solid var(--border); background: var(--surface); color: var(--soft-text); cursor: pointer; font-weight: 900; }
   .universe-action.approve:hover { border-color: var(--green); color: var(--green); }
   .universe-action.reject:hover { border-color: var(--red); color: var(--red); }
+  .universe-guide { margin: 0 0 14px; border-bottom: 1px solid var(--border); }
+  .universe-guide summary { color: var(--heading); cursor: pointer; font-size: 13px; font-weight: 900; padding: 7px 0 10px; }
+  .universe-key-table { min-width: 820px; margin-bottom: 12px; }
+  .universe-key-table td { vertical-align: top; font-size: 11px; line-height: 1.45; }
+  .universe-key-table td:first-child { color: var(--heading); font-weight: 900; white-space: nowrap; }
+  .universe-scorecard-bars { display: grid; gap: 11px; margin: 4px 0 16px; }
+  .universe-scorebar-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 5px; }
+  .universe-scorebar-label { color: var(--heading); font-size: 12px; font-weight: 900; }
+  .universe-scorebar-value { color: var(--soft-text); font-size: 11px; font-weight: 800; }
+  .universe-scorebar-track { height: 8px; background: var(--surface); border: 1px solid var(--border); overflow: hidden; }
+  .universe-scorebar-fill { height: 100%; background: var(--accent); }
+  .universe-scorebar-note { color: var(--soft-text); font-size: 10px; line-height: 1.4; margin-top: 4px; }
+  .universe-evidence-list { margin: 0; padding-left: 18px; color: var(--soft-text); font-size: 12px; line-height: 1.55; }
+  .universe-scorecard-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
 
   #update-banner {
     background: var(--green-bg); border: 1px solid var(--green); border-left-width: 4px;
@@ -1613,6 +1630,24 @@ async function checkPw(){
     </div>
     <div class="stats-bar" id="universe-stats"></div>
     <div class="universe-policy" id="universe-policy">Awaiting the first independent SEC universe scan.</div>
+    <details class="universe-guide" open>
+      <summary>Screening key</summary>
+      <div class="table-wrap">
+        <table class="universe-key-table">
+          <thead><tr><th>Column</th><th>What it means</th><th>How to read it</th></tr></thead>
+          <tbody>
+            <tr><td>Joe Fit /100</td><td>A weighted similarity score based on filing behavior. It is not a return forecast.</td><td>Concentration 25 + patience 25 + disciplined turnover 20 + similarity to Joe's roster 20 + cloneability 10.</td></tr>
+            <tr><td>Book</td><td>Market value of the long securities reported on the manager's latest 13F.</td><td>It can exclude cash, shorts, private investments, foreign securities and other assets.</td></tr>
+            <tr><td>Positions</td><td>Unique long securities reported on the latest 13F.</td><td>Lower counts are easier to follow. Share classes and funds can count separately.</td></tr>
+            <tr><td>Turnover</td><td>Estimated average portion of portfolio weights that changed each quarter.</td><td>Lower usually means more patient. It reflects trading plus market-price movement.</td></tr>
+            <tr><td>Median Hold</td><td>The middle consecutive holding age among positions currently owned.</td><td>8q means held through the full two-year measurement window and possibly longer.</td></tr>
+            <tr><td>Top 10</td><td>Percentage of the reported book invested in the ten largest positions.</td><td>Higher means more conviction and concentration, but also more single-name risk.</td></tr>
+            <tr><td>Evidence</td><td>A qualitative review of letters, interviews, mandate and whether the 13F represents the real strategy.</td><td>Required means the research is not complete. It is not calculated from the Joe Fit score.</td></tr>
+            <tr><td>My Pick</td><td>Check keeps the investor for final review; X removes the investor from consideration.</td><td>Your reason and choice autosave. A check is still pending until evidence is completed.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
     <div class="table-wrap">
       <table>
         <thead><tr>
@@ -2151,7 +2186,7 @@ async function checkPw(){
 // compare the build stamp, and offer a genuine reload when they differ.
 // Bump APP_BUILD whenever index.html changes.
 // ============================================================
-const APP_BUILD = 'codex-2026-09-04c';
+const APP_BUILD = 'codex-2026-09-05a';
 
 async function checkForAppUpdate(announce) {
   try {
@@ -3284,6 +3319,7 @@ function holdingsQuarterNoticeHtml() {
 // JOE'S TOP 50 - SEC universe nominations plus explicit review marks
 // ============================================================
 let investorUniverseData = null;
+let activeInvestorCik = null;
 const universeFilters = { status: 'all', lane: 'all', sort: 'score', query: '' };
 
 async function loadInvestorUniverse() {
@@ -3339,6 +3375,86 @@ function universeEvidenceHtml(row) {
   return '<div class="universe-evidence">Not recorded</div>';
 }
 
+function investorScoreBar(label, earned, maximum, note) {
+  const value = Number(earned || 0);
+  const width = Math.max(0, Math.min(100, (value / maximum) * 100));
+  return `<div>
+    <div class="universe-scorebar-head">
+      <span class="universe-scorebar-label">${escapeHtml(label)}</span>
+      <span class="universe-scorebar-value">${value.toFixed(1)} / ${maximum}</span>
+    </div>
+    <div class="universe-scorebar-track"><div class="universe-scorebar-fill" style="width:${width.toFixed(1)}%"></div></div>
+    <div class="universe-scorebar-note">${escapeHtml(note)}</div>
+  </div>`;
+}
+
+function openInvestorScorecard(cik) {
+  activeInvestorCik = String(cik);
+  renderInvestorScorecard();
+  const backdrop = document.getElementById('investor-scorecard-backdrop');
+  if (backdrop) backdrop.classList.add('show');
+}
+
+function closeInvestorScorecard() {
+  activeInvestorCik = null;
+  const backdrop = document.getElementById('investor-scorecard-backdrop');
+  if (backdrop) backdrop.classList.remove('show');
+}
+
+function renderInvestorScorecard() {
+  const row = ((investorUniverseData && investorUniverseData.candidates) || [])
+    .find(item => String(item.cik) === String(activeInvestorCik));
+  if (!row) return;
+  const setText = (id, value) => { const el = document.getElementById(id); if (el) el.textContent = value; };
+  const fit = Number(row.profile_fit_score ?? row.score ?? 0);
+  const components = row.profile_fit_components || {};
+  const top10 = row.top10_weight == null ? 'not loaded' : (row.top10_weight * 100).toFixed(1) + '%';
+  const turnover = row.turnover_8q == null ? 'not loaded' : (row.turnover_8q * 100).toFixed(1) + '%';
+  const medianHold = row.median_hold_q == null ? 'not loaded' : row.median_hold_q + ' quarters';
+  const fundExposure = row.fund_value_ratio == null ? 'not loaded' : (row.fund_value_ratio * 100).toFixed(1) + '%';
+  const baseline = investorUniverseData?.style_profile?.archetype_baseline || {};
+
+  setText('investor-scorecard-name', row.name || row.fund || row.cik);
+  setText('investor-scorecard-fund', `${row.fund || ''} · CIK ${row.cik || ''}`);
+  const laneEl = document.getElementById('investor-scorecard-lane');
+  if (laneEl) laneEl.innerHTML = universeLaneHtml(row);
+
+  const metricsEl = document.getElementById('investor-scorecard-metrics');
+  if (metricsEl) metricsEl.innerHTML = [
+    metric('Joe Fit', fit.toFixed(1) + ' / 100'),
+    metric('13F Book', universeMoney(row.total_value_usd)),
+    metric('Positions', row.positions ?? 'not loaded'),
+    metric('Quarterly Turnover', turnover),
+    metric('Median Hold', medianHold),
+    metric('Top 10 Weight', top10)
+  ].join('');
+
+  const barsEl = document.getElementById('investor-scorecard-bars');
+  if (barsEl) barsEl.innerHTML = [
+    investorScoreBar('Concentration', components.concentration, 25, `Based primarily on ${top10} of the reported book in the top 10.`),
+    investorScoreBar('Patience', components.patience, 25, `Based on a ${medianHold} median consecutive holding age.`),
+    investorScoreBar('Disciplined turnover', components.disciplined_turnover, 20, `Based on ${turnover} estimated average quarterly turnover; lower earns more.`),
+    investorScoreBar('Current-roster similarity', components.current_roster_similarity, 20, `Compares book, positions, concentration, turnover and holding age with ${investorUniverseData?.style_profile?.archetype_manager_count || 10} patient approved managers.`),
+    investorScoreBar('Cloneability', components.cloneability, 10, `${row.positions ?? 'Unknown'} positions and ${fundExposure} reported fund exposure; focused stock books earn more.`)
+  ].join('');
+
+  const evidence = investorUniverseData?.style_profile?.human_evidence_required || [];
+  const evidenceEl = document.getElementById('investor-scorecard-evidence');
+  if (evidenceEl) evidenceEl.innerHTML = `
+    <div class="symbol-note"><strong>Evidence status</strong>${row.philosophy_evidence_status === 'required_before_approval' ? 'Required before approval. This qualitative review has not been completed yet.' : row.philosophy_evidence_status === 'grandfathered_refresh_due' ? 'Existing roster member; evidence refresh is due.' : escapeHtml(row.philosophy_evidence_status || 'Not recorded')}</div>
+    <div class="symbol-note"><strong>Evidence checklist</strong><ul class="universe-evidence-list">${evidence.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul></div>
+    <div class="symbol-note"><strong>Comparison baseline</strong>${baseline.positions || '—'} positions · ${universeMoney(baseline.total_value_usd)} book · ${baseline.top10_weight == null ? '—' : (baseline.top10_weight * 100).toFixed(1) + '%'} top 10 · ${baseline.average_turnover == null ? '—' : (baseline.average_turnover * 100).toFixed(1) + '%'} turnover · ${baseline.median_hold_quarters || '—'}q median hold.</div>`;
+
+  const review = investorReviewMarks[String(row.cik)];
+  const filingUrl = (row.filing_urls || [])[0];
+  const actionsEl = document.getElementById('investor-scorecard-actions');
+  if (actionsEl) actionsEl.innerHTML = `
+    <button class="filter-btn" onclick="markInvestorReview('${escapeAttr(String(row.cik))}','approve')">✓ Keep</button>
+    <button class="filter-btn" onclick="markInvestorReview('${escapeAttr(String(row.cik))}','reject')">× Remove</button>
+    ${review ? `<button class="filter-btn" onclick="clearInvestorReview('${escapeAttr(String(row.cik))}')">Clear choice</button><span class="universe-status pending">pending ${escapeHtml(review.decision)}</span>` : '<span class="muted">No pick recorded yet.</span>'}
+    ${filingUrl ? `<a class="universe-sec-link" href="${escapeAttr(filingUrl)}" target="_blank" rel="noopener">Open original SEC filing</a>` : ''}`;
+}
+
 function markInvestorReview(cik, decision) {
   const row = ((investorUniverseData && investorUniverseData.candidates) || []).find(x => String(x.cik) === String(cik));
   if (!row) return;
@@ -3359,6 +3475,7 @@ function markInvestorReview(cik, decision) {
   saveLocalOnly();
   moseFbPutDebounced();
   renderInvestorUniverse();
+  if (activeInvestorCik === String(cik)) renderInvestorScorecard();
 }
 
 function clearInvestorReview(cik) {
@@ -3366,6 +3483,7 @@ function clearInvestorReview(cik) {
   saveLocalOnly();
   moseFbPutDebounced();
   renderInvestorUniverse();
+  if (activeInvestorCik === String(cik)) renderInvestorScorecard();
 }
 
 function downloadInvestorReviews() {
@@ -3438,7 +3556,7 @@ function renderInvestorUniverse() {
     const filingUrl = (row.filing_urls || [])[0];
     return `<tr>
       <td>${universeStatusHtml(row)}</td>
-      <td><span class="universe-score">${Number(row.profile_fit_score ?? row.score ?? 0).toFixed(1)}</span></td>
+      <td><button class="universe-score-button" onclick="openInvestorScorecard('${escapeAttr(String(row.cik))}')" title="Open Joe Fit breakdown"><span class="universe-score">${Number(row.profile_fit_score ?? row.score ?? 0).toFixed(1)}</span><span class="universe-score-hint">details</span></button></td>
       <td>${universeLaneHtml(row)}</td>
       <td><strong>${escapeHtml(row.name || row.cik)}</strong><div class="muted" style="font-size:11px">${escapeHtml(row.fund || '')} · CIK ${escapeHtml(String(row.cik || ''))}</div></td>
       <td style="text-align:right">${universeMoney(row.total_value_usd)}</td>
@@ -8184,6 +8302,29 @@ window.addEventListener('DOMContentLoaded', () => {
         <div id="symbol-empty-chart" class="symbol-empty-chart" style="display:none"></div>
       </div>
       <div class="symbol-notes" id="symbol-notes"></div>
+    </div>
+  </div>
+</div>
+<div id="investor-scorecard-backdrop" class="symbol-modal-backdrop" onclick="if(event.target===this)closeInvestorScorecard()">
+  <div class="symbol-modal">
+    <div class="symbol-modal-header">
+      <div class="symbol-title">
+        <div class="symbol-title-row">
+          <span class="ticker" id="investor-scorecard-name">Investor</span>
+          <span id="investor-scorecard-lane"></span>
+        </div>
+        <div class="symbol-name" id="investor-scorecard-fund">Loading scorecard...</div>
+      </div>
+      <button class="symbol-close" onclick="closeInvestorScorecard()" title="Close">×</button>
+    </div>
+    <div class="symbol-modal-body">
+      <div class="symbol-snapshot-grid" id="investor-scorecard-metrics"></div>
+      <div class="symbol-chart-shell">
+        <div class="symbol-chart-toolbar"><strong>Joe Fit point breakdown</strong><span class="muted" style="font-size:11px">Maximum 100 points</span></div>
+        <div class="universe-scorecard-bars" id="investor-scorecard-bars"></div>
+      </div>
+      <div class="symbol-notes" id="investor-scorecard-evidence"></div>
+      <div class="universe-scorecard-actions" id="investor-scorecard-actions"></div>
     </div>
   </div>
 </div>
