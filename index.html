@@ -626,6 +626,28 @@
   .universe-scorebar-note { color: var(--soft-text); font-size: 10px; line-height: 1.4; margin-top: 4px; }
   .universe-evidence-list { margin: 0; padding-left: 18px; color: var(--soft-text); font-size: 12px; line-height: 1.55; }
   .universe-scorecard-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 14px; }
+  .universe-table { min-width: 1540px; }
+  .universe-holdings { display: flex; flex-wrap: wrap; gap: 3px; min-width: 160px; max-width: 230px; }
+  .universe-holding-chip { display: inline-block; padding: 2px 5px; border: 1px solid var(--border); border-radius: 4px; color: var(--heading); background: var(--surface); font: 800 10px/1.25 monospace; }
+  .universe-holding-more { color: var(--blue); font-size: 10px; font-weight: 800; }
+  .universe-proxy { min-width: 94px; font-size: 11px; font-weight: 800; }
+  .universe-proxy .up { color: var(--green); }
+  .universe-proxy .down { color: var(--red); }
+  .universe-proxy small { display: block; color: var(--soft-text); font-size: 9px; font-weight: 700; line-height: 1.35; }
+  .universe-advisor-use { max-width: 155px; color: var(--heading); font-size: 11px; font-weight: 800; line-height: 1.4; }
+  .universe-advisor-button { border: 0; background: transparent; padding: 0; color: inherit; cursor: pointer; text-align: left; }
+  .universe-advisor-button:hover .universe-advisor-use { color: var(--accent); }
+  .investor-profile-section { border: 1px solid var(--border); background: var(--surface); padding: 12px; margin-bottom: 12px; }
+  .investor-profile-section h3 { color: var(--heading); font-size: 13px; margin: 0 0 9px; }
+  .investor-profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 9px; }
+  .investor-profile-field { border-left: 3px solid var(--border); padding: 3px 0 3px 9px; color: var(--soft-text); font-size: 11px; line-height: 1.45; }
+  .investor-profile-field strong { display: block; color: var(--heading); font-size: 10px; text-transform: uppercase; margin-bottom: 2px; }
+  .investor-holdings-table { width: 100%; min-width: 560px; }
+  .investor-holdings-table th, .investor-holdings-table td { padding: 6px 8px; font-size: 11px; }
+  .investor-source-list { margin: 0; padding-left: 17px; color: var(--soft-text); font-size: 11px; line-height: 1.55; }
+  .investor-source-list a { color: var(--blue); }
+  .investor-review-empty { color: var(--yellow); font-size: 11px; font-weight: 800; }
+  .investor-method-note { color: var(--soft-text); font-size: 10px; line-height: 1.45; margin-top: 8px; }
 
   #update-banner {
     background: var(--green-bg); border: 1px solid var(--green); border-left-width: 4px;
@@ -1623,6 +1645,7 @@ async function checkPw(){
         <option value="positions">Sort: Positions</option>
         <option value="turnover">Sort: Turnover</option>
         <option value="hold">Sort: Holding age</option>
+        <option value="performance">Sort: 1Y holdings proxy</option>
       </select>
       <input type="text" class="targ-input" style="width:190px" placeholder="Investor or fund" oninput="setUniverseFilter('query',this.value)">
       <button class="filter-btn" onclick="loadInvestorUniverse()">Refresh</button>
@@ -1643,20 +1666,24 @@ async function checkPw(){
             <tr><td>Median Hold</td><td>The middle consecutive holding age among positions currently owned.</td><td>8q means held through the full two-year measurement window and possibly longer.</td></tr>
             <tr><td>Top 10</td><td>Percentage of the reported book invested in the ten largest positions.</td><td>Higher means more conviction and concentration, but also more single-name risk.</td></tr>
             <tr><td>Evidence</td><td>A qualitative review of letters, interviews, mandate and whether the 13F represents the real strategy.</td><td>Required means the research is not complete. It is not calculated from the Joe Fit score.</td></tr>
+            <tr><td>Top Holdings</td><td>The manager's ten largest long positions in the latest reported 13F, combined by CUSIP.</td><td>This is a delayed filing snapshot, not a live portfolio. Click Joe Fit for the full list and weights.</td></tr>
+            <tr><td>1Y Holdings Proxy</td><td>Weighted one-year price return of the currently reported top holdings for which MOSE has price history.</td><td>It is not the fund's return and excludes dividends, fees, cash, shorts, private assets, and interim trading. Coverage is shown.</td></tr>
+            <tr><td>Advisor Use</td><td>MOSE's assessment of the most useful role this manager can play in Joe's process.</td><td>Use it to decide whether the manager is an idea source, patience benchmark, sizing model, specialist, or cautionary comparison.</td></tr>
             <tr><td>My Pick</td><td>Check keeps the investor for final review; X removes the investor from consideration.</td><td>Your reason and choice autosave. A check is still pending until evidence is completed.</td></tr>
           </tbody>
         </table>
       </div>
     </details>
     <div class="table-wrap">
-      <table>
+      <table class="universe-table">
         <thead><tr>
           <th>Status</th><th>Joe Fit</th><th>Style</th><th>Investor / Fund</th><th style="text-align:right">Book</th>
           <th style="text-align:right">Positions</th><th style="text-align:right">Turnover</th>
           <th style="text-align:right">Median Hold</th><th style="text-align:right">Top 10</th>
+          <th>Top Holdings</th><th>1Y Holdings Proxy</th><th>Advisor Use</th>
           <th>Evidence</th><th>SEC Filing</th><th>My Pick</th>
         </tr></thead>
-        <tbody id="universe-body"><tr><td colspan="12" class="no-data">Loading investor universe...</td></tr></tbody>
+        <tbody id="universe-body"><tr><td colspan="15" class="no-data">Loading investor universe...</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -2186,7 +2213,7 @@ async function checkPw(){
 // compare the build stamp, and offer a genuine reload when they differ.
 // Bump APP_BUILD whenever index.html changes.
 // ============================================================
-const APP_BUILD = 'codex-2026-09-05a';
+const APP_BUILD = 'codex-2026-09-08a';
 
 async function checkForAppUpdate(announce) {
   try {
@@ -3319,14 +3346,26 @@ function holdingsQuarterNoticeHtml() {
 // JOE'S TOP 50 - SEC universe nominations plus explicit review marks
 // ============================================================
 let investorUniverseData = null;
+let investorProfileData = { profiles: {}, methodology: {} };
+let investorPerformanceData = { returns: {} };
 let activeInvestorCik = null;
 const universeFilters = { status: 'all', lane: 'all', sort: 'score', query: '' };
 
 async function loadInvestorUniverse() {
+  const profileRequest = fetch('reference-data/investor-profiles.json?' + Date.now())
+    .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)));
+  const performanceRequest = fetch('reference-data/investor-performance.json?' + Date.now())
+    .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)));
   try {
-    const r = await fetch('reference-data/investor-universe.json?' + Date.now());
+    const [r, profiles, performance] = await Promise.all([
+      fetch('reference-data/investor-universe.json?' + Date.now()),
+      profileRequest.catch(() => ({ profiles: {}, methodology: {} })),
+      performanceRequest.catch(() => ({ returns: {} }))
+    ]);
     if (!r.ok) throw new Error('HTTP ' + r.status);
     investorUniverseData = await r.json();
+    investorProfileData = profiles || { profiles: {}, methodology: {} };
+    investorPerformanceData = performance || { returns: {} };
   } catch (e) {
     investorUniverseData = { candidates: [], error: e.message };
   }
@@ -3363,6 +3402,150 @@ function universeLaneLabel(lane) {
 function universeLaneHtml(row) {
   const lane = row.style_lane || 'outside_profile';
   return `<span class="universe-lane ${escapeAttr(lane)}">${escapeHtml(universeLaneLabel(lane))}</span>`;
+}
+
+function investorProfileFor(row) {
+  return (investorProfileData.profiles || {})[String(row.cik)] || {};
+}
+
+function investorHoldingLabel(holding) {
+  const ticker = canonicalTicker(holding && holding.ticker || '');
+  if (ticker) return ticker;
+  const company = String(holding && holding.company || '').trim();
+  return company || (holding && holding.cusip ? `CUSIP ${holding.cusip}` : 'Unresolved');
+}
+
+function investorTopHoldingsHtml(row, limit = 3) {
+  const holdings = (row.top_holdings || []).slice(0, limit);
+  if (!holdings.length) return '<span class="muted" style="font-size:10px">Refresh pending</span>';
+  const more = Math.max(0, (row.top_holdings || []).length - holdings.length);
+  return `<div class="universe-holdings">${holdings.map(holding =>
+    `<span class="universe-holding-chip" title="${escapeAttr(holding.company || investorHoldingLabel(holding))}">${escapeHtml(investorHoldingLabel(holding))}</span>`
+  ).join('')}${more ? `<span class="universe-holding-more">+${more}</span>` : ''}</div>`;
+}
+
+function investorTickerOneYearReturn(ticker) {
+  const key = canonicalTicker(ticker || '');
+  const compact = (investorPerformanceData.returns || {})[key];
+  if (compact && Number.isFinite(Number(compact.one_year_price_return_pct))) {
+    return {
+      value: Number(compact.one_year_price_return_pct),
+      from: compact.from || '',
+      to: compact.to || ''
+    };
+  }
+  const history = (priceHistoryData[key] || priceHistoryData[ticker] || [])
+    .filter(point => point && Number.isFinite(Number(point.close)) && point.date)
+    .slice()
+    .sort((a, b) => String(a.date).localeCompare(String(b.date)));
+  if (history.length < 2) return null;
+  const last = history[history.length - 1];
+  const cutoff = new Date(`${last.date}T00:00:00Z`);
+  cutoff.setUTCDate(cutoff.getUTCDate() - 365);
+  const cutoffText = cutoff.toISOString().slice(0, 10);
+  const first = history.find(point => String(point.date) >= cutoffText) || history[0];
+  const firstClose = Number(first.close);
+  const lastClose = Number(last.close);
+  if (!(firstClose > 0) || !Number.isFinite(lastClose) || first.date === last.date) return null;
+  return { value: (lastClose / firstClose - 1) * 100, from: first.date, to: last.date };
+}
+
+function investorPerformanceProxy(row) {
+  let weightedReturn = 0;
+  let coveredWeight = 0;
+  let latestDate = '';
+  let earliestDate = '';
+  const components = [];
+  (row.top_holdings || []).forEach(holding => {
+    const weight = Number(holding.weight);
+    if (!(weight > 0) || !holding.ticker) return;
+    const result = investorTickerOneYearReturn(holding.ticker);
+    if (!result) return;
+    weightedReturn += result.value * weight;
+    coveredWeight += weight;
+    latestDate = latestDate > result.to ? latestDate : result.to;
+    earliestDate = !earliestDate || result.from < earliestDate ? result.from : earliestDate;
+    components.push({ ticker: canonicalTicker(holding.ticker), weight, return_pct: result.value });
+  });
+  if (coveredWeight < 0.20) return null;
+  return {
+    value: weightedReturn / coveredWeight,
+    coverage: coveredWeight,
+    from: earliestDate,
+    to: latestDate,
+    components
+  };
+}
+
+function investorPerformanceHtml(row) {
+  const proxy = investorPerformanceProxy(row);
+  if (!proxy) return '<div class="universe-proxy"><span class="muted">Not loaded</span><small>Needs price coverage</small></div>';
+  const cls = proxy.value >= 0 ? 'up' : 'down';
+  const sign = proxy.value >= 0 ? '+' : '';
+  return `<div class="universe-proxy"><span class="${cls}">${sign}${proxy.value.toFixed(1)}%</span><small>${(proxy.coverage * 100).toFixed(0)}% of book covered</small></div>`;
+}
+
+function investorAdvisorAnalysis(row) {
+  const uses = [];
+  const cautions = ['13F positions arrive with a reporting delay and do not show the whole portfolio.'];
+  const turnover = Number(row.turnover_8q);
+  const top10 = Number(row.top10_weight);
+  const positions = Number(row.positions);
+  if (Number.isFinite(turnover) && turnover <= 0.12) uses.push('Patience benchmark');
+  if (Number.isFinite(top10) && top10 >= 0.75) uses.push('High-conviction sizing model');
+  if (Number.isFinite(positions) && positions <= 15) uses.push('Focused idea source');
+  if (row.style_lane === 'adventurous_value') uses.push('Asymmetric and contrarian ideas');
+  if (row.style_lane === 'approved_outlier') uses.push('Specialist perspective');
+  if (Number.isFinite(positions) && positions > 30) {
+    uses.push('Broad idea discovery');
+    cautions.push('The reported book is too broad to clone position-for-position.');
+  }
+  if (Number.isFinite(top10) && top10 >= 0.90) cautions.push('Extreme concentration can magnify manager-specific mistakes.');
+  if (Number.isFinite(turnover) && turnover > 0.25) cautions.push('Higher turnover makes a delayed 13F harder to follow safely.');
+  if (!uses.length) uses.push('Independent idea comparison');
+  return {
+    headline: uses[0],
+    uses: Array.from(new Set(uses)),
+    cautions: Array.from(new Set(cautions))
+  };
+}
+
+function investorEvidenceList(items, emptyText) {
+  if (!Array.isArray(items) || !items.length) return `<div class="investor-review-empty">${escapeHtml(emptyText)}</div>`;
+  return `<ul class="investor-source-list">${items.map(item => {
+    const value = typeof item === 'string' ? { text: item } : item;
+    const suffix = value.date ? ` (${escapeHtml(value.date)})` : '';
+    const source = value.source_url ? ` <a href="${escapeAttr(value.source_url)}" target="_blank" rel="noopener">source</a>` : '';
+    return `<li>${escapeHtml(value.text || '')}${suffix}${source}</li>`;
+  }).join('')}</ul>`;
+}
+
+function investorTopHoldingsTable(row) {
+  const holdings = row.top_holdings || [];
+  if (!holdings.length) return '<div class="investor-review-empty">Latest holdings refresh pending.</div>';
+  return `<div class="table-wrap"><table class="investor-holdings-table"><thead><tr><th>#</th><th>Holding</th><th>Ticker</th><th style="text-align:right">Weight</th><th style="text-align:right">Reported value</th></tr></thead><tbody>${holdings.map((holding, index) => `<tr>
+    <td>${index + 1}</td>
+    <td>${escapeHtml(holding.company || holding.cusip || 'Unresolved security')}<div class="muted" style="font-size:9px">${holding.cusip ? `CUSIP ${escapeHtml(holding.cusip)}` : ''}</div></td>
+    <td><span class="universe-holding-chip">${escapeHtml(investorHoldingLabel(holding))}</span></td>
+    <td style="text-align:right">${Number.isFinite(Number(holding.weight)) ? (Number(holding.weight) * 100).toFixed(1) + '%' : '—'}</td>
+    <td style="text-align:right">${universeMoney(holding.value_usd)}</td>
+  </tr>`).join('')}</tbody></table></div>`;
+}
+
+function investorVerifiedReturnsHtml(profile) {
+  const returns = profile.performance && profile.performance.verified_fund_returns;
+  if (!returns) return '<div class="investor-review-empty">No independently verifiable fund record has been entered yet.</div>';
+  const fields = [
+    ['1 year', returns.one_year],
+    ['3 year annualized', returns.three_year_annualized],
+    ['5 year annualized', returns.five_year_annualized],
+    ['10 year annualized', returns.ten_year_annualized],
+    ['15 year annualized', returns.fifteen_year_annualized],
+    ['Since inception', returns.since_inception_annualized]
+  ].filter(([, value]) => value != null);
+  if (!fields.length) return '<div class="investor-review-empty">The source is recorded, but comparable return periods are not available.</div>';
+  return `<div class="investor-profile-grid">${fields.map(([label, value]) => `<div class="investor-profile-field"><strong>${escapeHtml(label)}</strong>${escapeHtml(String(value))}</div>`).join('')}</div>
+    <div class="investor-method-note">${escapeHtml(returns.basis || 'Fund-reported performance')} · as of ${escapeHtml(returns.as_of || 'not stated')} ${returns.source_url ? `· <a class="universe-sec-link" href="${escapeAttr(returns.source_url)}" target="_blank" rel="noopener">original source</a>` : ''}</div>`;
 }
 
 function universeEvidenceHtml(row) {
@@ -3413,6 +3596,9 @@ function renderInvestorScorecard() {
   const medianHold = row.median_hold_q == null ? 'not loaded' : row.median_hold_q + ' quarters';
   const fundExposure = row.fund_value_ratio == null ? 'not loaded' : (row.fund_value_ratio * 100).toFixed(1) + '%';
   const baseline = investorUniverseData?.style_profile?.archetype_baseline || {};
+  const profile = investorProfileFor(row);
+  const proxy = investorPerformanceProxy(row);
+  const advisor = investorAdvisorAnalysis(row);
 
   setText('investor-scorecard-name', row.name || row.fund || row.cik);
   setText('investor-scorecard-fund', `${row.fund || ''} · CIK ${row.cik || ''}`);
@@ -3426,7 +3612,9 @@ function renderInvestorScorecard() {
     metric('Positions', row.positions ?? 'not loaded'),
     metric('Quarterly Turnover', turnover),
     metric('Median Hold', medianHold),
-    metric('Top 10 Weight', top10)
+    metric('Top 10 Weight', top10),
+    metric('1Y Holdings Proxy', proxy ? `${proxy.value >= 0 ? '+' : ''}${proxy.value.toFixed(1)}%` : 'not loaded'),
+    metric('Proxy Coverage', proxy ? `${(proxy.coverage * 100).toFixed(0)}% of book` : 'not loaded')
   ].join('');
 
   const barsEl = document.getElementById('investor-scorecard-bars');
@@ -3440,10 +3628,69 @@ function renderInvestorScorecard() {
 
   const evidence = investorUniverseData?.style_profile?.human_evidence_required || [];
   const evidenceEl = document.getElementById('investor-scorecard-evidence');
-  if (evidenceEl) evidenceEl.innerHTML = `
-    <div class="symbol-note"><strong>Evidence status</strong>${row.philosophy_evidence_status === 'required_before_approval' ? 'Required before approval. This qualitative review has not been completed yet.' : row.philosophy_evidence_status === 'grandfathered_refresh_due' ? 'Existing roster member; evidence refresh is due.' : escapeHtml(row.philosophy_evidence_status || 'Not recorded')}</div>
-    <div class="symbol-note"><strong>Evidence checklist</strong><ul class="universe-evidence-list">${evidence.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul></div>
-    <div class="symbol-note"><strong>Comparison baseline</strong>${baseline.positions || '—'} positions · ${universeMoney(baseline.total_value_usd)} book · ${baseline.top10_weight == null ? '—' : (baseline.top10_weight * 100).toFixed(1) + '%'} top 10 · ${baseline.average_turnover == null ? '—' : (baseline.average_turnover * 100).toFixed(1) + '%'} turnover · ${baseline.median_hold_quarters || '—'}q median hold.</div>`;
+  if (evidenceEl) {
+    const contact = { ...(row.business_contact || {}), ...(profile.contact || {}) };
+    const reputation = profile.reputation || {};
+    const vehicles = Array.isArray(profile.vehicle_types) && profile.vehicle_types.length
+      ? profile.vehicle_types.join(', ')
+      : 'Needs Form ADV and manager-source review';
+    const officialSources = profile.sources || [];
+    const contactSource = contact.source_url || (row.filing_urls || [])[0];
+    evidenceEl.innerHTML = `
+      <div class="investor-profile-section">
+        <h3>Latest top 10 reported holdings</h3>
+        ${investorTopHoldingsTable(row)}
+        <div class="investor-method-note">Combined by CUSIP from the ${escapeHtml(row.latest_quarter || 'latest')} 13F. The filing is delayed and may not reflect today's positions.</div>
+      </div>
+      <div class="investor-profile-section">
+        <h3>Performance</h3>
+        <div class="investor-profile-grid">
+          <div class="investor-profile-field"><strong>Calculated 1Y holdings proxy</strong>${proxy ? `${proxy.value >= 0 ? '+' : ''}${proxy.value.toFixed(1)}% with ${(proxy.coverage * 100).toFixed(0)}% of the reported book covered, through ${escapeHtml(proxy.to || 'latest available close')}` : 'Not enough price-history coverage yet'}</div>
+          <div class="investor-profile-field"><strong>What the proxy is</strong>Current top holdings weighted by their latest reported 13F weights. Price return only.</div>
+          <div class="investor-profile-field"><strong>What it is not</strong>Not the fund return. It excludes fees, dividends, cash, shorts, private assets, foreign holdings, and trading between reports.</div>
+        </div>
+        <h3 style="margin-top:13px">Verified manager or fund track record</h3>
+        ${investorVerifiedReturnsHtml(profile)}
+      </div>
+      <div class="investor-profile-section">
+        <h3>How this manager can help Joe</h3>
+        <div class="investor-profile-grid">
+          <div class="investor-profile-field"><strong>Best use</strong>${escapeHtml(advisor.headline)}</div>
+          <div class="investor-profile-field"><strong>Useful roles</strong>${escapeHtml(advisor.uses.join(' · '))}</div>
+          <div class="investor-profile-field"><strong>Do not copy blindly</strong>${escapeHtml(advisor.cautions.join(' '))}</div>
+        </div>
+      </div>
+      <div class="investor-profile-section">
+        <h3>Firm and vehicle profile</h3>
+        <div class="investor-profile-grid">
+          <div class="investor-profile-field"><strong>Reporting entity</strong>${escapeHtml(row.fund || row.name || 'Not loaded')}</div>
+          <div class="investor-profile-field"><strong>Manager type</strong>${escapeHtml(profile.firm_type || 'Institutional investment manager filing Form 13F')}</div>
+          <div class="investor-profile-field"><strong>Vehicles</strong>${escapeHtml(vehicles)}</div>
+          <div class="investor-profile-field"><strong>Availability to Joe</strong>${escapeHtml(profile.availability || 'Not researched yet')}</div>
+          <div class="investor-profile-field"><strong>Reported 13F book</strong>${universeMoney(row.total_value_usd)} across ${escapeHtml(String(row.positions ?? 'unknown'))} positions</div>
+          <div class="investor-profile-field"><strong>Public business contact</strong>${escapeHtml([contact.phone, contact.address].filter(Boolean).join(' · ') || 'Not loaded yet')}${contactSource ? ` · <a class="universe-sec-link" href="${escapeAttr(contactSource)}" target="_blank" rel="noopener">source</a>` : ''}</div>
+        </div>
+        <div class="investor-method-note">Fund labels such as hedge fund, mutual fund, private fund, separately managed account, or public holding company require Form ADV and official-manager verification. A 13F alone does not establish the vehicle type.</div>
+      </div>
+      <div class="investor-profile-section">
+        <h3>Strengths, risks, and documented controversies</h3>
+        <div class="investor-profile-grid">
+          <div><div class="universe-scorebar-label" style="margin-bottom:6px">Strengths</div>${investorEvidenceList(reputation.strengths, 'Independent review not completed yet.')}</div>
+          <div><div class="universe-scorebar-label" style="margin-bottom:6px">Risks and limitations</div>${investorEvidenceList(reputation.risks, 'Independent review not completed yet.')}</div>
+          <div><div class="universe-scorebar-label" style="margin-bottom:6px">Documented controversies</div>${investorEvidenceList(reputation.controversies, 'No reviewed entry yet; this does not mean none exist.')}</div>
+        </div>
+        <div class="investor-method-note">Only dated, attributable reporting belongs here. Anonymous posts and rumors are excluded.</div>
+      </div>
+      <div class="investor-profile-section">
+        <h3>Evidence and sources</h3>
+        <div class="investor-profile-grid">
+          <div><div class="universe-scorebar-label" style="margin-bottom:6px">Approval checklist</div><ul class="universe-evidence-list">${evidence.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul></div>
+          <div><div class="universe-scorebar-label" style="margin-bottom:6px">Profile status</div>${row.philosophy_evidence_status === 'required_before_approval' ? '<span class="down">Required before approval.</span> Qualitative research is incomplete.' : row.philosophy_evidence_status === 'grandfathered_refresh_due' ? '<span class="neutral">Refresh due.</span> Existing roster member requires a current evidence review.' : escapeHtml(row.philosophy_evidence_status || 'Not recorded')}</div>
+          <div><div class="universe-scorebar-label" style="margin-bottom:6px">Official and reviewed sources</div>${investorEvidenceList(officialSources, 'Profile research sources have not been entered yet.')}</div>
+        </div>
+        <div class="investor-method-note">Joe-style baseline: ${baseline.positions || '—'} positions · ${universeMoney(baseline.total_value_usd)} book · ${baseline.top10_weight == null ? '—' : (baseline.top10_weight * 100).toFixed(1) + '%'} top 10 · ${baseline.average_turnover == null ? '—' : (baseline.average_turnover * 100).toFixed(1) + '%'} turnover · ${baseline.median_hold_quarters || '—'}q median hold. <a class="universe-sec-link" href="https://adviserinfo.sec.gov/firm" target="_blank" rel="noopener">Search SEC IAPD</a>.</div>
+      </div>`;
+  }
 
   const review = investorReviewMarks[String(row.cik)];
   const filingUrl = (row.filing_urls || [])[0];
@@ -3509,11 +3756,13 @@ function renderInvestorUniverse() {
   const rowsAll = (data.candidates || []).slice();
   const pending = Object.keys(investorReviewMarks).length;
   const stats = document.getElementById('universe-stats');
+  const researchedProfiles = rowsAll.filter(row => investorProfileFor(row).research_status === 'reviewed').length;
   if (stats) stats.innerHTML = `
     <div class="stat-card"><div class="stat-val green">${data.approved_count ?? 0}</div><div class="stat-label">Approved of ${data.target_approved_count || 50}</div></div>
     <div class="stat-card"><div class="stat-val blue">${data.candidate_count ?? 0}</div><div class="stat-label">Screened nominations</div></div>
     <div class="stat-card"><div class="stat-val green">${data.core_candidate_count ?? 0}</div><div class="stat-label">Core patient value</div></div>
     <div class="stat-card"><div class="stat-val orange">${data.adventurous_candidate_count ?? 0}</div><div class="stat-label">Adventurous value</div></div>
+    <div class="stat-card"><div class="stat-val blue">${researchedProfiles}</div><div class="stat-label">Profiles researched</div></div>
     <div class="stat-card"><div class="stat-val orange">${pending}</div><div class="stat-label">Pending choices</div></div>`;
   const asof = document.getElementById('universe-asof');
   if (asof) asof.textContent = data.source && data.source.latest_report_quarter
@@ -3529,7 +3778,7 @@ function renderInvestorUniverse() {
       : 'Awaiting the first independent SEC universe scan.';
   }
   if (data.error) {
-    body.innerHTML = `<tr><td colspan="12" class="no-data">Investor universe not loaded: ${escapeHtml(data.error)}</td></tr>`;
+    body.innerHTML = `<tr><td colspan="15" class="no-data">Investor universe not loaded: ${escapeHtml(data.error)}</td></tr>`;
     return;
   }
   let rows = rowsAll;
@@ -3543,11 +3792,12 @@ function renderInvestorUniverse() {
     name: (a, b) => String(a.name || '').localeCompare(String(b.name || '')),
     positions: (a, b) => Number(a.positions || 0) - Number(b.positions || 0),
     turnover: (a, b) => Number(a.turnover_8q ?? 99) - Number(b.turnover_8q ?? 99),
-    hold: (a, b) => Number(b.median_hold_q || 0) - Number(a.median_hold_q || 0)
+    hold: (a, b) => Number(b.median_hold_q || 0) - Number(a.median_hold_q || 0),
+    performance: (a, b) => Number(investorPerformanceProxy(b)?.value ?? -999) - Number(investorPerformanceProxy(a)?.value ?? -999)
   };
   rows.sort(sorters[universeFilters.sort] || sorters.score);
   if (!rows.length) {
-    body.innerHTML = '<tr><td colspan="12" class="no-data">No investors match this view.</td></tr>';
+    body.innerHTML = '<tr><td colspan="15" class="no-data">No investors match this view.</td></tr>';
     return;
   }
   body.innerHTML = rows.map(row => {
@@ -3564,6 +3814,9 @@ function renderInvestorUniverse() {
       <td style="text-align:right">${row.turnover_8q == null ? 'not loaded' : (row.turnover_8q * 100).toFixed(1) + '%'}</td>
       <td style="text-align:right">${row.median_hold_q == null ? 'not loaded' : row.median_hold_q + 'q'}</td>
       <td style="text-align:right">${row.top10_weight == null ? 'not loaded' : (row.top10_weight * 100).toFixed(1) + '%'}</td>
+      <td>${investorTopHoldingsHtml(row)}</td>
+      <td>${investorPerformanceHtml(row)}</td>
+      <td><button class="universe-advisor-button" onclick="openInvestorScorecard('${escapeAttr(String(row.cik))}')" title="Open advisor-use profile"><div class="universe-advisor-use">${escapeHtml(investorAdvisorAnalysis(row).headline)}<div class="universe-score-hint">open details</div></div></button></td>
       <td>${row.meets_quantitative_screen ? universeEvidenceHtml(row) : `<div class="universe-failures">${escapeHtml(failures.join(' · ') || 'Needs review')}</div>`}</td>
       <td>${filingUrl ? `<a class="universe-sec-link" href="${escapeAttr(filingUrl)}" target="_blank" rel="noopener">Open original</a>` : '<span class="muted">Not loaded</span>'}</td>
       <td><div class="universe-actions">
@@ -5923,6 +6176,8 @@ async function loadPriceHistory() {
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     const data = await r.json();
     priceHistoryData = data.histories || {};
+    if (investorUniverseData) renderInvestorUniverse();
+    if (activeInvestorCik) renderInvestorScorecard();
   } catch(e) {
     priceHistoryData = {};
   }
@@ -8323,7 +8578,7 @@ window.addEventListener('DOMContentLoaded', () => {
         <div class="symbol-chart-toolbar"><strong>Joe Fit point breakdown</strong><span class="muted" style="font-size:11px">Maximum 100 points</span></div>
         <div class="universe-scorecard-bars" id="investor-scorecard-bars"></div>
       </div>
-      <div class="symbol-notes" id="investor-scorecard-evidence"></div>
+      <div id="investor-scorecard-evidence"></div>
       <div class="universe-scorecard-actions" id="investor-scorecard-actions"></div>
     </div>
   </div>

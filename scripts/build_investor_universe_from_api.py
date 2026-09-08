@@ -195,6 +195,7 @@ def snapshot_from_filing_set(
     refresh: bool,
 ) -> dict[str, Any]:
     holdings: dict[str, float] = defaultdict(float)
+    holding_details: dict[str, dict[str, Any]] = {}
     long_value = 0.0
     option_value = 0.0
     fund_value = 0.0
@@ -208,12 +209,30 @@ def snapshot_from_filing_set(
             if not cusip:
                 continue
             holdings[cusip] += value
+            holding_details[cusip] = {
+                "ticker": str(row.get("ticker") or "").upper().strip() or None,
+                "company": str(row.get("name_of_issuer") or "").strip() or cusip,
+                "security_class": str(row.get("title_of_class") or "").strip() or None,
+            }
             long_value += value
             issuer = f" {str(row.get('name_of_issuer') or '').upper()} "
             title = f" {str(row.get('title_of_class') or '').upper()} "
             if any(pattern in issuer or pattern in title for pattern in FUND_NAME_PATTERNS):
                 fund_value += value
     latest = filing_set[-1]
+    top_holdings = []
+    for cusip, value_usd in sorted(holdings.items(), key=lambda item: item[1], reverse=True)[:10]:
+        detail = holding_details.get(cusip, {})
+        top_holdings.append(
+            {
+                "cusip": cusip,
+                "ticker": detail.get("ticker"),
+                "company": detail.get("company") or cusip,
+                "security_class": detail.get("security_class"),
+                "value_usd": round(value_usd),
+                "weight": round(value_usd / long_value, 6) if long_value else None,
+            }
+        )
     return {
         "name": latest.get("company_name") or clean_cik(str(latest.get("cik") or "")),
         "holdings": dict(holdings),
@@ -222,6 +241,13 @@ def snapshot_from_filing_set(
         "option_value_usd": option_value,
         "long_only_value_ratio": long_value / (long_value + option_value) if long_value + option_value else 0.0,
         "fund_value_ratio": fund_value / long_value if long_value else 0.0,
+        "top_holdings": top_holdings,
+        "business_contact": {
+            "address": latest.get("business_address") or None,
+            "phone": latest.get("business_phone") or None,
+            "source": "latest SEC Form 13F filing metadata",
+            "source_url": latest.get("url") or None,
+        },
         "filing_urls": [row.get("url") for row in filing_set if row.get("url")],
     }
 
@@ -394,6 +420,16 @@ def build_api_universe(
     for rank, row in enumerate(qualified, start=1):
         row["candidate_rank"] = rank
 
+    approved_latest: dict[str, dict[str, Any]] = {}
+    for cik in approved_config:
+        selected = selected_filing_set(by_cik.get(cik, []))
+        if not selected:
+            continue
+        try:
+            approved_latest[cik] = snapshot_from_filing_set(selected, cache_dir, refresh)
+        except RuntimeError as exc:
+            print(f"  approved detail refresh skipped for {cik}: {exc}", flush=True)
+
     approved_rows = []
     for row in existing.get("candidates", []):
         if row.get("status") != "approved":
@@ -406,6 +442,11 @@ def build_api_universe(
         row["profile_fit_components"] = fit_components
         row["style_lane"] = lane if lane != "outside_profile" else "approved_outlier"
         row["philosophy_evidence_status"] = "grandfathered_refresh_due"
+        latest_detail = approved_latest.get(clean_cik(str(row.get("cik") or "")), {})
+        if latest_detail:
+            row["top_holdings"] = latest_detail.get("top_holdings") or row.get("top_holdings") or []
+            row["business_contact"] = latest_detail.get("business_contact")
+            row["filing_urls"] = latest_detail.get("filing_urls") or row.get("filing_urls") or []
         approved_rows.append(row)
     approved_rows.sort(key=lambda row: (-row["profile_fit_score"], row["name"]))
 

@@ -38,6 +38,7 @@ from sync_13f_tracker_to_supabase import (  # noqa: E402
 )
 from sync_investor_intelligence_to_supabase import candidate_rows, source_rows  # noqa: E402
 from validate_investor_data import build_audit  # noqa: E402
+from update_investor_performance import normalized_ticker, one_year_return  # noqa: E402
 
 
 def tsv_bytes(fieldnames: list[str], rows: list[dict[str, object]]) -> bytes:
@@ -154,6 +155,22 @@ def make_bulk_zip(
 
 
 class UniverseTests(unittest.TestCase):
+    def test_investor_performance_rejects_cusip_as_ticker(self) -> None:
+        self.assertIsNone(normalized_ticker("02079K305"))
+        self.assertEqual(normalized_ticker("BRK.B"), "BRK-B")
+
+    def test_investor_performance_uses_one_year_price_return(self) -> None:
+        result = one_year_return(
+            [
+                {"date": "2025-08-31", "close": 100},
+                {"date": "2025-09-08", "close": 110},
+                {"date": "2026-09-08", "close": 121},
+            ]
+        )
+        self.assertIsNotNone(result)
+        self.assertAlmostEqual(result["one_year_price_return_pct"], 10.0)
+        self.assertEqual(result["from"], "2025-09-08")
+
     def test_api_additive_amendment_keeps_original_filing(self) -> None:
         rows = [
             {
@@ -307,6 +324,9 @@ class UniverseTests(unittest.TestCase):
             self.assertEqual(row["median_hold_q"], 8.0)
             self.assertEqual(row["turnover_8q"], 0.0)
             self.assertEqual(row["total_value_usd"], 1_000_000_000)
+            self.assertEqual(len(row["top_holdings"]), 10)
+            self.assertEqual(row["top_holdings"][0]["value_usd"], 100_000_000)
+            self.assertAlmostEqual(row["top_holdings"][0]["weight"], 0.1)
             self.assertEqual(row["style_lane"], "core_patient_value")
             self.assertTrue(row["filing_urls"][0].startswith("https://www.sec.gov/Archives/edgar/data/"))
             self.assertEqual(json.loads(output.read_text())["source"]["latest_report_quarter"], "2026-Q1")

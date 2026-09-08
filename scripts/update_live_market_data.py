@@ -393,6 +393,7 @@ def main() -> int:
         })
 
     histories: dict[str, list[dict]] = {}
+    history_generated_at = None
     if not history_is_fresh():
         print("refreshing daily price history (1y) ...")
         for symbol, ticker in sorted(symbol_map.items(), key=lambda item: item[1]):
@@ -403,8 +404,11 @@ def main() -> int:
             except Exception as exc:
                 errors.append(f"history {ticker}: {exc}")
             time.sleep(REQUEST_SPACING_SECONDS)
+        history_generated_at = datetime.now(timezone.utc).isoformat()
     else:
-        histories = load_json(HISTORY_OUTPUT, {}).get("histories", {})
+        existing_history = load_json(HISTORY_OUTPUT, {})
+        histories = existing_history.get("histories", {})
+        history_generated_at = existing_history.get("generated_at")
 
     now = datetime.now(timezone.utc)
     eastern_now = now.astimezone(ZoneInfo("America/New_York"))
@@ -416,7 +420,7 @@ def main() -> int:
         "quotes": quotes,
     }, indent=2) + "\n")
     HISTORY_OUTPUT.write_text(json.dumps({
-        "generated_at": now.isoformat(),
+        "generated_at": history_generated_at or now.isoformat(),
         "source": "yahoo-history",
         "histories": histories,
     }, indent=2) + "\n")

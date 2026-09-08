@@ -32,6 +32,7 @@ ROOT = Path(__file__).resolve().parents[1]
 POLICY_PATH = ROOT / "reference-data" / "investor-qualification-policy.json"
 DECISIONS_PATH = ROOT / "reference-data" / "investor-decisions.json"
 CIK_MAP_PATH = ROOT / "reference-data" / "cik-map.json"
+TICKER_MAP_PATH = ROOT / "reference-data" / "ticker-map.json"
 OUTPUT_PATH = ROOT / "reference-data" / "investor-universe.json"
 TRACKED_HISTORY_PATH = ROOT / "data" / "sec-13f-filings.json"
 DATASET_PAGE = "https://www.sec.gov/data-research/sec-markets-data/form-13f-data-sets"
@@ -267,6 +268,7 @@ def scan_archive(
     with zipfile.ZipFile(path) as archive:
         metadata = choose_accessions(archive)
         holdings: dict[str, dict[str, float]] = defaultdict(lambda: defaultdict(float))
+        holding_details: dict[str, dict[str, dict[str, str]]] = defaultdict(dict)
         position_cusips: dict[str, set[str]] = defaultdict(set)
         option_value: dict[str, float] = defaultdict(float)
         long_value: dict[str, float] = defaultdict(float)
@@ -291,6 +293,10 @@ def scan_archive(
             position_cusips[cik].add(cusip)
             if include_holdings:
                 holdings[cik][cusip] += value_usd
+                holding_details[cik][cusip] = {
+                    "company": row.get("NAMEOFISSUER", "").strip(),
+                    "security_class": row.get("TITLEOFCLASS", "").strip(),
+                }
 
         portfolios: dict[str, dict[str, Any]] = {}
         seen_ciks = set(long_value) | set(option_value) | set(holdings)
@@ -298,6 +304,19 @@ def scan_archive(
             position_values = dict(holdings.get(cik, {}))
             total_long = long_value.get(cik, 0.0)
             total_options = option_value.get(cik, 0.0)
+            top_holdings = []
+            for cusip, value_usd in sorted(position_values.items(), key=lambda item: item[1], reverse=True)[:10]:
+                detail = holding_details.get(cik, {}).get(cusip, {})
+                top_holdings.append(
+                    {
+                        "cusip": cusip,
+                        "ticker": None,
+                        "company": detail.get("company") or cusip,
+                        "security_class": detail.get("security_class") or None,
+                        "value_usd": round(value_usd),
+                        "weight": round(value_usd / total_long, 6) if total_long else None,
+                    }
+                )
             portfolios[cik] = {
                 "name": metadata.manager_names.get(cik, cik),
                 "holdings": position_values,
@@ -306,6 +325,7 @@ def scan_archive(
                 "option_value_usd": total_options,
                 "long_only_value_ratio": total_long / (total_long + total_options) if total_long + total_options else 0.0,
                 "fund_value_ratio": fund_value.get(cik, 0.0) / total_long if total_long else 0.0,
+                "top_holdings": top_holdings,
                 "filing_urls": [
                     f"https://www.sec.gov/Archives/edgar/data/{cik}/{accession.replace('-', '')}/{accession}.txt"
                     for accession in metadata.accessions_by_cik.get(cik, [])
@@ -417,6 +437,13 @@ def score_manager(
     approved_row = approved.get(cik, {})
     display_name = approved_row.get("name") or latest.get("name") or cik
     fund = approved_row.get("fund") or latest.get("name") or display_name
+    ticker_map = load_json(TICKER_MAP_PATH, {})
+    top_holdings = []
+    for holding in latest.get("top_holdings") or []:
+        company = str(holding.get("company") or "").strip()
+        cusip = str(holding.get("cusip") or "").upper().replace(" ", "")
+        ticker = holding.get("ticker") or ticker_map.get(cusip) or ticker_map.get(company.upper())
+        top_holdings.append({**holding, "ticker": ticker})
     return {
         "cik": cik,
         "name": display_name,
@@ -439,6 +466,8 @@ def score_manager(
         "approval_basis": decision.get("decision") or ("existing_cik_map" if is_grandfathered else None),
         "approved_at": decision.get("decided_at"),
         "review_note": decision.get("reason") or approved_row.get("note"),
+        "top_holdings": top_holdings,
+        "business_contact": latest.get("business_contact") or None,
         "filing_urls": latest.get("filing_urls") or [],
         "source": "SEC Form 13F bulk data sets",
     }
@@ -620,10 +649,29 @@ def build_tracked_bootstrap(output_path: Path = OUTPUT_PATH) -> dict[str, Any]:
             if not quarter:
                 continue
             holdings: dict[str, float] = defaultdict(float)
+            holding_details: dict[str, dict[str, Any]] = {}
             for holding in filing.get("holdings", []):
                 cusip = str(holding.get("cusip") or "").upper().replace(" ", "")
                 if cusip:
                     holdings[cusip] += float(holding.get("market_value") or 0)
+                    holding_details[cusip] = {
+                        "ticker": holding.get("ticker"),
+                        "company": holding.get("company") or cusip,
+                    }
+            total_value = sum(holdings.values())
+            top_holdings = []
+            for cusip, value_usd in sorted(holdings.items(), key=lambda item: item[1], reverse=True)[:10]:
+                detail = holding_details.get(cusip, {})
+                top_holdings.append(
+                    {
+                        "cusip": cusip,
+                        "ticker": detail.get("ticker"),
+                        "company": detail.get("company") or cusip,
+                        "security_class": None,
+                        "value_usd": round(value_usd),
+                        "weight": round(value_usd / total_value, 6) if total_value else None,
+                    }
+                )
             snapshots_by_cik[cik].append(
                 (
                     quarter,
@@ -631,8 +679,9 @@ def build_tracked_bootstrap(output_path: Path = OUTPUT_PATH) -> dict[str, Any]:
                         "name": investor.get("name") or investor.get("fund") or cik,
                         "holdings": dict(holdings),
                         "positions": len(holdings),
-                        "total_value_usd": sum(holdings.values()),
+                        "total_value_usd": total_value,
                         "long_only_value_ratio": None,
+                        "top_holdings": top_holdings,
                     },
                 )
             )

@@ -33,17 +33,20 @@ jobs:
           python-version: "3.12"
       - name: Refresh quote snapshot
         run: python scripts/update_live_market_data.py
+      - name: Refresh Top 50 holdings performance snapshot
+        if: success()
+        run: python scripts/update_investor_performance.py
       # Commit even when the refresh fails so pipeline-status.json reaches the
       # dashboard and the stale-data banner can explain what happened.
       - name: Commit quote snapshot
         if: always()
         run: |
-          if git diff --quiet live-quotes.json symbol-snapshots.json price-history.json pipeline-status.json; then
+          if git diff --quiet live-quotes.json symbol-snapshots.json price-history.json pipeline-status.json reference-data/investor-performance.json; then
             echo "No quote changes"
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add live-quotes.json symbol-snapshots.json price-history.json pipeline-status.json
+            git add live-quotes.json symbol-snapshots.json price-history.json pipeline-status.json reference-data/investor-performance.json
             git commit -m "Update live market data"
             git push origin main
             git push origin HEAD:gh-pages --force
