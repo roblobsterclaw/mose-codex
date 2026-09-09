@@ -84,7 +84,7 @@ as unresolved and are not guessed.
 
 ## Approval operation
 
-In the app, open **Super Investors > Top 50**. **My list** is the default view:
+In the app, open **Super Investors > Joe's List**. **My list** is the default view:
 it includes every investor except those with an explicit X. Use the check to
 record an explicit keep, the X to remove a manager, and the clear button to
 return a manager to automatic inclusion. The **Removed by Joe** filter makes
