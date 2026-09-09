@@ -1,10 +1,16 @@
-# Joe Lynch Top 50 Super Investors
+# Joe Lynch Super Investor List
 
 ## Purpose
 
-MOSE Codex Lab maintains a deliberately small approved roster of 13F filers.
-The target is 50. The SEC screen nominates candidates; Joe approves or rejects
-every addition. No score can approve a manager automatically.
+MOSE Codex Lab maintains a reviewable working list of 13F filers. The current
+screen may contain more than 50 names while Joe decides how broad the final
+roster should be. Filing behavior nominates candidates; it does not silently
+remove a manager from Joe's working list.
+
+The app uses an inclusive default: every unmarked investor is included. Joe's
+explicit X removes an investor, and Joe's check records an explicit keep. A
+cleared choice returns the investor to the automatic included state. This lets
+Joe review the strongest names without having to approve every row manually.
 
 ## Joe-style nomination screen
 
@@ -31,7 +37,7 @@ drawdown skill. A 13F cannot establish those facts by itself.
 
 ## Human qualification review
 
-Before approval, review primary-source investment letters, interviews, the
+Before making a final roster decision, review primary-source investment letters, interviews, the
 fund mandate, succession, use of shorts and derivatives, private or foreign
 holdings omitted from 13F, and whether the public filing is representative
 enough to follow. Evidence must show a valuation-aware process and a willingness
@@ -78,10 +84,16 @@ as unresolved and are not guessed.
 
 ## Approval operation
 
-In the app, open **Super Investors > Top 50**, filter by Core Patient Value or
-Adventurous Value, and mark candidates with the check or X controls. Picks save
-to the isolated browser/Firebase state and remain pending until evidence is
-reviewed and the roster update is committed.
+In the app, open **Super Investors > Top 50**. **My list** is the default view:
+it includes every investor except those with an explicit X. Use the check to
+record an explicit keep, the X to remove a manager, and the clear button to
+return a manager to automatic inclusion. The **Removed by Joe** filter makes
+the exclusions easy to audit. Choices save to the isolated browser/Firebase
+state.
+
+The quantitative score and evidence column are still decision support. They do
+not override Joe's explicit removal, and they do not require Joe to click every
+strong candidate before it appears on the working list.
 
 After Joe selects a candidate, record the decision with:
 
