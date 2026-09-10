@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T03:36:55.592399+00:00",
+  "generated_at": "2026-09-10T08:46:07.353514+00:00",
   "source": "mose-live-quote-snapshot",
   "symbols": {
     "AAPL": {
@@ -18,11 +18,11 @@
         "time": "16:00:01",
         "volume": 64902991,
         "week52_high": 344.57,
-        "week52_low": 225.95
+        "week52_low": 226.65
       },
       "metrics": {
         "week52High": 344.57,
-        "week52Low": 225.95,
+        "week52Low": 226.65,
         "marketCap": 3979469914112,
         "peRatio": 39.967046894803545
       },
@@ -286,11 +286,11 @@
         "time": "16:00:01",
         "volume": 1037030,
         "week52_high": 1999.96,
-        "week52_low": 791.02
+        "week52_low": 798.51
       },
       "metrics": {
         "week52High": 1999.96,
-        "week52Low": 791.02,
+        "week52Low": 798.51,
         "marketCap": 561823285248,
         "peRatio": 57.04221635883905
       },
@@ -798,11 +798,11 @@
         "time": "16:00:02",
         "volume": 1795012,
         "week52_high": 637.51,
-        "week52_low": 123.65
+        "week52_low": 130.0
       },
       "metrics": {
         "week52High": 637.51,
-        "week52Low": 123.65
+        "week52Low": 130.0
       },
       "profile": {
         "company": "Ciena Corporation",
@@ -944,11 +944,11 @@
         "date": "2026-09-09",
         "time": "16:00:02",
         "volume": 5535498,
-        "week52_high": 137.865,
+        "week52_high": 137.87,
         "week52_low": 85.57
       },
       "metrics": {
-        "week52High": 137.865,
+        "week52High": 137.87,
         "week52Low": 85.57
       },
       "profile": {
@@ -1913,11 +1913,11 @@
         "date": "2026-09-09",
         "time": "16:00:02",
         "volume": 15424237,
-        "week52_high": 32.925,
+        "week52_high": 32.93,
         "week52_low": 17.56
       },
       "metrics": {
-        "week52High": 32.925,
+        "week52High": 32.93,
         "week52Low": 17.56,
         "marketCap": 18166915072,
         "peRatio": 12.268939393939393
@@ -4043,11 +4043,11 @@
         "time": "16:00:02",
         "volume": 2369131,
         "week52_high": 168.6,
-        "week52_low": 120.295
+        "week52_low": 120.25
       },
       "metrics": {
         "week52High": 168.6,
-        "week52Low": 120.295,
+        "week52Low": 120.25,
         "marketCap": 26862960640,
         "peRatio": 12.648283038501562
       },
@@ -4192,11 +4192,11 @@
         "time": "16:03:17",
         "volume": 8172905,
         "week52_high": 170.0,
-        "week52_low": 125.82
+        "week52_low": 125.81
       },
       "metrics": {
         "week52High": 170.0,
-        "week52Low": 125.82
+        "week52Low": 125.81
       },
       "profile": {
         "company": null,
@@ -4692,12 +4692,12 @@
         "date": "2026-09-09",
         "time": "16:00:02",
         "volume": 3051993,
-        "week52_high": 389.175,
-        "week52_low": 153.6
+        "week52_high": 389.18,
+        "week52_low": 155.29
       },
       "metrics": {
-        "week52High": 389.175,
-        "week52Low": 153.6
+        "week52High": 389.18,
+        "week52Low": 155.29
       },
       "profile": {
         "company": null,
@@ -5049,8 +5049,8 @@
       "type": "Index",
       "quote": {
         "ticker": "^VIX",
-        "price": 16.46,
-        "change_pct": 4.707379134860052,
+        "price": 16.38,
+        "change_pct": -0.4860267314702421,
         "source": "yahoo"
       },
       "metrics": {},
