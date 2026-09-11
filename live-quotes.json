@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T00:57:03.731594+00:00",
+  "generated_at": "2026-09-11T05:44:18.188119+00:00",
   "source": "yahoo",
   "market_status": "closed",
   "indices": [
@@ -15,7 +15,7 @@
       "name": "Dow Jones",
       "ticker": "^DJI",
       "price": 52064.1,
-      "change_pct": -0.6043451915268058,
+      "change_pct": -0.6044210940289049,
       "vs_exit": 12.135842973937471,
       "source": "yahoo"
     },
@@ -31,7 +31,7 @@
       "name": "Russell 2000",
       "ticker": "^RUT",
       "price": 2890.947,
-      "change_pct": -1.0368014288753997,
+      "change_pct": -1.0369911407484378,
       "vs_exit": null,
       "source": "yahoo"
     },
@@ -39,7 +39,7 @@
       "name": "VIX",
       "ticker": "^VIX",
       "price": 17.84,
-      "change_pct": 13.48600508905852,
+      "change_pct": 8.383961117861476,
       "vs_exit": null,
       "source": "yahoo"
     }
@@ -856,7 +856,7 @@
       "prev_close": 65.0,
       "change_pct": -1.153846153846154,
       "date": "2026-09-10",
-      "time": "10:16:49",
+      "time": "16:00:00",
       "volume": 200,
       "week52_high": 103.5,
       "week52_low": 37.05
@@ -1027,7 +1027,7 @@
       "time": "16:00:01",
       "volume": 9841410,
       "week52_high": 438.5,
-      "week52_low": 108.29
+      "week52_low": 115.88
     },
     {
       "ticker": "LUMN",
@@ -1159,7 +1159,7 @@
       "time": "16:00:01",
       "volume": 961318,
       "week52_high": 447.62,
-      "week52_low": 110.6
+      "week52_low": 114.36
     },
     {
       "ticker": "MRK",
@@ -1219,7 +1219,7 @@
       "time": "16:00:01",
       "volume": 25554875,
       "week52_high": 1255.0,
-      "week52_low": 147.61
+      "week52_low": 153.21
     },
     {
       "ticker": "NEE",
@@ -1314,7 +1314,7 @@
       "date": "2026-09-10",
       "time": "16:05:08",
       "volume": 50925752,
-      "week52_high": 331.0,
+      "week52_high": 329.5,
       "week52_low": 114.5
     },
     {
@@ -1399,7 +1399,7 @@
       "time": "16:03:28",
       "volume": 2845851,
       "week52_high": 153.35,
-      "week52_low": 111.0
+      "week52_low": 111.03
     },
     {
       "ticker": "PLTR",
@@ -1578,7 +1578,7 @@
       "date": "2026-09-10",
       "time": "16:00:02",
       "volume": 6459278,
-      "week52_high": 96.985,
+      "week52_high": 96.99,
       "week52_low": 68.625
     },
     {
@@ -1783,7 +1783,7 @@
       "time": "16:00:00",
       "volume": 1126606,
       "week52_high": 319.94,
-      "week52_low": 64.59
+      "week52_low": 64.81
     },
     {
       "ticker": "TSLA",
@@ -1927,7 +1927,7 @@
       "time": "16:00:00",
       "volume": 4479196,
       "week52_high": 60.43,
-      "week52_low": 11.89
+      "week52_low": 11.93
     },
     {
       "ticker": "VLO",
@@ -1975,7 +1975,7 @@
       "time": "16:00:00",
       "volume": 4500675,
       "week52_high": 799.87,
-      "week52_low": 94.41
+      "week52_low": 95.98
     },
     {
       "ticker": "WFC",
