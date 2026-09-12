@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-11T23:03:35.636990+00:00",
+  "generated_at": "2026-09-12T03:47:06.450599+00:00",
   "source": "mose-live-quote-snapshot",
   "symbols": {
     "AAPL": {
@@ -1036,11 +1036,11 @@
         "time": "16:00:01",
         "volume": 14150129,
         "week52_high": 130.37,
-        "week52_low": 66.13
+        "week52_low": 66.35
       },
       "metrics": {
         "week52High": 130.37,
-        "week52Low": 66.13
+        "week52Low": 66.35
       },
       "profile": {
         "company": null,
@@ -2025,10 +2025,10 @@
       "quote": {
         "ticker": "IFNNF",
         "symbol": "IFNNF",
-        "price": 64.25,
-        "prev_close": 65.0,
-        "change_pct": -1.153846153846154,
-        "date": "2026-09-10",
+        "price": 68.5,
+        "prev_close": 64.25,
+        "change_pct": 6.614785992217899,
+        "date": "2026-09-11",
         "time": "16:00:00",
         "volume": 200,
         "week52_high": 103.5,
@@ -2444,11 +2444,11 @@
         "time": "16:00:00",
         "volume": 8832423,
         "week52_high": 438.5,
-        "week52_low": 115.88
+        "week52_low": 117.03
       },
       "metrics": {
         "week52High": 438.5,
-        "week52Low": 115.88
+        "week52Low": 117.03
       },
       "profile": {
         "company": "Lam Research Corporation",
@@ -2771,11 +2771,11 @@
         "time": "16:00:01",
         "volume": 1247270,
         "week52_high": 447.62,
-        "week52_low": 114.36
+        "week52_low": 114.89
       },
       "metrics": {
         "week52High": 447.62,
-        "week52Low": 114.36
+        "week52Low": 114.89
       },
       "profile": {
         "company": "MKS Instruments, Inc.",
@@ -2829,11 +2829,11 @@
         "time": "16:00:01",
         "volume": 17134464,
         "week52_high": 329.88,
-        "week52_low": 66.14
+        "week52_low": 66.33
       },
       "metrics": {
         "week52High": 329.88,
-        "week52Low": 66.14
+        "week52Low": 66.33
       },
       "profile": {
         "company": "Marvell Technology, Inc.",
@@ -2918,11 +2918,11 @@
         "time": "16:00:01",
         "volume": 21642629,
         "week52_high": 1255.0,
-        "week52_low": 153.21
+        "week52_low": 154.65
       },
       "metrics": {
         "week52High": 1255.0,
-        "week52Low": 153.21
+        "week52Low": 154.65
       },
       "profile": {
         "company": "Micron Technology, Inc.",
@@ -3303,11 +3303,11 @@
         "date": "2026-09-11",
         "time": "16:00:02",
         "volume": 1643512,
-        "week52_high": 249.71,
+        "week52_high": 249.14,
         "week52_low": 189.2
       },
       "metrics": {
-        "week52High": 249.71,
+        "week52High": 249.14,
         "week52Low": 189.2,
         "marketCap": 117400117248,
         "peRatio": 11.316692667706707
@@ -4308,11 +4308,11 @@
         "time": "16:00:00",
         "volume": 1118183,
         "week52_high": 319.94,
-        "week52_low": 64.81
+        "week52_low": 64.83
       },
       "metrics": {
         "week52High": 319.94,
-        "week52Low": 64.81
+        "week52Low": 64.83
       },
       "profile": {
         "company": "Tower Semiconductor Ltd.",
@@ -4603,7 +4603,7 @@
         "prev_close": 701.95,
         "change_pct": 0.8647339554099203,
         "date": "2026-09-11",
-        "time": "18:33:31",
+        "time": "20:08:30",
         "volume": null,
         "week52_high": 720.28,
         "week52_low": 585.37
@@ -4782,11 +4782,11 @@
         "time": "16:00:00",
         "volume": 4974862,
         "week52_high": 799.87,
-        "week52_low": 95.98
+        "week52_low": 99.72
       },
       "metrics": {
         "week52High": 799.87,
-        "week52Low": 95.98
+        "week52Low": 99.72
       },
       "profile": {
         "company": "Western Digital Corporation",
@@ -5001,13 +5001,13 @@
       "type": "Index",
       "quote": {
         "ticker": "^DJI",
-        "price": 52573.29,
-        "change_pct": 0.9780059580401895,
+        "price": 52573.3,
+        "change_pct": 0.9780251651329888,
         "source": "yahoo"
       },
       "metrics": {},
       "profile": {
-        "vsExit": 13.23253819932117
+        "vsExit": 13.232559737356592
       },
       "source": "yahoo"
     },
@@ -5034,7 +5034,7 @@
       "quote": {
         "ticker": "^RUT",
         "price": 2903.944,
-        "change_pct": 0.4495758656246497,
+        "change_pct": 0.4494716269738371,
         "source": "yahoo"
       },
       "metrics": {},
@@ -5050,7 +5050,7 @@
       "quote": {
         "ticker": "^VIX",
         "price": 15.84,
-        "change_pct": -3.766707168894295,
+        "change_pct": -11.210762331838566,
         "source": "yahoo"
       },
       "metrics": {},
