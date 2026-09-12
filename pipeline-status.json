@@ -1,13 +1,11 @@
 {
-  "generated_at": "2026-09-12T03:47:06.804553+00:00",
+  "generated_at": "2026-09-12T08:30:15.126000+00:00",
   "job": "update_live_market_data",
   "status": "partial",
-  "detail": "167 quotes, 5 indices published. 4 symbol(s) failed.",
+  "detail": "167 quotes, 5 indices published. 2 symbol(s) failed.",
   "quote_count": 167,
   "errors": [
     "BK: no data after retry",
-    "CSU: no data after retry",
-    "history BK: HTTP Error 404: Not Found",
-    "history CSU: HTTP Error 404: Not Found"
+    "CSU: no data after retry"
   ]
 }
