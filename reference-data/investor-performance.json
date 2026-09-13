@@ -1,12 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-12T03:48:36.650219+00:00",
+  "generated_at": "2026-09-13T00:00:13.897307+00:00",
   "source": "Yahoo Finance public chart endpoint",
   "methodology": "One-year price return for currently reported top-10 13F securities; excludes dividends.",
-  "ticker_count": 451,
+  "ticker_count": 450,
   "requested_ticker_count": 471,
   "errors": [
     "ACHR.WS: HTTP Error 404: Not Found",
+    "APGE: insufficient history",
     "ATUS: HTTP Error 404: Not Found",
     "BSIG: HTTP Error 404: Not Found",
     "CCCS: HTTP Error 404: Not Found",
@@ -195,12 +196,6 @@
       "from": "2025-09-12",
       "to": "2026-09-11",
       "observations": 251
-    },
-    "APGE": {
-      "one_year_price_return_pct": 263.2321,
-      "from": "2025-09-12",
-      "to": "2026-07-17",
-      "observations": 212
     },
     "APH": {
       "one_year_price_return_pct": 41.4223,
