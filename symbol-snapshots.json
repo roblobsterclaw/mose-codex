@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T23:43:31.240401+00:00",
+  "generated_at": "2026-09-15T03:54:56.267731+00:00",
   "source": "mose-live-quote-snapshot",
   "symbols": {
     "AAPL": {
@@ -944,11 +944,11 @@
         "date": "2026-09-14",
         "time": "16:00:03",
         "volume": 6442811,
-        "week52_high": 139.815,
+        "week52_high": 139.82,
         "week52_low": 85.57
       },
       "metrics": {
-        "week52High": 139.815,
+        "week52High": 139.82,
         "week52Low": 85.57
       },
       "profile": {
@@ -2026,10 +2026,10 @@
         "ticker": "IFNNF",
         "symbol": "IFNNF",
         "price": 62.0,
-        "prev_close": 64.25,
-        "change_pct": -3.501945525291829,
+        "prev_close": 68.5,
+        "change_pct": -9.48905109489051,
         "date": "2026-09-14",
-        "time": "11:04:55",
+        "time": "16:00:00",
         "volume": 177,
         "week52_high": 103.5,
         "week52_low": 37.05
@@ -2444,11 +2444,11 @@
         "time": "16:00:01",
         "volume": 13124799,
         "week52_high": 438.5,
-        "week52_low": 117.03
+        "week52_low": 118.67
       },
       "metrics": {
         "week52High": 438.5,
-        "week52Low": 117.03
+        "week52Low": 118.67
       },
       "profile": {
         "company": "Lam Research Corporation",
@@ -3005,11 +3005,11 @@
         "time": "16:00:02",
         "volume": 3044638,
         "week52_high": 189.96,
-        "week52_low": 107.42
+        "week52_low": 107.41
       },
       "metrics": {
         "week52High": 189.96,
-        "week52Low": 107.42
+        "week52Low": 107.41
       },
       "profile": {
         "company": null,
@@ -4603,7 +4603,7 @@
         "prev_close": 708.02,
         "change_pct": -0.4802124233778675,
         "date": "2026-09-14",
-        "time": "18:54:00",
+        "time": "20:09:00",
         "volume": null,
         "week52_high": 720.28,
         "week52_low": 585.37
@@ -4692,11 +4692,11 @@
         "date": "2026-09-14",
         "time": "16:00:03",
         "volume": 4815265,
-        "week52_high": 399.7,
+        "week52_high": 399.76,
         "week52_low": 155.29
       },
       "metrics": {
-        "week52High": 399.7,
+        "week52High": 399.76,
         "week52Low": 155.29
       },
       "profile": {
@@ -5002,7 +5002,7 @@
       "quote": {
         "ticker": "^DJI",
         "price": 52421.2,
-        "change_pct": -0.28929138731854864,
+        "change_pct": -0.28931035335428024,
         "source": "yahoo"
       },
       "metrics": {},
@@ -5033,8 +5033,8 @@
       "type": "Index",
       "quote": {
         "ticker": "^RUT",
-        "price": 2892.2366,
-        "change_pct": -0.40316544638958574,
+        "price": 2892.237,
+        "change_pct": -0.4030041943015343,
         "source": "yahoo"
       },
       "metrics": {},
