@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T23:27:34.942207+00:00",
+  "generated_at": "2026-09-16T03:51:46.721728+00:00",
   "source": "yahoo",
   "market_status": "closed",
   "indices": [
@@ -14,9 +14,9 @@
     {
       "name": "Dow Jones",
       "ticker": "^DJI",
-      "price": 52093.11,
-      "change_pct": -0.6258727385103671,
-      "vs_exit": 12.198324814681365,
+      "price": 52093.1,
+      "change_pct": -0.6258918147619639,
+      "vs_exit": 12.198303276645944,
       "source": "yahoo"
     },
     {
@@ -30,8 +30,8 @@
     {
       "name": "Russell 2000",
       "ticker": "^RUT",
-      "price": 2870.2854,
-      "change_pct": -0.7589697191439999,
+      "price": 2870.285,
+      "change_pct": -0.7591002129837057,
       "vs_exit": null,
       "source": "yahoo"
     },
@@ -856,7 +856,7 @@
       "prev_close": 62.0,
       "change_pct": -0.8064516129032258,
       "date": "2026-09-15",
-      "time": "13:37:20",
+      "time": "16:00:00",
       "volume": 7336,
       "week52_high": 103.5,
       "week52_low": 37.05
@@ -948,12 +948,12 @@
     {
       "ticker": "KHC",
       "symbol": "KHC",
-      "price": 24.6,
+      "price": 24.73,
       "prev_close": 24.27,
-      "change_pct": 1.359703337453654,
-      "date": "2026-09-11",
-      "time": "16:00:00",
-      "volume": 22591692,
+      "change_pct": 1.8953440461475106,
+      "date": "2026-09-15",
+      "time": "16:00:03",
+      "volume": 22567502,
       "week52_high": 28.09,
       "week52_low": 21.035
     },
@@ -1027,7 +1027,7 @@
       "time": "16:00:01",
       "volume": 8845123,
       "week52_high": 438.5,
-      "week52_low": 118.67
+      "week52_low": 119.51
     },
     {
       "ticker": "LUMN",
@@ -1183,7 +1183,7 @@
       "time": "16:00:01",
       "volume": 12674890,
       "week52_high": 329.88,
-      "week52_low": 67.36
+      "week52_low": 68.36
     },
     {
       "ticker": "MSFT",
@@ -1900,7 +1900,7 @@
       "prev_close": 704.62,
       "change_pct": -0.432857426698072,
       "date": "2026-09-15",
-      "time": "18:53:23",
+      "time": "20:08:23",
       "volume": null,
       "week52_high": 720.28,
       "week52_low": 585.37
