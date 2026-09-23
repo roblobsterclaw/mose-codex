@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T23:31:59.216077+00:00",
+  "generated_at": "2026-09-23T03:49:24.605153+00:00",
   "source": "yahoo",
   "market_status": "closed",
   "indices": [
@@ -15,7 +15,7 @@
       "name": "Dow Jones",
       "ticker": "^DJI",
       "price": 51863.69,
-      "change_pct": -0.3557044413870579,
+      "change_pct": -0.35564700819231293,
       "vs_exit": 11.7041992061511,
       "source": "yahoo"
     },
@@ -853,9 +853,9 @@
       "ticker": "IFNNF",
       "symbol": "IFNNF",
       "price": 67.0,
-      "prev_close": 63.89,
-      "change_pct": 4.8677414305838145,
-      "date": "2026-09-21",
+      "prev_close": 67.0,
+      "change_pct": 0.0,
+      "date": "2026-09-22",
       "time": "16:00:00",
       "volume": 2200,
       "week52_high": 103.5,
@@ -919,7 +919,7 @@
       "time": "16:00:02",
       "volume": 5650552,
       "week52_high": 281.07,
-      "week52_low": 174.83
+      "week52_low": 175.74
     },
     {
       "ticker": "JPM",
@@ -1063,7 +1063,7 @@
       "time": "16:00:02",
       "volume": 853105,
       "week52_high": 999.0,
-      "week52_low": 714.0
+      "week52_low": 715.31
     },
     {
       "ticker": "MCO",
@@ -1302,7 +1302,7 @@
       "date": "2026-09-22",
       "time": "16:04:29",
       "volume": 30813324,
-      "week52_high": 325.0,
+      "week52_high": 322.54,
       "week52_low": 114.5
     },
     {
@@ -1393,8 +1393,8 @@
       "ticker": "PLTR",
       "symbol": "PLTR",
       "price": 184.99,
-      "prev_close": 183.0701,
-      "change_pct": 1.0487239587458643,
+      "prev_close": 183.07,
+      "change_pct": 1.048779155514293,
       "date": "2026-09-22",
       "time": "16:00:00",
       "volume": 21859169,
@@ -1435,7 +1435,7 @@
       "time": "16:00:02",
       "volume": 739526,
       "week52_high": 788.75,
-      "week52_low": 387.42
+      "week52_low": 389.7
     },
     {
       "ticker": "QCOM",
@@ -1777,8 +1777,8 @@
       "ticker": "TSLA",
       "symbol": "TSLA",
       "price": 378.9,
-      "prev_close": 375.2096,
-      "change_pct": 0.9835569239166465,
+      "prev_close": 375.21,
+      "change_pct": 0.98344926840969,
       "date": "2026-09-22",
       "time": "16:00:00",
       "volume": 28089930,
@@ -1888,7 +1888,7 @@
       "prev_close": 718.23,
       "change_pct": 0.0,
       "date": "2026-09-22",
-      "time": "18:53:52",
+      "time": "20:08:52",
       "volume": null,
       "week52_high": 720.28,
       "week52_low": 585.37
