@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-23T23:27:51.410491+00:00",
+  "generated_at": "2026-09-24T03:41:35.105605+00:00",
   "source": "mose-live-quote-snapshot",
   "symbols": {
     "AAPL": {
@@ -317,11 +317,11 @@
         "time": "16:00:03",
         "volume": 1060376,
         "week52_high": 192.51,
-        "week52_low": 155.02
+        "week52_low": 155.0
       },
       "metrics": {
         "week52High": 192.51,
-        "week52Low": 155.02
+        "week52Low": 155.0
       },
       "profile": {
         "company": null,
@@ -1245,11 +1245,11 @@
         "date": "2026-09-23",
         "time": "16:00:03",
         "volume": 1620365,
-        "week52_high": 721.105,
+        "week52_high": 721.22,
         "week52_low": 433.0
       },
       "metrics": {
-        "week52High": 721.105,
+        "week52High": 721.22,
         "week52Low": 433.0
       },
       "profile": {
@@ -1974,11 +1974,11 @@
         "time": "16:00:00",
         "volume": 395859,
         "week52_high": 120.82,
-        "week52_low": 101.631
+        "week52_low": 101.62
       },
       "metrics": {
         "week52High": 120.82,
-        "week52Low": 101.631
+        "week52Low": 101.62
       },
       "profile": {
         "company": null,
@@ -2029,7 +2029,7 @@
         "prev_close": 67.0,
         "change_pct": -2.9850746268656714,
         "date": "2026-09-23",
-        "time": "15:29:47",
+        "time": "16:00:00",
         "volume": 400,
         "week52_high": 103.5,
         "week52_low": 37.05
@@ -2976,11 +2976,11 @@
         "time": "16:00:02",
         "volume": 2546978,
         "week52_high": 189.96,
-        "week52_low": 100.14
+        "week52_low": 100.13
       },
       "metrics": {
         "week52High": 189.96,
-        "week52Low": 100.14
+        "week52Low": 100.13
       },
       "profile": {
         "company": null,
@@ -4574,7 +4574,7 @@
         "prev_close": 718.23,
         "change_pct": -0.7546329170321586,
         "date": "2026-09-23",
-        "time": "18:53:54",
+        "time": "20:08:54",
         "volume": null,
         "week52_high": 720.28,
         "week52_low": 585.37
@@ -4972,13 +4972,13 @@
       "type": "Index",
       "quote": {
         "ticker": "^DJI",
-        "price": 51511.59,
-        "change_pct": -0.67889500342148,
+        "price": 51511.6,
+        "change_pct": -0.6788948725216261,
         "source": "yahoo"
       },
       "metrics": {},
       "profile": {
-        "vsExit": 10.945844979128564
+        "vsExit": 10.945866517163985
       },
       "source": "yahoo"
     },
@@ -5005,7 +5005,7 @@
       "quote": {
         "ticker": "^RUT",
         "price": 2838.66,
-        "change_pct": -1.7737175332595834,
+        "change_pct": -1.773751522533503,
         "source": "yahoo"
       },
       "metrics": {},
