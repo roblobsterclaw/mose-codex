@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-24T23:48:33.277188+00:00",
+  "generated_at": "2026-09-25T03:57:34.525821+00:00",
   "source": "yahoo",
   "market_status": "closed",
   "indices": [
@@ -15,7 +15,7 @@
       "name": "Dow Jones",
       "ticker": "^DJI",
       "price": 51349.98,
-      "change_pct": -0.31373521958843303,
+      "change_pct": -0.3137545717857635,
       "vs_exit": 10.597768788759053,
       "source": "yahoo"
     },
@@ -30,8 +30,8 @@
     {
       "name": "Russell 2000",
       "ticker": "^RUT",
-      "price": 2835.5742,
-      "change_pct": -0.10872029637642422,
+      "price": 2835.574,
+      "change_pct": -0.10871326611851316,
       "vs_exit": null,
       "source": "yahoo"
     },
@@ -90,8 +90,8 @@
       "date": "2026-09-24",
       "time": "16:00:01",
       "volume": 25202032,
-      "week52_high": 630.79,
-      "week52_low": 154.78
+      "week52_high": 630.8,
+      "week52_low": 157.05
     },
     {
       "ticker": "AMZN",
@@ -259,7 +259,7 @@
       "time": "16:00:03",
       "volume": 18034647,
       "week52_high": 351.28,
-      "week52_low": 61.37
+      "week52_low": 66.62
     },
     {
       "ticker": "BIL",
@@ -367,7 +367,7 @@
       "time": "16:00:02",
       "volume": 1398226,
       "week52_high": 637.51,
-      "week52_low": 133.67
+      "week52_low": 138.12
     },
     {
       "ticker": "CLS",
@@ -415,7 +415,7 @@
       "time": "16:00:02",
       "volume": 4919511,
       "week52_high": 440.0,
-      "week52_low": 102.14
+      "week52_low": 104.78
     },
     {
       "ticker": "COP",
@@ -667,7 +667,7 @@
       "time": "16:04:02",
       "volume": 9106753,
       "week52_high": 80.24,
-      "week52_low": 35.15
+      "week52_low": 35.29
     },
     {
       "ticker": "FDX",
@@ -691,7 +691,7 @@
       "time": "16:00:03",
       "volume": 500430,
       "week52_high": 1998.01,
-      "week52_low": 855.01
+      "week52_low": 855.0
     },
     {
       "ticker": "FIS",
@@ -852,10 +852,10 @@
     {
       "ticker": "IFNNF",
       "symbol": "IFNNF",
-      "price": 65.0,
-      "prev_close": 67.0,
-      "change_pct": -2.9850746268656714,
-      "date": "2026-09-23",
+      "price": 62.84,
+      "prev_close": 65.0,
+      "change_pct": -3.3230769230769175,
+      "date": "2026-09-24",
       "time": "16:00:00",
       "volume": 400,
       "week52_high": 103.5,
@@ -919,7 +919,7 @@
       "time": "16:00:02",
       "volume": 6155759,
       "week52_high": 281.07,
-      "week52_low": 175.91
+      "week52_low": 177.32
     },
     {
       "ticker": "JPM",
@@ -991,7 +991,7 @@
       "time": "16:04:13",
       "volume": 2408724,
       "week52_high": 1292.65,
-      "week52_low": 712.05
+      "week52_low": 716.08
     },
     {
       "ticker": "LNC",
@@ -1015,7 +1015,7 @@
       "time": "16:00:01",
       "volume": 7551797,
       "week52_high": 438.5,
-      "week52_low": 125.02
+      "week52_low": 126.37
     },
     {
       "ticker": "LUMN",
@@ -1063,7 +1063,7 @@
       "time": "16:00:02",
       "volume": 592851,
       "week52_high": 999.0,
-      "week52_low": 715.31
+      "week52_low": 723.68
     },
     {
       "ticker": "MCO",
@@ -1134,7 +1134,7 @@
       "date": "2026-09-24",
       "time": "16:00:01",
       "volume": 34646511,
-      "week52_high": 779.819,
+      "week52_high": 779.82,
       "week52_low": 520.26
     },
     {
@@ -1147,7 +1147,7 @@
       "time": "16:00:01",
       "volume": 695032,
       "week52_high": 447.62,
-      "week52_low": 119.62
+      "week52_low": 120.12
     },
     {
       "ticker": "MRK",
@@ -1207,7 +1207,7 @@
       "time": "16:00:01",
       "volume": 21938990,
       "week52_high": 1255.0,
-      "week52_low": 154.65
+      "week52_low": 155.18
     },
     {
       "ticker": "NEE",
@@ -1423,7 +1423,7 @@
       "time": "16:00:02",
       "volume": 6489548,
       "week52_high": 40.11,
-      "week52_low": 31.915
+      "week52_low": 31.91
     },
     {
       "ticker": "PWR",
@@ -1435,7 +1435,7 @@
       "time": "16:00:02",
       "volume": 794711,
       "week52_high": 788.75,
-      "week52_low": 389.7
+      "week52_low": 399.18
     },
     {
       "ticker": "QCOM",
@@ -1746,7 +1746,7 @@
       "date": "2026-09-24",
       "time": "16:00:00",
       "volume": 4973966,
-      "week52_high": 242.31,
+      "week52_high": 240.95,
       "week52_low": 161.14
     },
     {
@@ -1771,7 +1771,7 @@
       "time": "16:00:01",
       "volume": 1767527,
       "week52_high": 319.94,
-      "week52_low": 66.3
+      "week52_low": 67.74
     },
     {
       "ticker": "TSLA",
@@ -1819,7 +1819,7 @@
       "time": "16:00:00",
       "volume": 1680471,
       "week52_high": 223.83,
-      "week52_low": 51.09
+      "week52_low": 53.36
     },
     {
       "ticker": "TXN",
@@ -1888,7 +1888,7 @@
       "prev_close": 712.81,
       "change_pct": -0.023849272597180046,
       "date": "2026-09-24",
-      "time": "18:53:21",
+      "time": "20:08:22",
       "volume": null,
       "week52_high": 720.28,
       "week52_low": 585.37
