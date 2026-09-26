@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-25T23:53:40.522735+00:00",
+  "generated_at": "2026-09-26T04:09:33.928004+00:00",
   "source": "yahoo",
   "market_status": "closed",
   "indices": [
@@ -15,7 +15,7 @@
       "name": "Dow Jones",
       "ticker": "^DJI",
       "price": 51828.62,
-      "change_pct": 0.9321133133839574,
+      "change_pct": 0.9320740019474247,
       "vs_exit": 11.628665315944684,
       "source": "yahoo"
     },
@@ -31,7 +31,7 @@
       "name": "Russell 2000",
       "ticker": "^RUT",
       "price": 2837.552,
-      "change_pct": 0.06974954138037072,
+      "change_pct": 0.06989776305998338,
       "vs_exit": null,
       "source": "yahoo"
     },
@@ -91,7 +91,7 @@
       "time": "16:00:01",
       "volume": 17516535,
       "week52_high": 638.95,
-      "week52_low": 157.05
+      "week52_low": 159.33
     },
     {
       "ticker": "AMZN",
@@ -259,7 +259,7 @@
       "time": "16:00:03",
       "volume": 17303729,
       "week52_high": 351.28,
-      "week52_low": 66.62
+      "week52_low": 70.89
     },
     {
       "ticker": "BIL",
@@ -415,7 +415,7 @@
       "time": "16:00:02",
       "volume": 4652611,
       "week52_high": 440.0,
-      "week52_low": 104.78
+      "week52_low": 105.02
     },
     {
       "ticker": "COP",
@@ -715,7 +715,7 @@
       "time": "16:00:02",
       "volume": 742885,
       "week52_high": 748.89,
-      "week52_low": 354.79
+      "week52_low": 355.5
     },
     {
       "ticker": "FROG",
@@ -852,10 +852,10 @@
     {
       "ticker": "IFNNF",
       "symbol": "IFNNF",
-      "price": 62.84,
-      "prev_close": 65.0,
-      "change_pct": -3.3230769230769175,
-      "date": "2026-09-24",
+      "price": 67.35,
+      "prev_close": 62.84,
+      "change_pct": 7.176957352005077,
+      "date": "2026-09-25",
       "time": "16:00:00",
       "volume": 400,
       "week52_high": 103.5,
@@ -919,7 +919,7 @@
       "time": "16:00:02",
       "volume": 4059419,
       "week52_high": 281.07,
-      "week52_low": 177.32
+      "week52_low": 179.8
     },
     {
       "ticker": "JPM",
@@ -1015,7 +1015,7 @@
       "time": "16:00:01",
       "volume": 7588981,
       "week52_high": 438.5,
-      "week52_low": 126.37
+      "week52_low": 130.81
     },
     {
       "ticker": "LUMN",
@@ -1147,7 +1147,7 @@
       "time": "16:00:01",
       "volume": 683219,
       "week52_high": 447.62,
-      "week52_low": 120.12
+      "week52_low": 120.91
     },
     {
       "ticker": "MRK",
@@ -1159,7 +1159,7 @@
       "time": "16:03:58",
       "volume": 8262778,
       "week52_high": 156.92,
-      "week52_low": 77.69
+      "week52_low": 78.03
     },
     {
       "ticker": "MRVL",
@@ -1207,7 +1207,7 @@
       "time": "16:00:01",
       "volume": 20493572,
       "week52_high": 1255.0,
-      "week52_low": 155.18
+      "week52_low": 159.97
     },
     {
       "ticker": "NEE",
@@ -1351,7 +1351,7 @@
       "time": "16:01:46",
       "volume": 27181731,
       "week52_high": 29.21,
-      "week52_low": 23.61
+      "week52_low": 23.62
     },
     {
       "ticker": "PGR",
@@ -1435,7 +1435,7 @@
       "time": "16:00:02",
       "volume": 644970,
       "week52_high": 788.75,
-      "week52_low": 399.18
+      "week52_low": 404.51
     },
     {
       "ticker": "QCOM",
@@ -1771,7 +1771,7 @@
       "time": "16:00:00",
       "volume": 2008551,
       "week52_high": 319.94,
-      "week52_low": 67.74
+      "week52_low": 69.59
     },
     {
       "ticker": "TSLA",
@@ -1888,7 +1888,7 @@
       "prev_close": 712.64,
       "change_pct": 0.5107768298158939,
       "date": "2026-09-25",
-      "time": "18:53:28",
+      "time": "20:08:29",
       "volume": null,
       "week52_high": 720.28,
       "week52_low": 585.37
@@ -1915,7 +1915,7 @@
       "time": "16:00:00",
       "volume": 8405179,
       "week52_high": 60.43,
-      "week52_low": 12.17
+      "week52_low": 12.23
     },
     {
       "ticker": "VLO",
@@ -1963,7 +1963,7 @@
       "time": "16:00:00",
       "volume": 5867895,
       "week52_high": 799.87,
-      "week52_low": 105.42
+      "week52_low": 111.83
     },
     {
       "ticker": "WFC",
