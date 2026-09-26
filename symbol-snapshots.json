@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T09:46:31.617004+00:00",
+  "generated_at": "2026-09-26T14:13:57.201796+00:00",
   "source": "mose-live-quote-snapshot",
   "symbols": {
     "AAPL": {
@@ -106,11 +106,11 @@
         "date": "2026-09-25",
         "time": "16:00:01",
         "volume": 17516535,
-        "week52_high": 638.95,
+        "week52_high": 639.0,
         "week52_low": 159.33
       },
       "metrics": {
-        "week52High": 638.95,
+        "week52High": 639.0,
         "week52Low": 159.33
       },
       "profile": {
@@ -406,11 +406,11 @@
         "time": "16:00:02",
         "volume": 1918229,
         "week52_high": 212.71,
-        "week52_low": 146.66
+        "week52_low": 147.38
       },
       "metrics": {
         "week52High": 212.71,
-        "week52Low": 146.66,
+        "week52Low": 147.38,
         "marketCap": 294166298624,
         "peRatio": 25.432061068702293
       },
@@ -798,11 +798,11 @@
         "time": "16:00:02",
         "volume": 1616304,
         "week52_high": 637.51,
-        "week52_low": 138.12
+        "week52_low": 143.0
       },
       "metrics": {
         "week52High": 637.51,
-        "week52Low": 138.12
+        "week52Low": 143.0
       },
       "profile": {
         "company": "Ciena Corporation",
@@ -1330,7 +1330,7 @@
         "prev_close": 28.56,
         "change_pct": -1.8907563025210055,
         "date": "2026-09-25",
-        "time": "16:00:02",
+        "time": "16:00:03",
         "volume": 8839068,
         "week52_high": 42.74,
         "week52_low": 20.65
@@ -1546,11 +1546,11 @@
         "time": "16:04:11",
         "volume": 7499848,
         "week52_high": 80.24,
-        "week52_low": 35.29
+        "week52_low": 36.05
       },
       "metrics": {
         "week52High": 80.24,
-        "week52Low": 35.29
+        "week52Low": 36.05
       },
       "profile": {
         "company": null,
@@ -1851,11 +1851,11 @@
         "date": "2026-09-25",
         "time": "16:00:03",
         "volume": 5897748,
-        "week52_high": 411.41,
+        "week52_high": 410.95,
         "week52_low": 289.1
       },
       "metrics": {
-        "week52High": 411.41,
+        "week52High": 410.95,
         "week52Low": 289.1,
         "marketCap": 334555742208,
         "peRatio": 20.589887640449437
@@ -2918,11 +2918,11 @@
         "time": "16:00:02",
         "volume": 16431095,
         "week52_high": 98.75,
-        "week52_low": 74.63
+        "week52_low": 75.12
       },
       "metrics": {
         "week52High": 98.75,
-        "week52Low": 74.63
+        "week52Low": 75.12
       },
       "profile": {
         "company": null,
@@ -5005,7 +5005,7 @@
       "quote": {
         "ticker": "^RUT",
         "price": 2837.552,
-        "change_pct": 0.06989776305998338,
+        "change_pct": 0.06974954138037072,
         "source": "yahoo"
       },
       "metrics": {},
