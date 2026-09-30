@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T06:21:55.247738+00:00",
+  "generated_at": "2026-09-30T13:24:04.580989+00:00",
   "source": "yahoo",
   "market_status": "closed",
   "indices": [
@@ -38,8 +38,8 @@
     {
       "name": "VIX",
       "ticker": "^VIX",
-      "price": 16.04,
-      "change_pct": -0.18668326073429456,
+      "price": 15.77,
+      "change_pct": -1.6832917705735635,
       "vs_exit": null,
       "source": "yahoo"
     }
@@ -211,7 +211,7 @@
       "time": "16:00:02",
       "volume": 3053414,
       "week52_high": 212.71,
-      "week52_low": 147.92
+      "week52_low": 153.41
     },
     {
       "ticker": "BABA",
@@ -667,7 +667,7 @@
       "time": "16:04:05",
       "volume": 10034529,
       "week52_high": 80.24,
-      "week52_low": 37.2
+      "week52_low": 38.19
     },
     {
       "ticker": "FDX",
@@ -786,7 +786,7 @@
       "date": "2026-09-29",
       "time": "16:00:03",
       "volume": 6005952,
-      "week52_high": 407.0,
+      "week52_high": 405.13,
       "week52_low": 287.34
     },
     {
@@ -1110,7 +1110,7 @@
       "date": "2026-09-29",
       "time": "16:00:00",
       "volume": 463790,
-      "week52_high": 2481.1,
+      "week52_high": 2428.0,
       "week52_low": 1495.0
     },
     {
@@ -1887,8 +1887,8 @@
       "price": 707.76,
       "prev_close": 708.94,
       "change_pct": -0.1664456794651259,
-      "date": "2026-09-29",
-      "time": "20:08:37",
+      "date": "2026-09-30",
+      "time": "08:10:36",
       "volume": null,
       "week52_high": 720.28,
       "week52_low": 585.37
