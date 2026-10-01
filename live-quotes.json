@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T00:25:38.242392+00:00",
+  "generated_at": "2026-10-01T06:58:08.860660+00:00",
   "source": "yahoo",
   "market_status": "closed",
   "indices": [
@@ -15,7 +15,7 @@
       "name": "Dow Jones",
       "ticker": "^DJI",
       "price": 50906.05,
-      "change_pct": -0.8644025151353603,
+      "change_pct": -0.8643639033376862,
       "vs_exit": 9.641630782504837,
       "source": "yahoo"
     },
@@ -31,7 +31,7 @@
       "name": "Russell 2000",
       "ticker": "^RUT",
       "price": 2796.864,
-      "change_pct": -0.39381435809114324,
+      "change_pct": -0.3937434114932063,
       "vs_exit": null,
       "source": "yahoo"
     },
@@ -67,7 +67,7 @@
       "time": "16:00:01",
       "volume": 415179,
       "week52_high": 397.44,
-      "week52_low": 167.23
+      "week52_low": 169.36
     },
     {
       "ticker": "ALL",
@@ -415,7 +415,7 @@
       "time": "16:00:02",
       "volume": 5327284,
       "week52_high": 440.0,
-      "week52_low": 105.02
+      "week52_low": 108.19
     },
     {
       "ticker": "COP",
@@ -853,9 +853,9 @@
       "ticker": "IFNNF",
       "symbol": "IFNNF",
       "price": 65.21,
-      "prev_close": 67.35,
-      "change_pct": -3.1774313288789915,
-      "date": "2026-09-29",
+      "prev_close": 65.21,
+      "change_pct": 0.0,
+      "date": "2026-09-30",
       "time": "16:00:00",
       "volume": 400,
       "week52_high": 103.5,
@@ -991,7 +991,7 @@
       "time": "16:00:03",
       "volume": 3397477,
       "week52_high": 1292.65,
-      "week52_low": 763.3
+      "week52_low": 783.85
     },
     {
       "ticker": "LNC",
@@ -1207,7 +1207,7 @@
       "time": "16:00:01",
       "volume": 28568102,
       "week52_high": 1255.0,
-      "week52_low": 165.5
+      "week52_low": 179.61
     },
     {
       "ticker": "NEE",
@@ -1314,7 +1314,7 @@
       "date": "2026-09-30",
       "time": "16:00:00",
       "volume": 4130389,
-      "week52_high": 107.96,
+      "week52_high": 105.39,
       "week52_low": 82.59
     },
     {
@@ -1362,7 +1362,7 @@
       "date": "2026-09-30",
       "time": "16:00:02",
       "volume": 2947718,
-      "week52_high": 248.17,
+      "week52_high": 247.49,
       "week52_low": 189.2
     },
     {
@@ -1746,7 +1746,7 @@
       "date": "2026-09-30",
       "time": "16:00:00",
       "volume": 3902099,
-      "week52_high": 240.95,
+      "week52_high": 233.26,
       "week52_low": 161.14
     },
     {
