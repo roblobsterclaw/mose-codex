@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-03T00:14:06.875945+00:00",
+  "generated_at": "2026-10-03T04:26:17.061261+00:00",
   "source": "mose-live-quote-snapshot",
   "symbols": {
     "AAPL": {
@@ -107,11 +107,11 @@
         "time": "16:00:01",
         "volume": 19323673,
         "week52_high": 645.46,
-        "week52_low": 163.14
+        "week52_low": 188.22
       },
       "metrics": {
         "week52High": 645.46,
-        "week52Low": 163.14
+        "week52Low": 188.22
       },
       "profile": {
         "company": "Advanced Micro Devices, Inc.",
@@ -436,11 +436,11 @@
         "date": "2026-10-02",
         "time": "16:02:16",
         "volume": 7768242,
-        "week52_high": 191.07,
+        "week52_high": 189.61,
         "week52_low": 91.99
       },
       "metrics": {
-        "week52High": 191.07,
+        "week52High": 189.61,
         "week52Low": 91.99,
         "marketCap": 335146942464,
         "peRatio": 18.635563380281692
@@ -2025,11 +2025,11 @@
       "quote": {
         "ticker": "IFNNF",
         "symbol": "IFNNF",
-        "price": 70.0,
+        "price": 70.38,
         "prev_close": 69.0,
-        "change_pct": 1.4492753623188406,
+        "change_pct": 1.9999999999999933,
         "date": "2026-10-02",
-        "time": "09:34:42",
+        "time": "16:00:00",
         "volume": 200,
         "week52_high": 103.5,
         "week52_low": 37.05
@@ -3154,11 +3154,11 @@
         "date": "2026-10-02",
         "time": "16:00:00",
         "volume": 3694004,
-        "week52_high": 105.36,
+        "week52_high": 105.23,
         "week52_low": 82.59
       },
       "metrics": {
-        "week52High": 105.36,
+        "week52High": 105.23,
         "week52Low": 82.59,
         "marketCap": 78088298496,
         "peRatio": 28.585858585858585
@@ -3274,11 +3274,11 @@
         "date": "2026-10-02",
         "time": "16:00:02",
         "volume": 2740287,
-        "week52_high": 247.49,
+        "week52_high": 245.64,
         "week52_low": 189.2
       },
       "metrics": {
-        "week52High": 247.49,
+        "week52High": 245.64,
         "week52Low": 189.2,
         "marketCap": 117400117248,
         "peRatio": 10.936557462298492
@@ -4574,7 +4574,7 @@
         "prev_close": 707.43,
         "change_pct": 0.7435364629716162,
         "date": "2026-10-02",
-        "time": "18:54:13",
+        "time": "20:09:14",
         "volume": null,
         "week52_high": 720.28,
         "week52_low": 585.37
@@ -4973,7 +4973,7 @@
       "quote": {
         "ticker": "^DJI",
         "price": 51176.96,
-        "change_pct": 0.49168842348668645,
+        "change_pct": 0.49160949287798633,
         "source": "yahoo"
       },
       "metrics": {},
@@ -5005,7 +5005,7 @@
       "quote": {
         "ticker": "^RUT",
         "price": 2832.895,
-        "change_pct": 0.9359996437001731,
+        "change_pct": 0.9358198266248088,
         "source": "yahoo"
       },
       "metrics": {},
