@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-03T15:08:18.936434+00:00",
+  "generated_at": "2026-10-04T15:14:18.748685+00:00",
   "source": "Yahoo Finance public chart endpoint",
   "methodology": "One-year price return for currently reported top-10 13F securities; excludes dividends.",
-  "ticker_count": 451,
+  "ticker_count": 450,
   "requested_ticker_count": 471,
   "errors": [
     "ACHR.WS: HTTP Error 404: Not Found",
@@ -25,7 +25,8 @@
     "SQ: HTTP Error 404: Not Found",
     "TBRG: HTTP Error 404: Not Found",
     "TICAW: HTTP Error 404: Not Found",
-    "TPX: HTTP Error 404: Not Found"
+    "TPX: HTTP Error 404: Not Found",
+    "WRDIF: insufficient history"
   ],
   "returns": {
     "AAPL": {
@@ -2625,12 +2626,6 @@
       "from": "2025-10-03",
       "to": "2026-10-02",
       "observations": 251
-    },
-    "WRDIF": {
-      "one_year_price_return_pct": 0.0,
-      "from": "2026-09-29",
-      "to": "2026-10-02",
-      "observations": 4
     },
     "WRLD": {
       "one_year_price_return_pct": -0.6549,
