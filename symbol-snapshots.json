@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T01:44:15.044862+00:00",
+  "generated_at": "2026-10-06T08:43:24.807890+00:00",
   "source": "mose-live-quote-snapshot",
   "symbols": {
     "AAPL": {
@@ -436,11 +436,11 @@
         "date": "2026-10-05",
         "time": "16:03:42",
         "volume": 9871490,
-        "week52_high": 189.61,
+        "week52_high": 188.66,
         "week52_low": 91.99
       },
       "metrics": {
-        "week52High": 189.61,
+        "week52High": 188.66,
         "week52Low": 91.99,
         "marketCap": 335146942464,
         "peRatio": 19.507042253521128
@@ -1606,11 +1606,11 @@
         "date": "2026-10-05",
         "time": "16:00:03",
         "volume": 1167512,
-        "week52_high": 1886.28,
+        "week52_high": 1881.21,
         "week52_low": 586.05
       },
       "metrics": {
-        "week52High": 1886.28,
+        "week52High": 1881.21,
         "week52Low": 586.05,
         "marketCap": 23834101760,
         "peRatio": 25.51276359600444
@@ -2025,10 +2025,10 @@
       "quote": {
         "ticker": "IFNNF",
         "symbol": "IFNNF",
-        "price": 70.0,
-        "prev_close": 69.0,
-        "change_pct": 1.4492753623188406,
-        "date": "2026-10-02",
+        "price": 71.5,
+        "prev_close": 70.38,
+        "change_pct": 1.5913611821540274,
+        "date": "2026-10-05",
         "time": "16:00:00",
         "volume": 200,
         "week52_high": 103.5,
@@ -3154,11 +3154,11 @@
         "date": "2026-10-05",
         "time": "16:00:01",
         "volume": 8286354,
-        "week52_high": 105.23,
+        "week52_high": 104.06,
         "week52_low": 82.59
       },
       "metrics": {
-        "week52High": 105.23,
+        "week52High": 104.06,
         "week52Low": 82.59,
         "marketCap": 78088298496,
         "peRatio": 28.24915824915825
@@ -4456,11 +4456,11 @@
         "date": "2026-10-05",
         "time": "16:00:03",
         "volume": 16996770,
-        "week52_high": 101.295,
+        "week52_high": 100.69,
         "week52_low": 65.41
       },
       "metrics": {
-        "week52High": 101.295,
+        "week52High": 100.69,
         "week52Low": 65.41,
         "marketCap": 153617776640,
         "peRatio": 14.689217758985201
@@ -4973,7 +4973,7 @@
       "quote": {
         "ticker": "^DJI",
         "price": 51267.9,
-        "change_pct": 0.17769715121805268,
+        "change_pct": 0.177618852218773,
         "source": "yahoo"
       },
       "metrics": {},
@@ -5004,8 +5004,8 @@
       "type": "Index",
       "quote": {
         "ticker": "^RUT",
-        "price": 2847.1357,
-        "change_pct": 0.5026978057921453,
+        "price": 2847.136,
+        "change_pct": 0.5025239154223543,
         "source": "yahoo"
       },
       "metrics": {},
@@ -5020,8 +5020,8 @@
       "type": "Index",
       "quote": {
         "ticker": "^VIX",
-        "price": 15.52,
-        "change_pct": 1.3716525146962708,
+        "price": 15.46,
+        "change_pct": -0.3865979381443217,
         "source": "yahoo"
       },
       "metrics": {},
