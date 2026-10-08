@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T00:46:50.704282+00:00",
+  "generated_at": "2026-10-08T07:05:25.913289+00:00",
   "source": "mose-live-quote-snapshot",
   "symbols": {
     "AAPL": {
@@ -1068,11 +1068,11 @@
         "time": "16:01:32",
         "volume": 41241255,
         "week52_high": 90.97,
-        "week52_low": 11.74
+        "week52_low": 11.478
       },
       "metrics": {
         "week52High": 90.97,
-        "week52Low": 11.74
+        "week52Low": 11.478
       },
       "profile": {
         "company": null,
@@ -2026,10 +2026,10 @@
         "ticker": "IFNNF",
         "symbol": "IFNNF",
         "price": 69.22,
-        "prev_close": 70.0,
-        "change_pct": -1.1142857142857159,
+        "prev_close": 71.5,
+        "change_pct": -3.1888111888111905,
         "date": "2026-10-07",
-        "time": "15:59:25",
+        "time": "16:00:00",
         "volume": 645,
         "week52_high": 103.5,
         "week52_low": 37.05
@@ -2437,9 +2437,9 @@
       "quote": {
         "ticker": "LUMN",
         "symbol": "LUMN",
-        "price": 5.91,
-        "prev_close": 5.905,
-        "change_pct": 0.08467400508043849,
+        "price": 5.62,
+        "prev_close": 5.75,
+        "change_pct": -2.2608695652173894,
         "date": "2026-10-07",
         "time": "16:00:01",
         "volume": 10497830,
@@ -3658,11 +3658,11 @@
         "date": "2026-10-07",
         "time": "16:00:00",
         "volume": 458519,
-        "week52_high": 521.28,
+        "week52_high": 520.85,
         "week52_low": 305.96
       },
       "metrics": {
-        "week52High": 521.28,
+        "week52High": 520.85,
         "week52Low": 305.96,
         "marketCap": 36374581248,
         "peRatio": 22.396627108057462
@@ -4973,7 +4973,7 @@
       "quote": {
         "ticker": "^DJI",
         "price": 51179.87,
-        "change_pct": -0.6626582258825795,
+        "change_pct": -0.6626967875422403,
         "source": "yahoo"
       },
       "metrics": {},
@@ -5005,7 +5005,7 @@
       "quote": {
         "ticker": "^RUT",
         "price": 2793.204,
-        "change_pct": -1.3105831210529235,
+        "change_pct": -1.3106737801646469,
         "source": "yahoo"
       },
       "metrics": {},
@@ -5021,7 +5021,7 @@
       "quote": {
         "ticker": "^VIX",
         "price": 15.08,
-        "change_pct": 0.46635576282478536,
+        "change_pct": 0,
         "source": "yahoo"
       },
       "metrics": {},
