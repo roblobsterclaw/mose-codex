@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T11:05:58.520617+00:00",
+  "generated_at": "2026-10-10T17:07:48.604573+00:00",
   "source": "yahoo",
   "market_status": "closed",
   "indices": [
@@ -15,7 +15,7 @@
       "name": "Dow Jones",
       "ticker": "^DJI",
       "price": 51654.95,
-      "change_pct": 0.8263454586622291,
+      "change_pct": 0.8262667367275333,
       "vs_exit": 11.254614254862586,
       "source": "yahoo"
     },
@@ -30,8 +30,8 @@
     {
       "name": "Russell 2000",
       "ticker": "^RUT",
-      "price": 2806.981,
-      "change_pct": 0.4599284929477194,
+      "price": 2806.9814,
+      "change_pct": 0.46000752578210313,
       "vs_exit": null,
       "source": "yahoo"
     },
@@ -163,7 +163,7 @@
       "time": "16:00:01",
       "volume": 1203224,
       "week52_high": 1999.96,
-      "week52_low": 935.41
+      "week52_low": 946.11
     },
     {
       "ticker": "ATO",
@@ -367,7 +367,7 @@
       "time": "16:00:02",
       "volume": 3769813,
       "week52_high": 637.51,
-      "week52_low": 153.27
+      "week52_low": 159.01
     },
     {
       "ticker": "CLS",
@@ -391,7 +391,7 @@
       "time": "16:00:01",
       "volume": 32651519,
       "week52_high": 32.86,
-      "week52_low": 20.485
+      "week52_low": 20.48
     },
     {
       "ticker": "COF",
@@ -583,7 +583,7 @@
       "time": "16:00:02",
       "volume": 8410298,
       "week52_high": 42.74,
-      "week52_low": 20.65
+      "week52_low": 20.89
     },
     {
       "ticker": "DVA",
@@ -679,7 +679,7 @@
       "time": "16:00:02",
       "volume": 1213339,
       "week52_high": 345.37,
-      "week52_low": 180.991
+      "week52_low": 182.216
     },
     {
       "ticker": "FICO",
@@ -702,7 +702,7 @@
       "date": "2026-10-09",
       "time": "16:00:02",
       "volume": 4145287,
-      "week52_high": 69.04,
+      "week52_high": 68.98,
       "week52_low": 32.1
     },
     {
@@ -763,7 +763,7 @@
       "time": "16:00:00",
       "volume": 17231359,
       "week52_high": 408.61,
-      "week52_low": 235.84
+      "week52_low": 239.71
     },
     {
       "ticker": "GS",
@@ -895,7 +895,7 @@
       "time": "16:00:00",
       "volume": 1251301,
       "week52_high": 260.19,
-      "week52_low": 199.4
+      "week52_low": 199.79
     },
     {
       "ticker": "JCI",
@@ -1398,7 +1398,7 @@
       "date": "2026-10-09",
       "time": "16:00:00",
       "volume": 37389859,
-      "week52_high": 209.3,
+      "week52_high": 209.58,
       "week52_low": 106.37
     },
     {

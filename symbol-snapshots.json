@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T11:05:58.520617+00:00",
+  "generated_at": "2026-10-10T17:07:48.604573+00:00",
   "source": "mose-live-quote-snapshot",
   "symbols": {
     "AAPL": {
@@ -286,11 +286,11 @@
         "time": "16:00:01",
         "volume": 1203224,
         "week52_high": 1999.96,
-        "week52_low": 935.41
+        "week52_low": 946.11
       },
       "metrics": {
         "week52High": 1999.96,
-        "week52Low": 935.41,
+        "week52Low": 946.11,
         "marketCap": 561823285248,
         "peRatio": 58.71833773087071
       },
@@ -798,11 +798,11 @@
         "time": "16:00:02",
         "volume": 3769813,
         "week52_high": 637.51,
-        "week52_low": 153.27
+        "week52_low": 159.01
       },
       "metrics": {
         "week52High": 637.51,
-        "week52Low": 153.27
+        "week52Low": 159.01
       },
       "profile": {
         "company": "Ciena Corporation",
@@ -856,11 +856,11 @@
         "time": "16:00:01",
         "volume": 32651519,
         "week52_high": 32.86,
-        "week52_low": 20.485
+        "week52_low": 20.48
       },
       "metrics": {
         "week52High": 32.86,
-        "week52Low": 20.485
+        "week52Low": 20.48
       },
       "profile": {
         "company": null,
@@ -1333,11 +1333,11 @@
         "time": "16:00:02",
         "volume": 8410298,
         "week52_high": 42.74,
-        "week52_low": 20.65
+        "week52_low": 20.89
       },
       "metrics": {
         "week52High": 42.74,
-        "week52Low": 20.65
+        "week52Low": 20.89
       },
       "profile": {
         "company": null,
@@ -1575,11 +1575,11 @@
         "time": "16:00:02",
         "volume": 1213339,
         "week52_high": 345.37,
-        "week52_low": 180.991
+        "week52_low": 182.216
       },
       "metrics": {
         "week52High": 345.37,
-        "week52Low": 180.991
+        "week52Low": 182.216
       },
       "profile": {
         "company": null,
@@ -1637,11 +1637,11 @@
         "date": "2026-10-09",
         "time": "16:00:02",
         "volume": 4145287,
-        "week52_high": 69.04,
+        "week52_high": 68.98,
         "week52_low": 32.1
       },
       "metrics": {
-        "week52High": 69.04,
+        "week52High": 68.98,
         "week52Low": 32.1,
         "marketCap": 23681314816,
         "peRatio": 46.63013698630137
@@ -1787,11 +1787,11 @@
         "time": "16:00:00",
         "volume": 17231359,
         "week52_high": 408.61,
-        "week52_low": 235.84
+        "week52_low": 239.71
       },
       "metrics": {
         "week52High": 408.61,
-        "week52Low": 235.84,
+        "week52Low": 239.71,
         "marketCap": 4166206881792,
         "peRatio": 32.53098982423682
       },
@@ -2119,11 +2119,11 @@
         "time": "16:00:00",
         "volume": 1251301,
         "week52_high": 260.19,
-        "week52_low": 199.4
+        "week52_low": 199.79
       },
       "metrics": {
         "week52High": 260.19,
-        "week52Low": 199.4
+        "week52Low": 199.79
       },
       "profile": {
         "company": null,
@@ -3368,11 +3368,11 @@
         "date": "2026-10-09",
         "time": "16:00:00",
         "volume": 37389859,
-        "week52_high": 209.3,
+        "week52_high": 209.58,
         "week52_low": 106.37
       },
       "metrics": {
-        "week52High": 209.3,
+        "week52High": 209.58,
         "week52Low": 106.37
       },
       "profile": {
@@ -4973,7 +4973,7 @@
       "quote": {
         "ticker": "^DJI",
         "price": 51654.95,
-        "change_pct": 0.8263454586622291,
+        "change_pct": 0.8262667367275333,
         "source": "yahoo"
       },
       "metrics": {},
@@ -5004,8 +5004,8 @@
       "type": "Index",
       "quote": {
         "ticker": "^RUT",
-        "price": 2806.981,
-        "change_pct": 0.4599284929477194,
+        "price": 2806.9814,
+        "change_pct": 0.46000752578210313,
         "source": "yahoo"
       },
       "metrics": {},
