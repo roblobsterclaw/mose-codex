@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-10T05:02:42.371456+00:00",
+  "generated_at": "2026-10-11T06:57:17.579424+00:00",
   "source": "Yahoo Finance public chart endpoint",
   "methodology": "One-year price return for currently reported top-10 13F securities; excludes dividends.",
   "ticker_count": 450,
@@ -2624,8 +2624,8 @@
     "WRDIF": {
       "one_year_price_return_pct": 0.0,
       "from": "2026-09-29",
-      "to": "2026-10-08",
-      "observations": 8
+      "to": "2026-10-09",
+      "observations": 9
     },
     "WRLD": {
       "one_year_price_return_pct": 6.358,
