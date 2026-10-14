@@ -1,15 +1,12 @@
 {
-  "generated_at": "2026-10-13T23:30:52.785558+00:00",
+  "generated_at": "2026-10-14T00:11:53.036714+00:00",
   "job": "update_live_market_data",
   "status": "partial",
-  "detail": "166 quotes, 5 indices published. 6 symbol(s) failed.",
+  "detail": "166 quotes, 5 indices published. 3 symbol(s) failed.",
   "quote_count": 166,
   "errors": [
     "BK: no data after retry",
     "CSU: no data after retry",
-    "IRBO: no data after retry",
-    "history BK: HTTP Error 404: Not Found",
-    "history CSU: HTTP Error 404: Not Found",
-    "history IRBO: HTTP Error 404: Not Found"
+    "IRBO: no data after retry"
   ]
 }
