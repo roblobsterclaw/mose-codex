@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-15T03:41:27.463675+00:00",
+  "generated_at": "2026-10-15T08:57:55.497146+00:00",
   "source": "yahoo",
   "market_status": "closed",
   "indices": [
@@ -31,15 +31,15 @@
       "name": "Russell 2000",
       "ticker": "^RUT",
       "price": 2729.531,
-      "change_pct": -1.9342746146845853,
+      "change_pct": -1.9343098474151819,
       "vs_exit": null,
       "source": "yahoo"
     },
     {
       "name": "VIX",
       "ticker": "^VIX",
-      "price": 16.87,
-      "change_pct": 10.478061558611666,
+      "price": 17.52,
+      "change_pct": 14.734774066797643,
       "vs_exit": null,
       "source": "yahoo"
     }
@@ -853,9 +853,9 @@
       "ticker": "IFNNF",
       "symbol": "IFNNF",
       "price": 64.3,
-      "prev_close": 64.21,
-      "change_pct": 0.14016508332036043,
-      "date": "2026-10-13",
+      "prev_close": 64.3,
+      "change_pct": 0.0,
+      "date": "2026-10-14",
       "time": "16:00:00",
       "volume": 645,
       "week52_high": 103.5,
@@ -1387,7 +1387,7 @@
       "time": "16:03:39",
       "volume": 6466147,
       "week52_high": 153.35,
-      "week52_low": 120.25
+      "week52_low": 116.51
     },
     {
       "ticker": "PLTR",
@@ -1531,7 +1531,7 @@
       "time": "16:00:02",
       "volume": 4046219,
       "week52_high": 226.88,
-      "week52_low": 155.64
+      "week52_low": 156.1
     },
     {
       "ticker": "SCHW",
