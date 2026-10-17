@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T23:18:51.625396+00:00",
+  "generated_at": "2026-10-17T03:34:20.249496+00:00",
   "source": "yahoo",
   "market_status": "closed",
   "indices": [
@@ -14,9 +14,9 @@
     {
       "name": "Dow Jones",
       "ticker": "^DJI",
-      "price": 52002.41,
-      "change_pct": -0.33592901487206284,
-      "vs_exit": 12.00297483345177,
+      "price": 52002.4,
+      "change_pct": -0.33596728104150936,
+      "vs_exit": 12.002953295416347,
       "source": "yahoo"
     },
     {
@@ -31,7 +31,7 @@
       "name": "Russell 2000",
       "ticker": "^RUT",
       "price": 2721.37,
-      "change_pct": -1.658649557525899,
+      "change_pct": -1.6586744336476056,
       "vs_exit": null,
       "source": "yahoo"
     },
@@ -463,7 +463,7 @@
       "time": "16:00:02",
       "volume": 15858137,
       "week52_high": 130.37,
-      "week52_low": 68.95
+      "week52_low": 69.85
     },
     {
       "ticker": "CTVA",
@@ -775,7 +775,7 @@
       "time": "16:00:02",
       "volume": 2359303,
       "week52_high": 1153.99,
-      "week52_low": 740.01
+      "week52_low": 743.11
     },
     {
       "ticker": "HD",
@@ -852,11 +852,11 @@
     {
       "ticker": "IFNNF",
       "symbol": "IFNNF",
-      "price": 58.8,
+      "price": 60.67,
       "prev_close": 58.9,
-      "change_pct": -0.16977928692699734,
+      "change_pct": 3.0050933786078153,
       "date": "2026-10-16",
-      "time": "11:44:22",
+      "time": "16:00:00",
       "volume": 100,
       "week52_high": 103.5,
       "week52_low": 37.05
@@ -907,7 +907,7 @@
       "time": "16:00:02",
       "volume": 3520505,
       "week52_high": 160.41,
-      "week52_low": 107.77
+      "week52_low": 107.84
     },
     {
       "ticker": "JNJ",
@@ -991,7 +991,7 @@
       "time": "16:00:03",
       "volume": 2406073,
       "week52_high": 1292.65,
-      "week52_low": 783.85
+      "week52_low": 793.82
     },
     {
       "ticker": "LNC",
@@ -1255,7 +1255,7 @@
       "time": "16:00:02",
       "volume": 1121753,
       "week52_high": 280.11,
-      "week52_low": 131.32
+      "week52_low": 133.78
     },
     {
       "ticker": "NVDA",
@@ -1302,7 +1302,7 @@
       "date": "2026-10-16",
       "time": "16:03:50",
       "volume": 34809217,
-      "week52_high": 304.28,
+      "week52_high": 289.24,
       "week52_low": 114.5
     },
     {
@@ -1387,7 +1387,7 @@
       "time": "16:01:59",
       "volume": 5791598,
       "week52_high": 153.35,
-      "week52_low": 121.17
+      "week52_low": 121.4
     },
     {
       "ticker": "PLTR",
@@ -1495,7 +1495,7 @@
       "time": "16:00:00",
       "volume": 653505,
       "week52_high": 859.34,
-      "week52_low": 566.11
+      "week52_low": 572.75
     },
     {
       "ticker": "ROBO",
@@ -1531,7 +1531,7 @@
       "time": "16:00:02",
       "volume": 7682411,
       "week52_high": 226.88,
-      "week52_low": 156.1
+      "week52_low": 159.45
     },
     {
       "ticker": "SCHW",
@@ -1687,7 +1687,7 @@
       "time": "16:00:02",
       "volume": 14083264,
       "week52_high": 56.2,
-      "week52_low": 41.6
+      "week52_low": 42.7
     },
     {
       "ticker": "TFLO",
@@ -1759,7 +1759,7 @@
       "time": "16:00:02",
       "volume": 3194578,
       "week52_high": 398.7,
-      "week52_low": 261.87
+      "week52_low": 262.9
     },
     {
       "ticker": "TSEM",
@@ -1888,7 +1888,7 @@
       "prev_close": 714.89,
       "change_pct": -1.0924757655023773,
       "date": "2026-10-16",
-      "time": "18:53:21",
+      "time": "20:08:21",
       "volume": null,
       "week52_high": 721.63,
       "week52_low": 585.37
@@ -1915,7 +1915,7 @@
       "time": "16:00:00",
       "volume": 6052919,
       "week52_high": 60.43,
-      "week52_low": 12.77
+      "week52_low": 13.01
     },
     {
       "ticker": "VLO",
@@ -1927,7 +1927,7 @@
       "time": "16:00:02",
       "volume": 1922092,
       "week52_high": 461.52,
-      "week52_low": 156.17
+      "week52_low": 156.26
     },
     {
       "ticker": "VOO",
@@ -2035,7 +2035,7 @@
       "time": "16:03:16",
       "volume": 13186630,
       "week52_high": 179.16,
-      "week52_low": 111.18
+      "week52_low": 111.98
     }
   ]
 }
