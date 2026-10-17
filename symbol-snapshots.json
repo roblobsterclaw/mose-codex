@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T03:34:20.249496+00:00",
+  "generated_at": "2026-10-17T08:21:55.613714+00:00",
   "source": "mose-live-quote-snapshot",
   "symbols": {
     "AAPL": {
@@ -944,11 +944,11 @@
         "date": "2026-10-16",
         "time": "16:00:02",
         "volume": 7642397,
-        "week52_high": 146.58,
+        "week52_high": 146.59,
         "week52_low": 85.57
       },
       "metrics": {
-        "week52High": 146.58,
+        "week52High": 146.59,
         "week52Low": 85.57
       },
       "profile": {
@@ -1156,11 +1156,11 @@
         "date": "2026-10-16",
         "time": "16:03:43",
         "volume": 8709921,
-        "week52_high": 225.309,
+        "week52_high": 225.31,
         "week52_low": 146.49
       },
       "metrics": {
-        "week52High": 225.309,
+        "week52High": 225.31,
         "week52Low": 146.49,
         "marketCap": 368919576576,
         "peRatio": 33.93514328808447
@@ -1758,11 +1758,11 @@
         "time": "16:00:03",
         "volume": 7486393,
         "week52_high": 91.85,
-        "week52_low": 57.55
+        "week52_low": 57.68
       },
       "metrics": {
         "week52High": 91.85,
-        "week52Low": 57.55
+        "week52Low": 57.68
       },
       "profile": {
         "company": null,
@@ -2501,11 +2501,11 @@
         "date": "2026-10-16",
         "time": "16:00:02",
         "volume": 3265373,
-        "week52_high": 622.46,
+        "week52_high": 622.49,
         "week52_low": 464.52
       },
       "metrics": {
-        "week52High": 622.46,
+        "week52High": 622.49,
         "week52Low": 464.52,
         "marketCap": 449940324352,
         "peRatio": 37.32889963724305
@@ -2681,11 +2681,11 @@
         "date": "2026-10-16",
         "time": "16:00:02",
         "volume": 3328084,
-        "week52_high": 102.425,
+        "week52_high": 102.43,
         "week52_low": 67.33
       },
       "metrics": {
-        "week52High": 102.425,
+        "week52High": 102.43,
         "week52Low": 67.33
       },
       "profile": {
@@ -4972,13 +4972,13 @@
       "type": "Index",
       "quote": {
         "ticker": "^DJI",
-        "price": 52002.4,
-        "change_pct": -0.33596728104150936,
+        "price": 52002.41,
+        "change_pct": -0.3359481157659184,
         "source": "yahoo"
       },
       "metrics": {},
       "profile": {
-        "vsExit": 12.002953295416347
+        "vsExit": 12.00297483345177
       },
       "source": "yahoo"
     },
