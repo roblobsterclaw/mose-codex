@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T03:47:38.905534+00:00",
+  "generated_at": "2026-10-22T09:14:55.345081+00:00",
   "source": "yahoo",
   "market_status": "closed",
   "indices": [
@@ -38,8 +38,8 @@
     {
       "name": "VIX",
       "ticker": "^VIX",
-      "price": 16.68,
-      "change_pct": -3.639514731369145,
+      "price": 18.55,
+      "change_pct": 11.211031175059958,
       "vs_exit": null,
       "source": "yahoo"
     }
@@ -67,7 +67,7 @@
       "time": "16:00:01",
       "volume": 497111,
       "week52_high": 397.44,
-      "week52_low": 187.71
+      "week52_low": 185.52
     },
     {
       "ticker": "ALL",
@@ -751,7 +751,7 @@
       "time": "16:00:02",
       "volume": 9012103,
       "week52_high": 91.85,
-      "week52_low": 66.57
+      "week52_low": 65.89
     },
     {
       "ticker": "GOOGL",
@@ -763,7 +763,7 @@
       "time": "16:00:01",
       "volume": 28525256,
       "week52_high": 408.61,
-      "week52_low": 251.85
+      "week52_low": 249.29
     },
     {
       "ticker": "GS",
@@ -1435,7 +1435,7 @@
       "time": "16:00:02",
       "volume": 1637559,
       "week52_high": 788.75,
-      "week52_low": 408.36
+      "week52_low": 404.51
     },
     {
       "ticker": "QCOM",
