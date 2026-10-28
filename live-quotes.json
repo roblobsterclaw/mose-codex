@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-28T00:18:00.477985+00:00",
+  "generated_at": "2026-10-28T06:43:23.242343+00:00",
   "source": "yahoo",
   "market_status": "closed",
   "indices": [
@@ -15,7 +15,7 @@
       "name": "Dow Jones",
       "ticker": "^DJI",
       "price": 52377.57,
-      "change_pct": 0.030537657572590363,
+      "change_pct": 0.0304994499786125,
       "vs_exit": 12.810995770145228,
       "source": "yahoo"
     },
@@ -31,7 +31,7 @@
       "name": "Russell 2000",
       "ticker": "^RUT",
       "price": 2818.87,
-      "change_pct": 1.1644315437995048,
+      "change_pct": 1.1645767687570365,
       "vs_exit": null,
       "source": "yahoo"
     },
@@ -853,10 +853,10 @@
       "ticker": "IFNNF",
       "symbol": "IFNNF",
       "price": 59.15,
-      "prev_close": 55.5,
-      "change_pct": 6.576576576576574,
+      "prev_close": 54.14,
+      "change_pct": 9.253786479497595,
       "date": "2026-10-27",
-      "time": "15:11:14",
+      "time": "16:00:00",
       "volume": 100,
       "week52_high": 103.5,
       "week52_low": 37.05
@@ -1888,7 +1888,7 @@
       "prev_close": 708.74,
       "change_pct": 0.5968338177610997,
       "date": "2026-10-27",
-      "time": "18:54:28",
+      "time": "20:09:28",
       "volume": null,
       "week52_high": 721.63,
       "week52_low": 585.37
