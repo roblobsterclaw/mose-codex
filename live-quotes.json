@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T00:40:40.634231+00:00",
+  "generated_at": "2026-10-30T06:53:18.881251+00:00",
   "source": "yahoo",
   "market_status": "closed",
   "indices": [
@@ -30,8 +30,8 @@
     {
       "name": "Russell 2000",
       "ticker": "^RUT",
-      "price": 2859.2166,
-      "change_pct": 1.0142097042394465,
+      "price": 2859.217,
+      "change_pct": 1.0141988546233673,
       "vs_exit": null,
       "source": "yahoo"
     },
@@ -127,7 +127,7 @@
       "time": "16:00:01",
       "volume": 3887425,
       "week52_high": 738.01,
-      "week52_low": 252.01
+      "week52_low": 252.0
     },
     {
       "ticker": "ARM",
@@ -853,9 +853,9 @@
       "ticker": "IFNNF",
       "symbol": "IFNNF",
       "price": 61.69,
-      "prev_close": 59.15,
-      "change_pct": 4.294167371090447,
-      "date": "2026-10-28",
+      "prev_close": 61.69,
+      "change_pct": 0.0,
+      "date": "2026-10-29",
       "time": "16:00:00",
       "volume": 100,
       "week52_high": 103.5,
@@ -1050,7 +1050,7 @@
       "date": "2026-10-29",
       "time": "16:00:02",
       "volume": 4438404,
-      "week52_high": 641.565,
+      "week52_high": 641.57,
       "week52_low": 464.52
     },
     {
@@ -1866,7 +1866,7 @@
       "date": "2026-10-29",
       "time": "16:00:02",
       "volume": 413407,
-      "week52_high": 1198.78,
+      "week52_high": 1198.8,
       "week52_low": 701.59
     },
     {
