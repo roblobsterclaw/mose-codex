@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-07T00:41:16.015094+00:00",
+  "generated_at": "2026-11-07T05:12:42.840196+00:00",
   "source": "mose-live-quote-snapshot",
   "symbols": {
     "AAPL": {
@@ -1876,11 +1876,11 @@
       "quote": {
         "ticker": "HLT",
         "symbol": "HLT",
-        "price": 370.45,
-        "prev_close": 369.64,
-        "change_pct": 0.21913212855751601,
+        "price": 376.53,
+        "prev_close": 363.83,
+        "change_pct": 3.4906412335431356,
         "date": "2026-11-06",
-        "time": "15:59:57",
+        "time": "16:00:01",
         "volume": 1732276,
         "week52_high": 381.34,
         "week52_low": 263.95
@@ -1889,7 +1889,7 @@
         "week52High": 381.34,
         "week52Low": 263.95,
         "marketCap": 76957147136,
-        "peRatio": 60.630114566284774
+        "peRatio": 61.625204582651385
       },
       "profile": {
         "company": "Hilton Worldwide Holdings Inc.",
@@ -2025,10 +2025,10 @@
       "quote": {
         "ticker": "IFNNF",
         "symbol": "IFNNF",
-        "price": 50.24,
-        "prev_close": 56.4,
-        "change_pct": -10.92198581560283,
-        "date": "2026-11-05",
+        "price": 51.0,
+        "prev_close": 50.24,
+        "change_pct": 1.5127388535031807,
+        "date": "2026-11-06",
         "time": "16:00:00",
         "volume": 500,
         "week52_high": 103.5,
@@ -4574,7 +4574,7 @@
         "prev_close": 679.02,
         "change_pct": 0.3210509263350216,
         "date": "2026-11-06",
-        "time": "18:54:11",
+        "time": "20:09:10",
         "volume": null,
         "week52_high": 721.63,
         "week52_low": 585.37
@@ -4973,7 +4973,7 @@
       "quote": {
         "ticker": "^DJI",
         "price": 51285.73,
-        "change_pct": -0.46062869713094384,
+        "change_pct": -0.4607059746016745,
         "source": "yahoo"
       },
       "metrics": {},
@@ -5004,8 +5004,8 @@
       "type": "Index",
       "quote": {
         "ticker": "^RUT",
-        "price": 2754.1055,
-        "change_pct": 0.8871723504129347,
+        "price": 2754.105,
+        "change_pct": 0.8870320782156111,
         "source": "yahoo"
       },
       "metrics": {},
