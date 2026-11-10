@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-09T15:32:49.179421+00:00",
+  "generated_at": "2026-11-10T12:19:49.042082+00:00",
   "source": "Yahoo Finance public chart endpoint",
   "methodology": "One-year price return for currently reported top-10 13F securities; excludes dividends.",
   "ticker_count": 450,
@@ -30,1351 +30,1351 @@
   ],
   "returns": {
     "AAPL": {
-      "one_year_price_return_pct": 30.0895,
+      "one_year_price_return_pct": 30.16,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AAUC": {
-      "one_year_price_return_pct": 43.7538,
+      "one_year_price_return_pct": 43.3882,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ABG": {
-      "one_year_price_return_pct": -7.6636,
+      "one_year_price_return_pct": -5.5658,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ABVX": {
-      "one_year_price_return_pct": -17.8383,
+      "one_year_price_return_pct": -18.0173,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ACEL": {
-      "one_year_price_return_pct": 31.7964,
+      "one_year_price_return_pct": 33.5255,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ACGL": {
-      "one_year_price_return_pct": 18.1201,
+      "one_year_price_return_pct": 20.4143,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ACHC": {
-      "one_year_price_return_pct": 114.3093,
+      "one_year_price_return_pct": 112.4931,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ADI": {
-      "one_year_price_return_pct": 64.4397,
+      "one_year_price_return_pct": 70.1121,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ADP": {
-      "one_year_price_return_pct": 18.3114,
+      "one_year_price_return_pct": 18.8932,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ADSK": {
-      "one_year_price_return_pct": -12.6506,
+      "one_year_price_return_pct": -11.8405,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AER": {
-      "one_year_price_return_pct": 27.4712,
+      "one_year_price_return_pct": 28.7371,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AEVA": {
-      "one_year_price_return_pct": -11.25,
+      "one_year_price_return_pct": -9.5588,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AJG": {
-      "one_year_price_return_pct": 10.7703,
+      "one_year_price_return_pct": 11.7661,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ALAB": {
-      "one_year_price_return_pct": 24.0158,
+      "one_year_price_return_pct": 24.8244,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ALK": {
-      "one_year_price_return_pct": -1.6643,
+      "one_year_price_return_pct": -1.5581,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ALKT": {
-      "one_year_price_return_pct": -29.7613,
+      "one_year_price_return_pct": -27.7806,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AMAT": {
-      "one_year_price_return_pct": 54.0369,
+      "one_year_price_return_pct": 57.6272,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AMC": {
-      "one_year_price_return_pct": 32.3171,
+      "one_year_price_return_pct": 38.2114,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AMD": {
-      "one_year_price_return_pct": 101.6682,
+      "one_year_price_return_pct": 108.4515,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AME": {
-      "one_year_price_return_pct": 20.1328,
+      "one_year_price_return_pct": 20.3172,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AMR": {
-      "one_year_price_return_pct": -6.7151,
+      "one_year_price_return_pct": -6.1404,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AMRZ": {
-      "one_year_price_return_pct": -12.659,
+      "one_year_price_return_pct": -12.1461,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AMTM": {
-      "one_year_price_return_pct": -3.6826,
+      "one_year_price_return_pct": -2.0605,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AMX": {
-      "one_year_price_return_pct": 11.4952,
+      "one_year_price_return_pct": 12.5756,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AMZN": {
-      "one_year_price_return_pct": 8.756,
+      "one_year_price_return_pct": 7.4597,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AN": {
-      "one_year_price_return_pct": -5.2964,
+      "one_year_price_return_pct": -3.5759,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AON": {
-      "one_year_price_return_pct": -3.4085,
+      "one_year_price_return_pct": -2.6387,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "APD": {
-      "one_year_price_return_pct": 19.5817,
+      "one_year_price_return_pct": 20.373,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "APH": {
-      "one_year_price_return_pct": 9.3885,
+      "one_year_price_return_pct": 12.2141,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "APLD": {
-      "one_year_price_return_pct": -47.4555,
+      "one_year_price_return_pct": -46.8193,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "APO": {
-      "one_year_price_return_pct": -7.6421,
+      "one_year_price_return_pct": -6.6606,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "APP": {
-      "one_year_price_return_pct": -37.4179,
+      "one_year_price_return_pct": -37.0509,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "APPF": {
-      "one_year_price_return_pct": -10.5919,
+      "one_year_price_return_pct": -9.9898,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ARCO": {
-      "one_year_price_return_pct": -1.122,
+      "one_year_price_return_pct": -0.9818,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ARM": {
-      "one_year_price_return_pct": 20.518,
+      "one_year_price_return_pct": 20.3178,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ARMK": {
-      "one_year_price_return_pct": 45.0931,
+      "one_year_price_return_pct": 45.5851,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ARX": {
-      "one_year_price_return_pct": 61.7982,
+      "one_year_price_return_pct": 61.7575,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ASH": {
-      "one_year_price_return_pct": 56.2237,
+      "one_year_price_return_pct": 55.7426,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ASML": {
-      "one_year_price_return_pct": 44.8377,
+      "one_year_price_return_pct": 45.6743,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ASPN": {
-      "one_year_price_return_pct": 47.0027,
+      "one_year_price_return_pct": 66.485,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AVGO": {
-      "one_year_price_return_pct": -11.5503,
+      "one_year_price_return_pct": -10.8569,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AVTR": {
-      "one_year_price_return_pct": 35.5217,
+      "one_year_price_return_pct": 38.3478,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AXON": {
-      "one_year_price_return_pct": -46.3322,
+      "one_year_price_return_pct": -48.1469,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AXP": {
-      "one_year_price_return_pct": -11.7593,
+      "one_year_price_return_pct": -11.8435,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "AZO": {
-      "one_year_price_return_pct": -13.7148,
+      "one_year_price_return_pct": -12.7899,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BABA": {
-      "one_year_price_return_pct": -36.0178,
+      "one_year_price_return_pct": -36.476,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BAC": {
-      "one_year_price_return_pct": -5.9154,
+      "one_year_price_return_pct": -5.3725,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BAM": {
-      "one_year_price_return_pct": 0.4859,
+      "one_year_price_return_pct": 1.2521,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BAP": {
-      "one_year_price_return_pct": 35.9252,
+      "one_year_price_return_pct": 37.4078,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BBUC": {
-      "one_year_price_return_pct": -8.6829,
+      "one_year_price_return_pct": -7.0635,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BE": {
-      "one_year_price_return_pct": 41.4279,
+      "one_year_price_return_pct": 39.2516,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BFAM": {
-      "one_year_price_return_pct": -47.174,
+      "one_year_price_return_pct": -47.5474,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BHC": {
-      "one_year_price_return_pct": 31.0922,
+      "one_year_price_return_pct": 31.25,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BKNG": {
-      "one_year_price_return_pct": -18.8019,
+      "one_year_price_return_pct": -17.5692,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BKR": {
-      "one_year_price_return_pct": -0.5738,
+      "one_year_price_return_pct": -0.7172,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BLDR": {
-      "one_year_price_return_pct": -39.8982,
+      "one_year_price_return_pct": -38.3803,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BMY": {
-      "one_year_price_return_pct": 31.1151,
+      "one_year_price_return_pct": 31.4854,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BN": {
-      "one_year_price_return_pct": -8.0169,
+      "one_year_price_return_pct": -6.7694,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BRK-A": {
-      "one_year_price_return_pct": 14.0044,
+      "one_year_price_return_pct": 14.6407,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BRK-B": {
-      "one_year_price_return_pct": 13.3245,
+      "one_year_price_return_pct": 15.7491,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BRO": {
-      "one_year_price_return_pct": -9.5211,
+      "one_year_price_return_pct": -9.5657,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BROS": {
-      "one_year_price_return_pct": -37.1119,
+      "one_year_price_return_pct": -36.4679,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BSAC": {
-      "one_year_price_return_pct": 8.8963,
+      "one_year_price_return_pct": 9.0635,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BTI": {
-      "one_year_price_return_pct": 8.5799,
+      "one_year_price_return_pct": 8.4266,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "BX": {
-      "one_year_price_return_pct": -14.1234,
+      "one_year_price_return_pct": -14.0333,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CAAP": {
-      "one_year_price_return_pct": 12.4091,
+      "one_year_price_return_pct": 13.8636,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CACC": {
-      "one_year_price_return_pct": 22.6467,
+      "one_year_price_return_pct": 23.7806,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CARS": {
-      "one_year_price_return_pct": 10.8377,
+      "one_year_price_return_pct": 16.4076,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CAT": {
-      "one_year_price_return_pct": 3.5386,
+      "one_year_price_return_pct": 4.9102,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CAVA": {
-      "one_year_price_return_pct": 21.4861,
+      "one_year_price_return_pct": 25.5538,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CB": {
-      "one_year_price_return_pct": 25.0893,
+      "one_year_price_return_pct": 26.0885,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CBIO": {
-      "one_year_price_return_pct": 9.077,
+      "one_year_price_return_pct": 4.119,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CBRE": {
-      "one_year_price_return_pct": -8.9047,
+      "one_year_price_return_pct": -8.9969,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CBRS": {
-      "one_year_price_return_pct": -69.9553,
+      "one_year_price_return_pct": -68.9138,
       "from": "2026-05-14",
       "to": "2026-11-09",
       "observations": 124
     },
     "CCJ": {
-      "one_year_price_return_pct": -21.0473,
+      "one_year_price_return_pct": -20.0233,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CDLX": {
-      "one_year_price_return_pct": -86.4685,
+      "one_year_price_return_pct": -87.2727,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CEG": {
-      "one_year_price_return_pct": -26.5121,
+      "one_year_price_return_pct": -23.5059,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CEVA": {
-      "one_year_price_return_pct": -1.3841,
+      "one_year_price_return_pct": -4.4983,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CHD": {
-      "one_year_price_return_pct": 30.1394,
+      "one_year_price_return_pct": 31.5099,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CHTR": {
-      "one_year_price_return_pct": -44.4999,
+      "one_year_price_return_pct": -42.4091,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CIEN": {
-      "one_year_price_return_pct": 28.1187,
+      "one_year_price_return_pct": 29.0265,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CIGI": {
-      "one_year_price_return_pct": -36.443,
+      "one_year_price_return_pct": -36.7339,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CLS": {
-      "one_year_price_return_pct": -35.8579,
+      "one_year_price_return_pct": -35.3124,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CMCSA": {
-      "one_year_price_return_pct": -4.7293,
+      "one_year_price_return_pct": -3.5687,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CMPR": {
-      "one_year_price_return_pct": -15.9543,
+      "one_year_price_return_pct": -15.4259,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CNH": {
-      "one_year_price_return_pct": 33.2814,
+      "one_year_price_return_pct": 33.1256,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CNI": {
-      "one_year_price_return_pct": 33.1007,
+      "one_year_price_return_pct": 34.5889,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CNK": {
-      "one_year_price_return_pct": 33.3217,
+      "one_year_price_return_pct": 35.8923,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CNM": {
-      "one_year_price_return_pct": -6.6064,
+      "one_year_price_return_pct": -5.8199,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "COF": {
-      "one_year_price_return_pct": -8.9808,
+      "one_year_price_return_pct": -9.8838,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "COGT": {
-      "one_year_price_return_pct": 1.3247,
+      "one_year_price_return_pct": 3.3272,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "COHR": {
-      "one_year_price_return_pct": 33.1634,
+      "one_year_price_return_pct": 35.0708,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "COO": {
-      "one_year_price_return_pct": -11.2839,
+      "one_year_price_return_pct": -9.6012,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CORZ": {
-      "one_year_price_return_pct": -35.1996,
+      "one_year_price_return_pct": -34.0591,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "COST": {
-      "one_year_price_return_pct": 14.3096,
+      "one_year_price_return_pct": 16.4511,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "COUR": {
-      "one_year_price_return_pct": -54.1367,
+      "one_year_price_return_pct": -55.036,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CP": {
-      "one_year_price_return_pct": 31.2535,
+      "one_year_price_return_pct": 32.4366,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CPA": {
-      "one_year_price_return_pct": 17.8549,
+      "one_year_price_return_pct": 18.0861,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CPAY": {
-      "one_year_price_return_pct": 59.9687,
+      "one_year_price_return_pct": 62.9323,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CPB": {
-      "one_year_price_return_pct": -25.3427,
+      "one_year_price_return_pct": -25.3916,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CPNG": {
-      "one_year_price_return_pct": -44.8306,
+      "one_year_price_return_pct": -43.2227,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CPRT": {
-      "one_year_price_return_pct": -22.7119,
+      "one_year_price_return_pct": -21.6373,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CRDO": {
-      "one_year_price_return_pct": -21.2682,
+      "one_year_price_return_pct": -21.9029,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CRH": {
-      "one_year_price_return_pct": -15.358,
+      "one_year_price_return_pct": -14.2569,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CRM": {
-      "one_year_price_return_pct": -11.1042,
+      "one_year_price_return_pct": -11.0753,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CROX": {
-      "one_year_price_return_pct": 113.8683,
+      "one_year_price_return_pct": 116.264,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CRSP": {
-      "one_year_price_return_pct": -6.9254,
+      "one_year_price_return_pct": -8.3181,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CRWD": {
-      "one_year_price_return_pct": 59.9914,
+      "one_year_price_return_pct": 63.9948,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CRWV": {
-      "one_year_price_return_pct": -53.0158,
+      "one_year_price_return_pct": -53.6218,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CSGP": {
-      "one_year_price_return_pct": -55.1465,
+      "one_year_price_return_pct": -53.5327,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CVNA": {
-      "one_year_price_return_pct": 16.4128,
+      "one_year_price_return_pct": 18.3133,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CVX": {
-      "one_year_price_return_pct": 35.7058,
+      "one_year_price_return_pct": 35.4192,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "CWT": {
-      "one_year_price_return_pct": 9.9891,
+      "one_year_price_return_pct": 9.6393,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DASH": {
-      "one_year_price_return_pct": -11.3117,
+      "one_year_price_return_pct": -11.3289,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DDOG": {
-      "one_year_price_return_pct": -9.8788,
+      "one_year_price_return_pct": -10.0641,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DE": {
-      "one_year_price_return_pct": 45.5111,
+      "one_year_price_return_pct": 45.7198,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DECK": {
-      "one_year_price_return_pct": 11.8774,
+      "one_year_price_return_pct": 13.264,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DELL": {
-      "one_year_price_return_pct": 145.2484,
+      "one_year_price_return_pct": 142.701,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DEO": {
-      "one_year_price_return_pct": 5.2709,
+      "one_year_price_return_pct": 6.565,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DG": {
-      "one_year_price_return_pct": 33.0677,
+      "one_year_price_return_pct": 36.1354,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DHR": {
-      "one_year_price_return_pct": 9.4024,
+      "one_year_price_return_pct": 11.3416,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DIS": {
-      "one_year_price_return_pct": 4.6819,
+      "one_year_price_return_pct": 6.1297,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DKNG": {
-      "one_year_price_return_pct": -39.4237,
+      "one_year_price_return_pct": -38.7688,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DLTR": {
-      "one_year_price_return_pct": 26.7099,
+      "one_year_price_return_pct": 29.109,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DMRA": {
-      "one_year_price_return_pct": 41.7101,
+      "one_year_price_return_pct": 39.5362,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DNTH": {
-      "one_year_price_return_pct": 143.1849,
+      "one_year_price_return_pct": 145.8345,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DPZ": {
-      "one_year_price_return_pct": -18.483,
+      "one_year_price_return_pct": -18.0107,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DSU": {
-      "one_year_price_return_pct": -15.4773,
+      "one_year_price_return_pct": -14.8505,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DT": {
-      "one_year_price_return_pct": -5.8005,
+      "one_year_price_return_pct": -5.8861,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "DY": {
-      "one_year_price_return_pct": -26.0081,
+      "one_year_price_return_pct": -25.0971,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "EBS": {
-      "one_year_price_return_pct": -44.95,
+      "one_year_price_return_pct": -44.495,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ED": {
-      "one_year_price_return_pct": 19.8799,
+      "one_year_price_return_pct": 20.511,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "EFX": {
-      "one_year_price_return_pct": -9.3741,
+      "one_year_price_return_pct": -9.8123,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "EGHT": {
-      "one_year_price_return_pct": 10.6599,
+      "one_year_price_return_pct": 10.1523,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "EGO": {
-      "one_year_price_return_pct": 31.5658,
+      "one_year_price_return_pct": 33.1673,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "EIX": {
-      "one_year_price_return_pct": 3.9414,
+      "one_year_price_return_pct": 4.8832,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ELF": {
-      "one_year_price_return_pct": 49.2235,
+      "one_year_price_return_pct": 49.4678,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ELV": {
-      "one_year_price_return_pct": 38.6974,
+      "one_year_price_return_pct": 37.6819,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ELVN": {
-      "one_year_price_return_pct": 173.597,
+      "one_year_price_return_pct": 175.5211,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "EPD": {
-      "one_year_price_return_pct": 18.702,
+      "one_year_price_return_pct": 17.3274,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "EQIX": {
-      "one_year_price_return_pct": 28.0898,
+      "one_year_price_return_pct": 27.3351,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ESTC": {
-      "one_year_price_return_pct": -3.6102,
+      "one_year_price_return_pct": -3.0192,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ETN": {
-      "one_year_price_return_pct": -5.0083,
+      "one_year_price_return_pct": -5.3403,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "EVCM": {
-      "one_year_price_return_pct": -7.7489,
+      "one_year_price_return_pct": -8.1448,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "EWBC": {
-      "one_year_price_return_pct": 25.2212,
+      "one_year_price_return_pct": 24.5791,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "EXC": {
-      "one_year_price_return_pct": -0.132,
+      "one_year_price_return_pct": 0.418,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "EXP": {
-      "one_year_price_return_pct": -9.2531,
+      "one_year_price_return_pct": -7.9333,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "EXPD": {
-      "one_year_price_return_pct": 33.3879,
+      "one_year_price_return_pct": 34.9971,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "EXPE": {
-      "one_year_price_return_pct": -2.328,
+      "one_year_price_return_pct": -3.3129,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FBTC": {
-      "one_year_price_return_pct": -29.4494,
+      "one_year_price_return_pct": -29.6549,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FCN": {
-      "one_year_price_return_pct": 20.3254,
+      "one_year_price_return_pct": 19.1344,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FCX": {
-      "one_year_price_return_pct": 53.0891,
+      "one_year_price_return_pct": 52.21,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FER": {
-      "one_year_price_return_pct": -5.3798,
+      "one_year_price_return_pct": -3.8528,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FERG": {
-      "one_year_price_return_pct": 4.082,
+      "one_year_price_return_pct": 3.3149,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FICO": {
-      "one_year_price_return_pct": -59.1452,
+      "one_year_price_return_pct": -58.7916,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FIG": {
-      "one_year_price_return_pct": -56.1009,
+      "one_year_price_return_pct": -56.326,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FLUT": {
-      "one_year_price_return_pct": -64.268,
+      "one_year_price_return_pct": -64.3289,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FNF": {
-      "one_year_price_return_pct": -19.8805,
+      "one_year_price_return_pct": -18.7713,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FOUR": {
-      "one_year_price_return_pct": -36.4022,
+      "one_year_price_return_pct": -36.5431,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FOXF": {
-      "one_year_price_return_pct": 14.0937,
+      "one_year_price_return_pct": 16.8125,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FSK": {
-      "one_year_price_return_pct": -23.6825,
+      "one_year_price_return_pct": -22.9668,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FTV": {
-      "one_year_price_return_pct": 29.6707,
+      "one_year_price_return_pct": 30.7228,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FUN": {
-      "one_year_price_return_pct": -35.5963,
+      "one_year_price_return_pct": -34.1896,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FWONA": {
-      "one_year_price_return_pct": 8.2377,
+      "one_year_price_return_pct": 11.312,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "FWONK": {
-      "one_year_price_return_pct": 3.2937,
+      "one_year_price_return_pct": 6.0377,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GDDY": {
-      "one_year_price_return_pct": -13.5793,
+      "one_year_price_return_pct": -15.0171,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GE": {
-      "one_year_price_return_pct": 6.1518,
+      "one_year_price_return_pct": 7.5656,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GEHC": {
-      "one_year_price_return_pct": 11.4453,
+      "one_year_price_return_pct": 14.3576,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GEV": {
-      "one_year_price_return_pct": 42.3905,
+      "one_year_price_return_pct": 43.039,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GFF": {
-      "one_year_price_return_pct": 45.1756,
+      "one_year_price_return_pct": 48.2299,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GGAL": {
-      "one_year_price_return_pct": -47.0841,
+      "one_year_price_return_pct": -45.6172,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GLBE": {
-      "one_year_price_return_pct": 18.7139,
+      "one_year_price_return_pct": 16.7629,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GLW": {
-      "one_year_price_return_pct": 28.3875,
+      "one_year_price_return_pct": 30.9282,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GNRC": {
-      "one_year_price_return_pct": 20.2566,
+      "one_year_price_return_pct": 20.4992,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GOOG": {
-      "one_year_price_return_pct": 0.6022,
+      "one_year_price_return_pct": -1.5761,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GOOGL": {
-      "one_year_price_return_pct": 1.3616,
+      "one_year_price_return_pct": -0.6722,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GPC": {
-      "one_year_price_return_pct": -0.3156,
+      "one_year_price_return_pct": 0.3915,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GRFS": {
-      "one_year_price_return_pct": -0.1163,
+      "one_year_price_return_pct": 1.0465,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GS": {
-      "one_year_price_return_pct": 13.1272,
+      "one_year_price_return_pct": 13.6754,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GTLB": {
-      "one_year_price_return_pct": 2.5547,
+      "one_year_price_return_pct": 2.0134,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GUTS": {
-      "one_year_price_return_pct": -93.4226,
+      "one_year_price_return_pct": -93.3259,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GWRE": {
-      "one_year_price_return_pct": -27.2076,
+      "one_year_price_return_pct": -26.1423,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "GXO": {
-      "one_year_price_return_pct": 11.1765,
+      "one_year_price_return_pct": 9.9608,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "H": {
-      "one_year_price_return_pct": 18.3362,
+      "one_year_price_return_pct": 18.5597,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HAFN": {
-      "one_year_price_return_pct": 48.6487,
+      "one_year_price_return_pct": 46.1049,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HCA": {
-      "one_year_price_return_pct": 9.2554,
+      "one_year_price_return_pct": 9.926,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HCC": {
-      "one_year_price_return_pct": 3.9704,
+      "one_year_price_return_pct": 4.2618,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HDB": {
-      "one_year_price_return_pct": -28.7081,
+      "one_year_price_return_pct": -28.4447,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HEI-A": {
-      "one_year_price_return_pct": -0.6817,
+      "one_year_price_return_pct": -1.0342,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HGV": {
-      "one_year_price_return_pct": 10.4686,
+      "one_year_price_return_pct": 11.1665,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HHH": {
-      "one_year_price_return_pct": -7.0731,
+      "one_year_price_return_pct": -3.9713,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HLT": {
-      "one_year_price_return_pct": 34.9348,
+      "one_year_price_return_pct": 35.9474,
       "from": "2025-11-10",
-      "to": "2026-11-06",
-      "observations": 250
+      "to": "2026-11-09",
+      "observations": 251
     },
     "HNGE": {
-      "one_year_price_return_pct": 167.2686,
+      "one_year_price_return_pct": 175.8239,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HOOD": {
-      "one_year_price_return_pct": -37.3418,
+      "one_year_price_return_pct": -38.6812,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HQY": {
-      "one_year_price_return_pct": 2.344,
+      "one_year_price_return_pct": 2.2839,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HRI": {
-      "one_year_price_return_pct": 16.0142,
+      "one_year_price_return_pct": 18.9893,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HTHT": {
-      "one_year_price_return_pct": 13.1585,
+      "one_year_price_return_pct": 12.5532,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HTLD": {
-      "one_year_price_return_pct": 34.4603,
+      "one_year_price_return_pct": 36.801,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HUBB": {
-      "one_year_price_return_pct": -4.467,
+      "one_year_price_return_pct": -4.48,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HUM": {
-      "one_year_price_return_pct": 83.4494,
+      "one_year_price_return_pct": 77.5103,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "HYT": {
-      "one_year_price_return_pct": -15.4699,
+      "one_year_price_return_pct": -15.2059,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ICLR": {
-      "one_year_price_return_pct": 30.5492,
+      "one_year_price_return_pct": 31.6527,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "IE": {
-      "one_year_price_return_pct": -38.7072,
+      "one_year_price_return_pct": -37.1863,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "IHRT": {
-      "one_year_price_return_pct": -59.8468,
+      "one_year_price_return_pct": -61.2691,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "INTC": {
-      "one_year_price_return_pct": 53.1137,
+      "one_year_price_return_pct": 54.4083,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "INTU": {
-      "one_year_price_return_pct": -48.5741,
+      "one_year_price_return_pct": -48.2251,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "IOVA": {
-      "one_year_price_return_pct": 260.9705,
+      "one_year_price_return_pct": 244.7258,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ITUB": {
-      "one_year_price_return_pct": 0.6376,
+      "one_year_price_return_pct": 2.055,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "IVZ": {
-      "one_year_price_return_pct": 20.5795,
+      "one_year_price_return_pct": 22.2927,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "IWM": {
-      "one_year_price_return_pct": 14.6068,
+      "one_year_price_return_pct": 15.7686,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "JBHT": {
-      "one_year_price_return_pct": 32.6834,
+      "one_year_price_return_pct": 33.1434,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "JBIO": {
-      "one_year_price_return_pct": 66.056,
+      "one_year_price_return_pct": 68.1035,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "JOBY": {
-      "one_year_price_return_pct": -61.7311,
+      "one_year_price_return_pct": -60.8117,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "JOE": {
-      "one_year_price_return_pct": 23.5404,
+      "one_year_price_return_pct": 27.8808,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "JPM": {
-      "one_year_price_return_pct": 6.9298,
+      "one_year_price_return_pct": 7.9491,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "JQC": {
-      "one_year_price_return_pct": -9.0998,
+      "one_year_price_return_pct": -8.2192,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "KARO": {
-      "one_year_price_return_pct": 38.1826,
+      "one_year_price_return_pct": 39.5806,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "KEYS": {
-      "one_year_price_return_pct": 56.4411,
+      "one_year_price_return_pct": 57.4683,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "KGC": {
-      "one_year_price_return_pct": -10.397,
+      "one_year_price_return_pct": -10.1808,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "KHC": {
-      "one_year_price_return_pct": -0.4922,
+      "one_year_price_return_pct": 0.1641,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "KKR": {
-      "one_year_price_return_pct": -18.1334,
+      "one_year_price_return_pct": -18.3332,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "KLAC": {
-      "one_year_price_return_pct": 20.8999,
+      "one_year_price_return_pct": 24.2908,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "KLAR": {
-      "one_year_price_return_pct": -63.2561,
+      "one_year_price_return_pct": -63.3243,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "KNSL": {
-      "one_year_price_return_pct": -2.708,
+      "one_year_price_return_pct": -1.2785,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "KO": {
-      "one_year_price_return_pct": 34.905,
+      "one_year_price_return_pct": 36.1741,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
@@ -1386,73 +1386,73 @@
       "observations": 241
     },
     "KSPI": {
-      "one_year_price_return_pct": 22.0638,
+      "one_year_price_return_pct": 21.4732,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "KYMR": {
-      "one_year_price_return_pct": 118.5929,
+      "one_year_price_return_pct": 126.6732,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "LAD": {
-      "one_year_price_return_pct": 4.4211,
+      "one_year_price_return_pct": 5.6173,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "LAW": {
-      "one_year_price_return_pct": -14.7407,
+      "one_year_price_return_pct": -16.7407,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "LCTX": {
-      "one_year_price_return_pct": -43.0939,
+      "one_year_price_return_pct": -40.3315,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "LEN": {
-      "one_year_price_return_pct": -26.5726,
+      "one_year_price_return_pct": -25.6716,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "LII": {
-      "one_year_price_return_pct": -27.975,
+      "one_year_price_return_pct": -28.5951,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "LIN": {
-      "one_year_price_return_pct": 22.5022,
+      "one_year_price_return_pct": 23.6908,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "LINE": {
-      "one_year_price_return_pct": 17.7821,
+      "one_year_price_return_pct": 17.4415,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "LION": {
-      "one_year_price_return_pct": 100.8571,
+      "one_year_price_return_pct": 103.4286,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "LLYVA": {
-      "one_year_price_return_pct": 20.0477,
+      "one_year_price_return_pct": 23.2439,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "LOAR": {
-      "one_year_price_return_pct": -0.214,
+      "one_year_price_return_pct": 1.9066,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
@@ -1464,847 +1464,847 @@
       "observations": 251
     },
     "LRCX": {
-      "one_year_price_return_pct": 29.3683,
+      "one_year_price_return_pct": 33.0228,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "LRN": {
-      "one_year_price_return_pct": 18.5151,
+      "one_year_price_return_pct": 16.1528,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "LTM": {
-      "one_year_price_return_pct": 12.4687,
+      "one_year_price_return_pct": 15.2952,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "LW": {
-      "one_year_price_return_pct": -7.3559,
+      "one_year_price_return_pct": -5.3015,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "LYV": {
-      "one_year_price_return_pct": 20.5232,
+      "one_year_price_return_pct": 23.2229,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MA": {
-      "one_year_price_return_pct": 18.2888,
+      "one_year_price_return_pct": 18.5999,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MAR": {
-      "one_year_price_return_pct": 43.1439,
+      "one_year_price_return_pct": 43.6155,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MARA": {
-      "one_year_price_return_pct": -57.6059,
+      "one_year_price_return_pct": -57.3813,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MBC": {
-      "one_year_price_return_pct": -34.986,
+      "one_year_price_return_pct": -33.5828,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MCFT": {
-      "one_year_price_return_pct": 5.7504,
+      "one_year_price_return_pct": 5.7246,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MCO": {
-      "one_year_price_return_pct": 3.9593,
+      "one_year_price_return_pct": 5.3925,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MDGL": {
-      "one_year_price_return_pct": -13.7997,
+      "one_year_price_return_pct": -12.7228,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MELI": {
-      "one_year_price_return_pct": -26.7607,
+      "one_year_price_return_pct": -26.7375,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "META": {
-      "one_year_price_return_pct": 1.0716,
+      "one_year_price_return_pct": 1.5211,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MKL": {
-      "one_year_price_return_pct": -6.0436,
+      "one_year_price_return_pct": -5.2984,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MKSI": {
-      "one_year_price_return_pct": 30.2706,
+      "one_year_price_return_pct": 33.1592,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MLM": {
-      "one_year_price_return_pct": -15.0299,
+      "one_year_price_return_pct": -13.9112,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MNST": {
-      "one_year_price_return_pct": 28.4878,
+      "one_year_price_return_pct": 30.3441,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MRCY": {
-      "one_year_price_return_pct": 4.9565,
+      "one_year_price_return_pct": 6.6577,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MRNA": {
-      "one_year_price_return_pct": 998.021,
+      "one_year_price_return_pct": 986.4297,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MSCI": {
-      "one_year_price_return_pct": 11.3511,
+      "one_year_price_return_pct": 12.0461,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MSFT": {
-      "one_year_price_return_pct": 7.0731,
+      "one_year_price_return_pct": 7.7431,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MTZ": {
-      "one_year_price_return_pct": -8.2803,
+      "one_year_price_return_pct": -5.9546,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "MU": {
-      "one_year_price_return_pct": 189.2163,
+      "one_year_price_return_pct": 189.4394,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NATL": {
-      "one_year_price_return_pct": 31.1873,
+      "one_year_price_return_pct": 33.5284,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NBIS": {
-      "one_year_price_return_pct": 26.6394,
+      "one_year_price_return_pct": 28.6494,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NEM": {
-      "one_year_price_return_pct": 41.5307,
+      "one_year_price_return_pct": 41.8083,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NET": {
-      "one_year_price_return_pct": 21.6959,
+      "one_year_price_return_pct": 22.1261,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NFLX": {
-      "one_year_price_return_pct": -43.1911,
+      "one_year_price_return_pct": -42.9054,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NG": {
-      "one_year_price_return_pct": -21.8277,
+      "one_year_price_return_pct": -19.9069,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NGG": {
-      "one_year_price_return_pct": 8.703,
+      "one_year_price_return_pct": 8.9616,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NOW": {
-      "one_year_price_return_pct": -40.3094,
+      "one_year_price_return_pct": -40.6903,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NRG": {
-      "one_year_price_return_pct": -42.2895,
+      "one_year_price_return_pct": -41.5787,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NU": {
-      "one_year_price_return_pct": -23.5643,
+      "one_year_price_return_pct": -22.8464,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NUVB": {
-      "one_year_price_return_pct": -8.0021,
+      "one_year_price_return_pct": -6.25,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NVDA": {
-      "one_year_price_return_pct": -9.7614,
+      "one_year_price_return_pct": -10.2386,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NVTS": {
-      "one_year_price_return_pct": -3.0729,
+      "one_year_price_return_pct": -0.2083,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NWSA": {
-      "one_year_price_return_pct": -1.1754,
+      "one_year_price_return_pct": -0.8582,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "NYT": {
-      "one_year_price_return_pct": 10.417,
+      "one_year_price_return_pct": 15.306,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "OKTA": {
-      "one_year_price_return_pct": 107.5115,
+      "one_year_price_return_pct": 107.115,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "OLN": {
-      "one_year_price_return_pct": -9.354,
+      "one_year_price_return_pct": -9.2507,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "OMF": {
-      "one_year_price_return_pct": -7.0642,
+      "one_year_price_return_pct": -7.4229,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ON": {
-      "one_year_price_return_pct": 39.7919,
+      "one_year_price_return_pct": 42.3774,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ORCL": {
-      "one_year_price_return_pct": -50.4505,
+      "one_year_price_return_pct": -50.2595,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ORKA": {
-      "one_year_price_return_pct": 279.2203,
+      "one_year_price_return_pct": 273.9628,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ORLY": {
-      "one_year_price_return_pct": -9.3578,
+      "one_year_price_return_pct": -8.4709,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "OTIS": {
-      "one_year_price_return_pct": -12.8462,
+      "one_year_price_return_pct": -12.7299,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "OXY": {
-      "one_year_price_return_pct": 33.8758,
+      "one_year_price_return_pct": 33.3971,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "OZK": {
-      "one_year_price_return_pct": 15.0829,
+      "one_year_price_return_pct": 14.7019,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PANW": {
-      "one_year_price_return_pct": 50.949,
+      "one_year_price_return_pct": 52.8078,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PAX": {
-      "one_year_price_return_pct": -34.3908,
+      "one_year_price_return_pct": -34.5933,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PAYC": {
-      "one_year_price_return_pct": 38.6571,
+      "one_year_price_return_pct": 41.7626,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PAYP": {
-      "one_year_price_return_pct": -16.0242,
+      "one_year_price_return_pct": -15.1982,
       "from": "2026-03-12",
       "to": "2026-11-09",
       "observations": 168
     },
     "PCG": {
-      "one_year_price_return_pct": -21.407,
+      "one_year_price_return_pct": -20.6522,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PCT": {
-      "one_year_price_return_pct": -79.9607,
+      "one_year_price_return_pct": -79.7642,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PDD": {
-      "one_year_price_return_pct": -41.2872,
+      "one_year_price_return_pct": -41.7216,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PEG": {
-      "one_year_price_return_pct": -11.0674,
+      "one_year_price_return_pct": -9.863,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PENN": {
-      "one_year_price_return_pct": 17.7083,
+      "one_year_price_return_pct": 18.8462,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PFE": {
-      "one_year_price_return_pct": 19.4506,
+      "one_year_price_return_pct": 19.8442,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PFSI": {
-      "one_year_price_return_pct": -48.1377,
+      "one_year_price_return_pct": -47.7919,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PG": {
-      "one_year_price_return_pct": 14.0069,
+      "one_year_price_return_pct": 15.6839,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PGR": {
-      "one_year_price_return_pct": 3.5972,
+      "one_year_price_return_pct": 4.5925,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PI": {
-      "one_year_price_return_pct": 10.5383,
+      "one_year_price_return_pct": 8.8593,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PINS": {
-      "one_year_price_return_pct": -29.6187,
+      "one_year_price_return_pct": -29.4335,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PL": {
-      "one_year_price_return_pct": 5.1904,
+      "one_year_price_return_pct": 7.3189,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PLAY": {
-      "one_year_price_return_pct": -41.8478,
+      "one_year_price_return_pct": -40.6522,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PNW": {
-      "one_year_price_return_pct": 19.8153,
+      "one_year_price_return_pct": 20.0091,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PPTA": {
-      "one_year_price_return_pct": -10.2486,
+      "one_year_price_return_pct": -7.7191,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PRGS": {
-      "one_year_price_return_pct": 2.2738,
+      "one_year_price_return_pct": 4.6419,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PRI": {
-      "one_year_price_return_pct": 15.4166,
+      "one_year_price_return_pct": 17.4379,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PRKS": {
-      "one_year_price_return_pct": 18.5275,
+      "one_year_price_return_pct": 24.0241,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PRM": {
-      "one_year_price_return_pct": 21.0496,
+      "one_year_price_return_pct": 23.215,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PTC": {
-      "one_year_price_return_pct": 10.1076,
+      "one_year_price_return_pct": 10.3555,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PTRN": {
-      "one_year_price_return_pct": 8.0791,
+      "one_year_price_return_pct": 9.774,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PWR": {
-      "one_year_price_return_pct": 28.5936,
+      "one_year_price_return_pct": 31.3291,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "PYPL": {
-      "one_year_price_return_pct": -9.5925,
+      "one_year_price_return_pct": -9.3585,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "QQQ": {
-      "one_year_price_return_pct": 8.326,
+      "one_year_price_return_pct": 9.0047,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "QS": {
-      "one_year_price_return_pct": -72.973,
+      "one_year_price_return_pct": -71.9287,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "QSR": {
-      "one_year_price_return_pct": 10.9642,
+      "one_year_price_return_pct": 12.0555,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "QXO": {
-      "one_year_price_return_pct": -27.6082,
+      "one_year_price_return_pct": -25.1087,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "RBC": {
-      "one_year_price_return_pct": 11.355,
+      "one_year_price_return_pct": 11.2915,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "RBLX": {
-      "one_year_price_return_pct": -51.9077,
+      "one_year_price_return_pct": -51.0251,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "RIG": {
-      "one_year_price_return_pct": 25.4714,
+      "one_year_price_return_pct": 23.0952,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "RIOT": {
-      "one_year_price_return_pct": 2.5982,
+      "one_year_price_return_pct": 1.963,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "RKT": {
-      "one_year_price_return_pct": -11.5047,
+      "one_year_price_return_pct": -11.0656,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "RLI": {
-      "one_year_price_return_pct": 8.9731,
+      "one_year_price_return_pct": 10.0583,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ROP": {
-      "one_year_price_return_pct": 3.6503,
+      "one_year_price_return_pct": 4.8508,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "RPD": {
-      "one_year_price_return_pct": 4.7009,
+      "one_year_price_return_pct": 6.6239,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "RPRX": {
-      "one_year_price_return_pct": 76.4141,
+      "one_year_price_return_pct": 78.438,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "RSP": {
-      "one_year_price_return_pct": 16.2797,
+      "one_year_price_return_pct": 17.1279,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "RUN": {
-      "one_year_price_return_pct": -46.5668,
+      "one_year_price_return_pct": -46.921,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "RXO": {
-      "one_year_price_return_pct": 142.7517,
+      "one_year_price_return_pct": 142.3611,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "RYAAY": {
-      "one_year_price_return_pct": -5.6788,
+      "one_year_price_return_pct": -4.1893,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SABR": {
-      "one_year_price_return_pct": -6.9149,
+      "one_year_price_return_pct": -4.2553,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SAIL": {
-      "one_year_price_return_pct": -2.313,
+      "one_year_price_return_pct": 0.1969,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SAM": {
-      "one_year_price_return_pct": 5.7071,
+      "one_year_price_return_pct": 7.6938,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SAP": {
-      "one_year_price_return_pct": -5.823,
+      "one_year_price_return_pct": -5.6959,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SBAC": {
-      "one_year_price_return_pct": -4.8039,
+      "one_year_price_return_pct": -4.5482,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SCHW": {
-      "one_year_price_return_pct": -2.5424,
+      "one_year_price_return_pct": -2.9818,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SE": {
-      "one_year_price_return_pct": -49.5518,
+      "one_year_price_return_pct": -49.7194,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SGHC": {
-      "one_year_price_return_pct": -6.1469,
+      "one_year_price_return_pct": -5.1155,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SGOV": {
-      "one_year_price_return_pct": 0.0249,
+      "one_year_price_return_pct": 0.0299,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SHEL": {
-      "one_year_price_return_pct": 29.7806,
+      "one_year_price_return_pct": 29.1536,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SHLS": {
-      "one_year_price_return_pct": -1.5975,
+      "one_year_price_return_pct": -7.1353,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SHOP": {
-      "one_year_price_return_pct": -5.1674,
+      "one_year_price_return_pct": -4.2926,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SHW": {
-      "one_year_price_return_pct": 2.2187,
+      "one_year_price_return_pct": 4.4899,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SIFY": {
-      "one_year_price_return_pct": 15.0814,
+      "one_year_price_return_pct": 14.3102,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SKE": {
-      "one_year_price_return_pct": 86.8588,
+      "one_year_price_return_pct": 88.5302,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SLM": {
-      "one_year_price_return_pct": -35.1845,
+      "one_year_price_return_pct": -36.9735,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SLSR": {
-      "one_year_price_return_pct": 3.2078,
+      "one_year_price_return_pct": 3.7657,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SN": {
-      "one_year_price_return_pct": 138.8215,
+      "one_year_price_return_pct": 142.1502,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SNDK": {
-      "one_year_price_return_pct": 231.9239,
+      "one_year_price_return_pct": 230.849,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SNOW": {
-      "one_year_price_return_pct": 9.1095,
+      "one_year_price_return_pct": 8.428,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SNX": {
-      "one_year_price_return_pct": 47.7915,
+      "one_year_price_return_pct": 47.8821,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SOLV": {
-      "one_year_price_return_pct": 24.5856,
+      "one_year_price_return_pct": 25.9646,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SONO": {
-      "one_year_price_return_pct": -1.2005,
+      "one_year_price_return_pct": 2.1008,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SPCX": {
-      "one_year_price_return_pct": -11.5511,
+      "one_year_price_return_pct": -11.7303,
       "from": "2026-06-12",
       "to": "2026-11-09",
       "observations": 104
     },
     "SPGI": {
-      "one_year_price_return_pct": -0.0533,
+      "one_year_price_return_pct": 0.8307,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SPIR": {
-      "one_year_price_return_pct": 8.9369,
+      "one_year_price_return_pct": 10.514,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SPOT": {
-      "one_year_price_return_pct": -4.5816,
+      "one_year_price_return_pct": -2.2202,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SPY": {
-      "one_year_price_return_pct": 10.0016,
+      "one_year_price_return_pct": 10.4558,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SRAD": {
-      "one_year_price_return_pct": -40.4888,
+      "one_year_price_return_pct": -40.0705,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SSD": {
-      "one_year_price_return_pct": 19.575,
+      "one_year_price_return_pct": 20.8476,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "STAA": {
-      "one_year_price_return_pct": -10.2149,
+      "one_year_price_return_pct": -10.4342,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "STM": {
-      "one_year_price_return_pct": 86.5571,
+      "one_year_price_return_pct": 87.6949,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "STNE": {
-      "one_year_price_return_pct": -55.5718,
+      "one_year_price_return_pct": -54.9008,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "STRZ": {
-      "one_year_price_return_pct": 145.8294,
+      "one_year_price_return_pct": 146.6351,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "STT": {
-      "one_year_price_return_pct": 43.4873,
+      "one_year_price_return_pct": 42.7688,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "STUB": {
-      "one_year_price_return_pct": -68.8837,
+      "one_year_price_return_pct": -69.4836,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "STX": {
-      "one_year_price_return_pct": 71.1011,
+      "one_year_price_return_pct": 72.1623,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SUNB": {
-      "one_year_price_return_pct": 10.2792,
+      "one_year_price_return_pct": 10.6247,
       "from": "2026-03-02",
       "to": "2026-11-09",
       "observations": 176
     },
     "SVM": {
-      "one_year_price_return_pct": 38.6029,
+      "one_year_price_return_pct": 43.0882,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SWIM": {
-      "one_year_price_return_pct": 20.208,
+      "one_year_price_return_pct": 24.8143,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "SYK": {
-      "one_year_price_return_pct": -8.5291,
+      "one_year_price_return_pct": -8.2502,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TCRX": {
-      "one_year_price_return_pct": -82.2477,
+      "one_year_price_return_pct": -83.3028,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TDG": {
-      "one_year_price_return_pct": -5.4247,
+      "one_year_price_return_pct": -5.4356,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TDS": {
-      "one_year_price_return_pct": -14.3853,
+      "one_year_price_return_pct": -12.5517,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TDY": {
-      "one_year_price_return_pct": 22.5488,
+      "one_year_price_return_pct": 23.6836,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TEAM": {
-      "one_year_price_return_pct": -4.7571,
+      "one_year_price_return_pct": -2.6582,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TEM": {
-      "one_year_price_return_pct": 15.4221,
+      "one_year_price_return_pct": 17.6372,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TFX": {
-      "one_year_price_return_pct": 41.5903,
+      "one_year_price_return_pct": 43.3083,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
@@ -2316,307 +2316,307 @@
       "observations": 251
     },
     "THRY": {
-      "one_year_price_return_pct": -81.2203,
+      "one_year_price_return_pct": -79.7147,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TKO": {
-      "one_year_price_return_pct": 7.6407,
+      "one_year_price_return_pct": 11.4305,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TLN": {
-      "one_year_price_return_pct": -9.7947,
+      "one_year_price_return_pct": -7.7484,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TME": {
-      "one_year_price_return_pct": -56.9142,
+      "one_year_price_return_pct": -56.4733,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TMO": {
-      "one_year_price_return_pct": 21.3681,
+      "one_year_price_return_pct": 25.2069,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TMUS": {
-      "one_year_price_return_pct": -19.8693,
+      "one_year_price_return_pct": -18.0502,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TOST": {
-      "one_year_price_return_pct": -8.9052,
+      "one_year_price_return_pct": -8.9314,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TPG": {
-      "one_year_price_return_pct": -12.2027,
+      "one_year_price_return_pct": -10.8771,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TRS": {
-      "one_year_price_return_pct": 22.9417,
+      "one_year_price_return_pct": 21.3426,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TRU": {
-      "one_year_price_return_pct": 1.4781,
+      "one_year_price_return_pct": 3.3192,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TRUP": {
-      "one_year_price_return_pct": -10.2466,
+      "one_year_price_return_pct": -9.7381,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TSAT": {
-      "one_year_price_return_pct": 81.4392,
+      "one_year_price_return_pct": 78.1361,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TSLA": {
-      "one_year_price_return_pct": -14.8373,
+      "one_year_price_return_pct": -15.0888,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TSM": {
-      "one_year_price_return_pct": 32.7836,
+      "one_year_price_return_pct": 31.6151,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TTAN": {
-      "one_year_price_return_pct": -15.0163,
+      "one_year_price_return_pct": -13.1643,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TTMI": {
-      "one_year_price_return_pct": 5.337,
+      "one_year_price_return_pct": 7.7837,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TWST": {
-      "one_year_price_return_pct": 328.3592,
+      "one_year_price_return_pct": 337.1447,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TXG": {
-      "one_year_price_return_pct": 272.1312,
+      "one_year_price_return_pct": 280.8548,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TXN": {
-      "one_year_price_return_pct": 80.122,
+      "one_year_price_return_pct": 84.1637,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "TXRH": {
-      "one_year_price_return_pct": 14.5357,
+      "one_year_price_return_pct": 17.794,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "U": {
-      "one_year_price_return_pct": 21.2381,
+      "one_year_price_return_pct": 19.2441,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "UBER": {
-      "one_year_price_return_pct": -26.5781,
+      "one_year_price_return_pct": -24.3677,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "UHAL-B": {
-      "one_year_price_return_pct": 4.8674,
+      "one_year_price_return_pct": 4.3242,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "UNH": {
-      "one_year_price_return_pct": 23.0098,
+      "one_year_price_return_pct": 23.6458,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "UNP": {
-      "one_year_price_return_pct": 31.1774,
+      "one_year_price_return_pct": 32.6648,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "URBN": {
-      "one_year_price_return_pct": 41.4181,
+      "one_year_price_return_pct": 42.325,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "USFD": {
-      "one_year_price_return_pct": 50.7607,
+      "one_year_price_return_pct": 52.0609,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "UTI": {
-      "one_year_price_return_pct": -24.5025,
+      "one_year_price_return_pct": -25.9696,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "V": {
-      "one_year_price_return_pct": 25.5428,
+      "one_year_price_return_pct": 26.0744,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "VAC": {
-      "one_year_price_return_pct": 124.5619,
+      "one_year_price_return_pct": 129.2513,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "VAL": {
-      "one_year_price_return_pct": 42.8827,
+      "one_year_price_return_pct": 40.2929,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "VEEV": {
-      "one_year_price_return_pct": 1.7954,
+      "one_year_price_return_pct": 3.601,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "VEON": {
-      "one_year_price_return_pct": 54.06,
+      "one_year_price_return_pct": 53.46,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "VICI": {
-      "one_year_price_return_pct": -18.025,
+      "one_year_price_return_pct": -17.3184,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "VLO": {
-      "one_year_price_return_pct": 97.6113,
+      "one_year_price_return_pct": 99.1015,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "VMC": {
-      "one_year_price_return_pct": -2.3289,
+      "one_year_price_return_pct": -1.161,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "VRDN": {
-      "one_year_price_return_pct": 7.3779,
+      "one_year_price_return_pct": 9.1863,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "VT": {
-      "one_year_price_return_pct": 10.0021,
+      "one_year_price_return_pct": 10.5917,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "VTOL": {
-      "one_year_price_return_pct": -0.2768,
+      "one_year_price_return_pct": 0.8698,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "W": {
-      "one_year_price_return_pct": 3.4578,
+      "one_year_price_return_pct": 3.8844,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "WAB": {
-      "one_year_price_return_pct": 39.6571,
+      "one_year_price_return_pct": 41.9952,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "WAT": {
-      "one_year_price_return_pct": 23.4963,
+      "one_year_price_return_pct": 26.59,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "WAY": {
-      "one_year_price_return_pct": -22.3345,
+      "one_year_price_return_pct": -19.1914,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "WCC": {
-      "one_year_price_return_pct": 20.7759,
+      "one_year_price_return_pct": 21.4436,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "WDAY": {
-      "one_year_price_return_pct": -16.875,
+      "one_year_price_return_pct": -16.5636,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "WEN": {
-      "one_year_price_return_pct": -4.3326,
+      "one_year_price_return_pct": -2.8103,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "WEX": {
-      "one_year_price_return_pct": 24.291,
+      "one_year_price_return_pct": 24.441,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "WMG": {
-      "one_year_price_return_pct": 5.2181,
+      "one_year_price_return_pct": 6.6779,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "WMS": {
-      "one_year_price_return_pct": -12.1676,
+      "one_year_price_return_pct": -11.1194,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "WMT": {
-      "one_year_price_return_pct": 21.0506,
+      "one_year_price_return_pct": 22.6909,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "WRB": {
-      "one_year_price_return_pct": -1.3054,
+      "one_year_price_return_pct": 0.1055,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
@@ -2624,107 +2624,107 @@
     "WRDIF": {
       "one_year_price_return_pct": 0.0,
       "from": "2026-09-22",
-      "to": "2026-11-06",
-      "observations": 34
+      "to": "2026-11-09",
+      "observations": 35
     },
     "WRLD": {
-      "one_year_price_return_pct": 10.733,
+      "one_year_price_return_pct": 8.9792,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "WSC": {
-      "one_year_price_return_pct": 11.172,
+      "one_year_price_return_pct": 12.9792,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "WTW": {
-      "one_year_price_return_pct": 1.2935,
+      "one_year_price_return_pct": 1.6791,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "WULF": {
-      "one_year_price_return_pct": -13.7748,
+      "one_year_price_return_pct": -13.4266,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "XMTR": {
-      "one_year_price_return_pct": 80.7049,
+      "one_year_price_return_pct": 81.6388,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "XNDU": {
-      "one_year_price_return_pct": -64.3571,
+      "one_year_price_return_pct": -64.0449,
       "from": "2026-03-23",
       "to": "2026-11-09",
       "observations": 161
     },
     "XOM": {
-      "one_year_price_return_pct": 39.2911,
+      "one_year_price_return_pct": 39.3419,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "XPO": {
-      "one_year_price_return_pct": 32.6758,
+      "one_year_price_return_pct": 34.8852,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "XPRO": {
-      "one_year_price_return_pct": -4.848,
+      "one_year_price_return_pct": -4.9928,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "YUM": {
-      "one_year_price_return_pct": 7.7803,
+      "one_year_price_return_pct": 8.5121,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "YUMC": {
-      "one_year_price_return_pct": 10.0022,
+      "one_year_price_return_pct": 11.4981,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "Z": {
-      "one_year_price_return_pct": -60.0123,
+      "one_year_price_return_pct": -58.0151,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ZBIO": {
-      "one_year_price_return_pct": -9.6705,
+      "one_year_price_return_pct": -12.0111,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ZEO": {
-      "one_year_price_return_pct": -86.2293,
+      "one_year_price_return_pct": -86.3057,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ZETA": {
-      "one_year_price_return_pct": 62.2378,
+      "one_year_price_return_pct": 62.9965,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ZG": {
-      "one_year_price_return_pct": -57.6461,
+      "one_year_price_return_pct": -55.8317,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
     },
     "ZTS": {
-      "one_year_price_return_pct": -32.9827,
+      "one_year_price_return_pct": -31.2797,
       "from": "2025-11-10",
       "to": "2026-11-09",
       "observations": 251
