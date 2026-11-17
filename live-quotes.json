@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-17T03:28:52.865200+00:00",
+  "generated_at": "2026-11-17T12:51:41.168638+00:00",
   "source": "yahoo",
   "market_status": "closed",
   "indices": [
@@ -15,7 +15,7 @@
       "name": "Dow Jones",
       "ticker": "^DJI",
       "price": 51608.17,
-      "change_pct": -1.4124443264298034,
+      "change_pct": -1.412538492691165,
       "vs_exit": 11.153859325183198,
       "source": "yahoo"
     },
@@ -30,16 +30,16 @@
     {
       "name": "Russell 2000",
       "ticker": "^RUT",
-      "price": 2742.9412,
-      "change_pct": -1.7039411902463681,
+      "price": 2742.941,
+      "change_pct": -1.7039659701342766,
       "vs_exit": null,
       "source": "yahoo"
     },
     {
       "name": "VIX",
       "ticker": "^VIX",
-      "price": 22.91,
-      "change_pct": 18.70466321243523,
+      "price": 22.77,
+      "change_pct": -0.6110868616324774,
       "vs_exit": null,
       "source": "yahoo"
     }
@@ -156,9 +156,9 @@
     {
       "ticker": "ASML",
       "symbol": "ASML",
-      "price": 1406.79,
+      "price": 1406.785,
       "prev_close": 1495.16,
-      "change_pct": -5.910404237673568,
+      "change_pct": -5.910738650044142,
       "date": "2026-11-16",
       "time": "16:00:01",
       "volume": 1587468,
@@ -853,10 +853,10 @@
       "ticker": "IFNNF",
       "symbol": "IFNNF",
       "price": 53.7,
-      "prev_close": 57.2,
-      "change_pct": -6.118881118881118,
+      "prev_close": 56.99,
+      "change_pct": -5.772942621512545,
       "date": "2026-11-16",
-      "time": "14:52:02",
+      "time": "16:00:00",
       "volume": 126,
       "week52_high": 103.5,
       "week52_low": 37.05
@@ -864,9 +864,9 @@
     {
       "ticker": "INTC",
       "symbol": "INTC",
-      "price": 55.47,
+      "price": 55.442,
       "prev_close": 59.66,
-      "change_pct": -7.023131076097884,
+      "change_pct": -7.07006369426751,
       "date": "2026-11-16",
       "time": "16:00:00",
       "volume": 100803088,
@@ -919,7 +919,7 @@
       "time": "16:00:03",
       "volume": 7941138,
       "week52_high": 290.25,
-      "week52_low": 195.9
+      "week52_low": 198.53
     },
     {
       "ticker": "JPM",
@@ -1111,7 +1111,7 @@
       "time": "16:00:01",
       "volume": 527711,
       "week52_high": 2342.0,
-      "week52_low": 1453.991
+      "week52_low": 1453.99
     },
     {
       "ticker": "MET",
@@ -1482,7 +1482,7 @@
       "date": "2026-11-16",
       "time": "16:03:21",
       "volume": 8977803,
-      "week52_high": 103.775,
+      "week52_high": 103.22,
       "week52_low": 33.88
     },
     {
@@ -1602,7 +1602,7 @@
       "date": "2026-11-16",
       "time": "16:00:01",
       "volume": 2271318,
-      "week52_high": 52.67,
+      "week52_high": 50.94,
       "week52_low": 39.07
     },
     {
